@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>TechTracker — Mock — App Shell (Issue #1)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; }
+    :root {
+      --bg: #ffffff; --fg: #09090b; --muted: #f4f4f5; --muted-fg: #71717a;
+      --border: #e4e4e7; --primary: #2563eb; --primary-fg: #ffffff;
+      --success: #16a34a; --danger: #dc2626;
+    }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--fg); }
+    .page { max-width: 1440px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; }
+    /* Header */
+    .header { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; border-bottom: 1px solid var(--border); }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand .logo { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #2563eb, #7c3aed); display: grid; place-items: center; color: white; font-weight: 700; font-size: 14px; }
+    .brand h1 { font-size: 18px; margin: 0; letter-spacing: -0.01em; }
+    .brand .tag { font-size: 12px; color: var(--muted-fg); margin-left: 8px; }
+    .header-right { display: flex; align-items: center; gap: 10px; }
+    .live { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 4px 10px; border-radius: 999px; background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .live .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 0 2px rgba(22, 163, 74, .2); }
+    .theme-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border); background: transparent; cursor: pointer; display: grid; place-items: center; color: var(--muted-fg); }
+    /* Tab bar */
+    .tabs-wrap { border-bottom: 1px solid var(--border); padding: 4px 24px 8px; }
+    .tabs-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .tab { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 999px; font-size: 13px; color: var(--muted-fg); background: transparent; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
+    .tab:hover { background: var(--muted); color: var(--fg); }
+    .tab[data-state="active"] { background: var(--primary); color: var(--primary-fg); border-color: var(--primary); }
+    .tab .ico { width: 14px; height: 14px; opacity: 0.9; }
+    /* Status line */
+    .status { padding: 8px 24px; font-size: 12px; color: var(--muted-fg); display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--border); background: #fafafa; }
+    /* Content */
+    .content { flex: 1; padding: 40px 24px; display: grid; place-items: center; background: #fafafa; }
+    .placeholder { text-align: center; max-width: 480px; }
+    .placeholder .icon { width: 48px; height: 48px; border-radius: 12px; background: var(--muted); display: grid; place-items: center; margin: 0 auto 16px; color: var(--muted-fg); }
+    .placeholder h2 { margin: 0 0 8px; font-size: 20px; }
+    .placeholder p { margin: 0 0 12px; color: var(--muted-fg); font-size: 14px; }
+    .placeholder a { color: var(--primary); text-decoration: none; font-size: 13px; }
+    /* Disclaimer */
+    .disclaimer { border-top: 1px solid var(--border); background: var(--muted); padding: 12px 24px; text-align: center; font-size: 11px; color: var(--muted-fg); line-height: 1.6; }
+    .disclaimer strong { font-weight: 500; color: var(--fg); }
+    /* Viewport toggle */
+    .controls { position: fixed; right: 12px; bottom: 12px; background: white; border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; font-size: 12px; display: flex; gap: 8px; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .controls button { font-size: 12px; padding: 4px 8px; border-radius: 6px; border: 1px solid var(--border); background: white; cursor: pointer; }
+    .controls button[data-active="true"] { background: var(--primary); color: white; border-color: var(--primary); }
+    /* Mobile preview */
+    .is-mobile .page { max-width: 375px; }
+    .is-mobile .tabs-row { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; }
+    .is-mobile .content { padding: 24px 12px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">TT</div>
+        <h1>TechTracker</h1>
+        <span class="tag">Technical Analysis Dashboard</span>
+      </div>
+      <div class="header-right">
+        <span class="live"><span class="dot"></span>Live</span>
+        <button class="theme-btn" title="Toggle theme (ships in #2)" aria-label="Toggle theme">◐</button>
+      </div>
+    </header>
+
+    <nav class="tabs-wrap" role="tablist" aria-label="TechTracker sections">
+      <div class="tabs-row">
+        <button class="tab" data-state="active" role="tab" aria-selected="true"><span class="ico">📈</span>Top 50 Stocks</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">🗂</span>Sector ETFs</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">🏢</span>Industry ETFs</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">📍</span>Country ETFs</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">$</span>Currencies</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">💧</span>Commodities</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">🇮🇳</span>India</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">🇭🇰</span>Hong Kong</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">🇸🇬</span>Singapore</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">🇯🇵</span>Japan</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">🇪🇺</span>Europe</button>
+      </div>
+      <div class="tabs-row">
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">🏦</span>Fixed Income</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">🌐</span>Broad Market</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">⇅</span>Growth/Value</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">💼</span>Portfolio Builder</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">📡</span>Signals Hub</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">↔</span>Signal Change</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">📊</span>Analytics</button>
+        <button class="tab" role="tab" aria-selected="false"><span class="ico">📖</span>Methodology</button>
+      </div>
+    </nav>
+
+    <div class="status" role="status" aria-live="polite">
+      <span aria-hidden="true">🕒</span>
+      <span>Last refreshed: — — — — (ships in UC-13)</span>
+    </div>
+
+    <main class="content">
+      <div class="placeholder">
+        <div class="icon" aria-hidden="true">📈</div>
+        <h2>Top 50 Stocks</h2>
+        <p>The screener ships in <strong>UC-01</strong>. This shell renders the chrome and routes every tab for now.</p>
+        <a href="https://github.com/mathursan/techtracker/issues/4">GitHub #4 — UC-01 screener view</a>
+      </div>
+    </main>
+
+    <p class="disclaimer">
+      TechTracker provides technical analysis for informational purposes only.
+      It is <strong>not investment advice</strong>, a recommendation to buy or sell any security,
+      and does not take into account your objectives, financial situation, or needs.
+      <strong>Past performance does not guarantee future results.</strong>
+      Data may be delayed or inaccurate. Do your own research.
+    </p>
+  </div>
+
+  <div class="controls">
+    <span>Viewport:</span>
+    <button data-active="true" onclick="document.body.classList.remove('is-mobile'); this.dataset.active='true'; this.nextElementSibling.dataset.active='false';">Desktop</button>
+    <button onclick="document.body.classList.add('is-mobile'); this.dataset.active='true'; this.previousElementSibling.dataset.active='false';">Mobile 375</button>
+  </div>
+</body>
+</html>
