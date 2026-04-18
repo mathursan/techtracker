@@ -19,7 +19,7 @@ export function PlaceholderView({ tab }: { tab: TabDef }) {
         <p className="mb-3 text-sm text-muted-foreground">
           Ships in{" "}
           <span className="font-medium text-foreground">
-            UC-{String(tab.plannedIssue).padStart(2, "0")}
+            issue #{tab.plannedIssue}
           </span>
           . This shell renders the chrome and routes every tab for now.
         </p>
@@ -27,7 +27,7 @@ export function PlaceholderView({ tab }: { tab: TabDef }) {
           href={`${GITHUB_ISSUE_URL}/${tab.plannedIssue}`}
           className="text-sm text-primary hover:underline"
         >
-          GitHub #{tab.plannedIssue} — track implementation
+          Track implementation on GitHub →
         </Link>
       </div>
     </main>

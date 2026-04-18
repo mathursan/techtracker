@@ -5,13 +5,23 @@ import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
-import { TABS, type TabDef } from "@/lib/nav";
+import { DEFAULT_TAB, TABS, hrefForTab, type TabDef } from "@/lib/nav";
+
+const ROW_1 = TABS.filter((t) => t.row === 1);
+const ROW_2 = TABS.filter((t) => t.row === 2);
 
 function currentSlugFromPathname(pathname: string): string {
   const trimmed = pathname.replace(/^\//, "").replace(/\/.*$/, "");
-  return trimmed.length > 0 ? trimmed : "stocks";
+  return trimmed.length > 0 ? trimmed : DEFAULT_TAB.slug;
 }
 
+/**
+ * TabRow is rendered twice — row 1 (universes) and row 2 (tools).
+ * `indexOffset` lets keyboard navigation + focus management see one
+ * flat 0…18 index space across both rows without each row holding a
+ * separate refs array. Required because keyboard wrap-around
+ * (ArrowLeft on tab 0 → tab 18) needs global ordering.
+ */
 function TabRow({
   tabs,
   indexOffset,
@@ -20,7 +30,6 @@ function TabRow({
   tabRefs,
 }: {
   tabs: readonly TabDef[];
-  /** Global index of the first tab in this row inside the flat tab list. */
   indexOffset: number;
   activeSlug: string;
   onKeyDown: (event: React.KeyboardEvent, globalIndex: number) => void;
@@ -38,7 +47,7 @@ function TabRow({
             ref={(node) => {
               tabRefs.current[globalIndex] = node;
             }}
-            href={`/${tab.slug}`}
+            href={hrefForTab(tab)}
             role="tab"
             aria-selected={isActive}
             aria-current={isActive ? "page" : undefined}
@@ -55,7 +64,16 @@ function TabRow({
             <Icon className="h-3.5 w-3.5" aria-hidden="true" />
             <span>{tab.label}</span>
             {tab.flagBadge ? (
-              <span className="rounded bg-black/5 px-1 text-[10px] font-semibold tracking-wide text-foreground/70 dark:bg-white/10">
+              <span
+                className={cn(
+                  "rounded px-1 text-[10px] font-semibold tracking-wide",
+                  // Flag badge must stay legible over both the inactive muted
+                  // background AND the active primary fill.
+                  isActive
+                    ? "bg-primary-foreground/20 text-primary-foreground"
+                    : "bg-black/5 text-foreground/70 dark:bg-white/10",
+                )}
+              >
                 {tab.flagBadge}
               </span>
             ) : null}
@@ -102,7 +120,7 @@ export function TabBar() {
         case "Enter":
         case " ": {
           event.preventDefault();
-          router.push(`/${TABS[index].slug}`);
+          router.push(hrefForTab(TABS[index]));
           break;
         }
         default:
@@ -122,9 +140,6 @@ export function TabBar() {
     }
   }, [activeSlug]);
 
-  const row1 = TABS.filter((t) => t.row === 1);
-  const row2 = TABS.filter((t) => t.row === 2);
-
   return (
     <nav
       role="tablist"
@@ -132,7 +147,7 @@ export function TabBar() {
       className="border-b px-6 pb-2 pt-1"
     >
       <TabRow
-        tabs={row1}
+        tabs={ROW_1}
         indexOffset={0}
         activeSlug={activeSlug}
         onKeyDown={onKeyDown}
@@ -140,8 +155,8 @@ export function TabBar() {
       />
       <div className="mt-1.5">
         <TabRow
-          tabs={row2}
-          indexOffset={row1.length}
+          tabs={ROW_2}
+          indexOffset={ROW_1.length}
           activeSlug={activeSlug}
           onKeyDown={onKeyDown}
           tabRefs={tabRefs}

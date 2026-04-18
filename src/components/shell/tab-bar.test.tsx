@@ -1,19 +1,26 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 
 import { TabBar } from "./tab-bar";
 import { TABS } from "@/lib/nav";
 
-const pushMock = vi.fn();
+const mocks = vi.hoisted(() => ({
+  pathname: "/stocks",
+  pushMock: vi.fn(),
+}));
 
 vi.mock("next/navigation", () => ({
-  usePathname: () => "/stocks",
-  useRouter: () => ({ push: pushMock }),
+  usePathname: () => mocks.pathname,
+  useRouter: () => ({ push: mocks.pushMock }),
 }));
+
+beforeEach(() => {
+  mocks.pathname = "/stocks";
+  mocks.pushMock.mockReset();
+});
 
 afterEach(() => {
   cleanup();
-  pushMock.mockReset();
 });
 
 describe("<TabBar />", () => {
@@ -24,7 +31,7 @@ describe("<TabBar />", () => {
     }
   });
 
-  it("marks the pathname tab aria-selected", () => {
+  it("marks the pathname tab aria-selected on /stocks", () => {
     render(<TabBar />);
     const stocks = screen.getByRole("tab", { name: /Top 50 Stocks/ });
     expect(stocks).toHaveAttribute("aria-selected", "true");
@@ -32,6 +39,16 @@ describe("<TabBar />", () => {
 
     const japan = screen.getByRole("tab", { name: /Japan/ });
     expect(japan).toHaveAttribute("aria-selected", "false");
+  });
+
+  it("tracks pathname — marks /japan tab aria-selected when pathname is /japan", () => {
+    mocks.pathname = "/japan";
+    render(<TabBar />);
+    const japan = screen.getByRole("tab", { name: /Japan/ });
+    expect(japan).toHaveAttribute("aria-selected", "true");
+
+    const stocks = screen.getByRole("tab", { name: /Top 50 Stocks/ });
+    expect(stocks).toHaveAttribute("aria-selected", "false");
   });
 
   it("exposes role=tablist + role=tab", () => {
@@ -47,9 +64,17 @@ describe("<TabBar />", () => {
     render(<TabBar />);
     const tabs = screen.getAllByRole("tab");
     tabs[0].focus();
-    expect(document.activeElement).toBe(tabs[0]);
     fireEvent.keyDown(tabs[0], { key: "ArrowRight" });
     expect(document.activeElement).toBe(tabs[1]);
+  });
+
+  it("ArrowRight from the last tab wraps to the first", () => {
+    render(<TabBar />);
+    const tabs = screen.getAllByRole("tab");
+    const last = tabs[tabs.length - 1];
+    last.focus();
+    fireEvent.keyDown(last, { key: "ArrowRight" });
+    expect(document.activeElement).toBe(tabs[0]);
   });
 
   it("ArrowLeft from the first tab wraps to the last", () => {
@@ -74,7 +99,14 @@ describe("<TabBar />", () => {
     render(<TabBar />);
     const tabs = screen.getAllByRole("tab");
     fireEvent.keyDown(tabs[6], { key: "Enter" });
-    expect(pushMock).toHaveBeenCalledWith(`/${TABS[6].slug}`);
+    expect(mocks.pushMock).toHaveBeenCalledWith(`/${TABS[6].slug}`);
+  });
+
+  it("Space on a focused tab also navigates", () => {
+    render(<TabBar />);
+    const tabs = screen.getAllByRole("tab");
+    fireEvent.keyDown(tabs[8], { key: " " });
+    expect(mocks.pushMock).toHaveBeenCalledWith(`/${TABS[8].slug}`);
   });
 
   it("country tabs render their 2-letter badge", () => {

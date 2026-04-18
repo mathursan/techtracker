@@ -17,12 +17,11 @@ export function AppHeader() {
       </div>
 
       <div className="flex items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-green-200 bg-green-50 px-2.5 py-1 text-xs text-green-700 dark:border-green-900 dark:bg-green-950 dark:text-green-400">
-          <span
-            aria-hidden="true"
-            className="h-1.5 w-1.5 rounded-full bg-green-500 ring-2 ring-green-500/20"
-          />
-          Live
+        <span
+          className="inline-flex items-center gap-1.5 rounded-full border bg-muted px-2.5 py-1 text-xs text-muted-foreground"
+          title="Snapshots refresh once per weekday after US market close."
+        >
+          EOD
         </span>
         <button
           type="button"

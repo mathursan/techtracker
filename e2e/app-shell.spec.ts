@@ -15,17 +15,27 @@ test.describe("app shell & tab navigation (UC-14)", () => {
     await expect(tabs).toHaveCount(19);
   });
 
-  test("clicking a tab navigates via client router", async ({ page }) => {
+  test("clicking a tab navigates via client router (no full reload)", async ({
+    page,
+  }) => {
     await page.goto("/stocks");
-
-    const navigationEvents: string[] = [];
-    page.on("framenavigated", (frame) => navigationEvents.push(frame.url()));
+    // Plant a sentinel on window. If Next.js keeps SPA state across the
+    // navigation, the sentinel survives. A full reload would wipe it.
+    await page.evaluate(() => {
+      (window as Window & { __spaSentinel?: number }).__spaSentinel =
+        Date.now();
+    });
 
     await page.getByRole("tab", { name: "Signals Hub" }).click();
     await expect(page).toHaveURL(/\/signals-hub$/);
 
-    // Client-side route change: framenavigated may fire but no full reload
-    // (we accept up to 2: initial + push) — assert the page didn't re-execute.
+    const sentinelSurvived = await page.evaluate(
+      () =>
+        typeof (window as Window & { __spaSentinel?: number }).__spaSentinel ===
+        "number",
+    );
+    expect(sentinelSurvived).toBe(true);
+
     await expect(
       page.getByRole("heading", { name: "TechTracker" }),
     ).toBeVisible();
@@ -37,9 +47,7 @@ test.describe("app shell & tab navigation (UC-14)", () => {
     await page.goto("/japan");
     const japanTab = page.getByRole("tab", { name: /Japan/ });
     await expect(japanTab).toHaveAttribute("aria-selected", "true");
-    await expect(
-      page.getByRole("heading", { name: "Japan" }),
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Japan" })).toBeVisible();
   });
 
   test("disclaimer is present on multiple routes", async ({ page }) => {
