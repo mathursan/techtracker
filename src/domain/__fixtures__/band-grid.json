@@ -1,0 +1,406 @@
+[
+  {
+    "score": 0,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 0.1,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 0.2,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 0.3,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 0.4,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 0.5,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 0.6,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 0.7,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 0.8,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 0.9,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 1,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 1.1,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 1.2,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 1.3,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 1.4,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 1.5,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 1.6,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 1.7,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 1.8,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 1.9,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 2,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 2.1,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 2.2,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 2.3,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 2.4,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 2.5,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 2.6,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 2.7,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 2.8,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 2.9,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 3,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 3.1,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 3.2,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 3.3,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 3.4,
+    "signal": "Strong Sell"
+  },
+  {
+    "score": 3.5,
+    "signal": "Sell"
+  },
+  {
+    "score": 3.6,
+    "signal": "Sell"
+  },
+  {
+    "score": 3.7,
+    "signal": "Sell"
+  },
+  {
+    "score": 3.8,
+    "signal": "Sell"
+  },
+  {
+    "score": 3.9,
+    "signal": "Sell"
+  },
+  {
+    "score": 4,
+    "signal": "Sell"
+  },
+  {
+    "score": 4.1,
+    "signal": "Sell"
+  },
+  {
+    "score": 4.2,
+    "signal": "Sell"
+  },
+  {
+    "score": 4.3,
+    "signal": "Sell"
+  },
+  {
+    "score": 4.4,
+    "signal": "Sell"
+  },
+  {
+    "score": 4.5,
+    "signal": "Sell"
+  },
+  {
+    "score": 4.6,
+    "signal": "Sell"
+  },
+  {
+    "score": 4.7,
+    "signal": "Sell"
+  },
+  {
+    "score": 4.8,
+    "signal": "Sell"
+  },
+  {
+    "score": 4.9,
+    "signal": "Sell"
+  },
+  {
+    "score": 5,
+    "signal": "Neutral"
+  },
+  {
+    "score": 5.1,
+    "signal": "Neutral"
+  },
+  {
+    "score": 5.2,
+    "signal": "Neutral"
+  },
+  {
+    "score": 5.3,
+    "signal": "Neutral"
+  },
+  {
+    "score": 5.4,
+    "signal": "Neutral"
+  },
+  {
+    "score": 5.5,
+    "signal": "Neutral"
+  },
+  {
+    "score": 5.6,
+    "signal": "Neutral"
+  },
+  {
+    "score": 5.7,
+    "signal": "Neutral"
+  },
+  {
+    "score": 5.8,
+    "signal": "Neutral"
+  },
+  {
+    "score": 5.9,
+    "signal": "Neutral"
+  },
+  {
+    "score": 6,
+    "signal": "Neutral"
+  },
+  {
+    "score": 6.1,
+    "signal": "Neutral"
+  },
+  {
+    "score": 6.2,
+    "signal": "Neutral"
+  },
+  {
+    "score": 6.3,
+    "signal": "Neutral"
+  },
+  {
+    "score": 6.4,
+    "signal": "Neutral"
+  },
+  {
+    "score": 6.5,
+    "signal": "Buy"
+  },
+  {
+    "score": 6.6,
+    "signal": "Buy"
+  },
+  {
+    "score": 6.7,
+    "signal": "Buy"
+  },
+  {
+    "score": 6.8,
+    "signal": "Buy"
+  },
+  {
+    "score": 6.9,
+    "signal": "Buy"
+  },
+  {
+    "score": 7,
+    "signal": "Buy"
+  },
+  {
+    "score": 7.1,
+    "signal": "Buy"
+  },
+  {
+    "score": 7.2,
+    "signal": "Buy"
+  },
+  {
+    "score": 7.3,
+    "signal": "Buy"
+  },
+  {
+    "score": 7.4,
+    "signal": "Buy"
+  },
+  {
+    "score": 7.5,
+    "signal": "Buy"
+  },
+  {
+    "score": 7.6,
+    "signal": "Buy"
+  },
+  {
+    "score": 7.7,
+    "signal": "Buy"
+  },
+  {
+    "score": 7.8,
+    "signal": "Buy"
+  },
+  {
+    "score": 7.9,
+    "signal": "Buy"
+  },
+  {
+    "score": 8,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 8.1,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 8.2,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 8.3,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 8.4,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 8.5,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 8.6,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 8.7,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 8.8,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 8.9,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 9,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 9.1,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 9.2,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 9.3,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 9.4,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 9.5,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 9.6,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 9.7,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 9.8,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 9.9,
+    "signal": "Strong Buy"
+  },
+  {
+    "score": 10,
+    "signal": "Strong Buy"
+  }
+]

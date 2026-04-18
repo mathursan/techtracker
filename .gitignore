@@ -11,3 +11,30 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Node / Next
+node_modules/
+.next/
+.turbo/
+.vercel/
+*.tsbuildinfo
+
+# Test artifacts
+coverage/
+playwright-report/
+test-results/
+
+# OS / editor
+.DS_Store
+.playwright-mcp/
+
+# Generated scoring snapshots — written by `python -m scoring.runner`.
+# Committed only by the scheduled workflow (currently disabled; see issue #3).
+public/data/
+
+# Secrets
+.env
+.env.local
