@@ -11,3 +11,25 @@
 __pycache__/
 *.pyc
 .pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Node / Next
+node_modules/
+.next/
+.turbo/
+.vercel/
+
+# Test artifacts
+coverage/
+playwright-report/
+test-results/
+
+# OS / editor
+.DS_Store
+.playwright-mcp/
+
+# Secrets
+.env
+.env.local

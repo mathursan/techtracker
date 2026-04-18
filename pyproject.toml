@@ -1,0 +1,27 @@
+[project]
+name = "techtracker-scoring"
+version = "0.1.0"
+description = "Offline technical-analysis scoring pipeline for TechTracker"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+market = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+    "yfinance>=0.2.50",
+    "pandas-ta>=0.3.14b",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["scoring/tests"]
+python_files = ["test_*.py"]
+addopts = "-ra"
+
+[tool.setuptools.packages.find]
+include = ["scoring*"]
+exclude = ["scoring.tests*"]
