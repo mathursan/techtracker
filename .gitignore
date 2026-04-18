@@ -5,3 +5,9 @@
 .fraim/ai-employee/
 .fraim/ai-manager/
 # END FRAIM SYNCED CONTENT
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
