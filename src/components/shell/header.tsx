@@ -1,4 +1,4 @@
-import { Moon } from "lucide-react";
+import { ThemeToggle } from "./theme-toggle";
 
 export function AppHeader() {
   return (
@@ -23,15 +23,7 @@ export function AppHeader() {
         >
           EOD
         </span>
-        <button
-          type="button"
-          aria-label="Toggle theme (ships in issue #2)"
-          title="Toggle theme — ships in issue #2"
-          className="grid h-8 w-8 place-items-center rounded-md border text-muted-foreground transition-colors hover:bg-muted"
-          disabled
-        >
-          <Moon className="h-4 w-4" />
-        </button>
+        <ThemeToggle />
       </div>
     </header>
   );
