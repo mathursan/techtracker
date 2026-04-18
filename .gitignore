@@ -31,6 +31,13 @@ test-results/
 .DS_Store
 .playwright-mcp/
 
+# Ad-hoc screenshots from local QA / exploratory runs. Anything stored under
+# docs/replicate/screenshots/ is curated and stays tracked; loose screenshots
+# at repo root are never committed.
+/*.png
+/*.jpg
+/*.jpeg
+
 # Generated scoring snapshots — written by `python -m scoring.runner`.
 # Committed only by the scheduled workflow (currently disabled; see issue #3).
 public/data/
