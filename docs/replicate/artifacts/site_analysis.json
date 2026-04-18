@@ -1,0 +1,83 @@
+{
+  "base_url": "https://st-technical-analysis.lovable.app",
+  "scrape_date": "2026-04-18T12:52:43.829240",
+  "total_pages": 1,
+  "total_css_files": 1,
+  "total_js_files": 2,
+  "total_images": 0,
+  "total_forms": 0,
+  "total_external_links": 1,
+  "pages": [
+    {
+      "url": "https://st-technical-analysis.lovable.app",
+      "status_code": 200,
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "meta": {
+        "title": "TechTracker — Technical Analysis Dashboard",
+        "description": "Technical analysis dashboard for S&P 500 stocks, sector ETFs, industry ETFs, and country ETFs.",
+        "keywords": "",
+        "viewport": "width=device-width, initial-scale=1.0",
+        "og_tags": {
+          "og:type": "website",
+          "og:image": "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/6b4394d2-f2ff-4266-8fcc-727a86723a64",
+          "og:title": "TechTracker — Technical Analysis Dashboard",
+          "og:description": "Technical analysis dashboard for S&P 500 stocks, sector ETFs, industry ETFs, and country ETFs."
+        },
+        "other_meta": {
+          "author": "Lovable",
+          "twitter:card": "summary_large_image",
+          "twitter:site": "@Lovable",
+          "twitter:image": "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/6b4394d2-f2ff-4266-8fcc-727a86723a64",
+          "twitter:title": "TechTracker — Technical Analysis Dashboard",
+          "twitter:description": "Technical analysis dashboard for S&P 500 stocks, sector ETFs, industry ETFs, and country ETFs."
+        }
+      },
+      "headings": {
+        "h1": [],
+        "h2": [],
+        "h3": []
+      },
+      "links": [],
+      "text_content": "TechTracker — Technical Analysis Dashboard Edit with",
+      "html_structure": {
+        "main_tags": {
+          "html": 1,
+          "head": 1,
+          "meta": 13,
+          "title": 1,
+          "script": 3,
+          "link": 1,
+          "style": 1,
+          "body": 1,
+          "div": 1,
+          "aside": 1,
+          "a": 1,
+          "span": 2,
+          "svg": 2,
+          "path": 4,
+          "defs": 1,
+          "radialgradient": 1,
+          "stop": 4,
+          "button": 1
+        },
+        "unique_ids_count": 7,
+        "unique_classes_count": 0,
+        "data_attributes": [
+          "data-proxy-url"
+        ]
+      }
+    }
+  ],
+  "css_files": [
+    "https://st-technical-analysis.lovable.app/assets/index-BbJyIYzU.css"
+  ],
+  "js_files": [
+    "https://st-technical-analysis.lovable.app/~flock.js",
+    "https://st-technical-analysis.lovable.app/assets/index-Dd_aIBBi.js"
+  ],
+  "images": [],
+  "external_links": [
+    "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+  ],
+  "forms": []
+}

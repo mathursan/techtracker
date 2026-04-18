@@ -1,0 +1,169 @@
+{
+  "base_url": "https://st-technical-analysis.lovable.app",
+  "analysis_date": "2026-04-18T12:54:31.112974",
+  "pages_visited": [
+    {
+      "name": "01_homepage",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/01_homepage_20260418_125329.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Initial homepage load",
+      "timestamp": "20260418_125329"
+    },
+    {
+      "name": "02_before_click_1",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_1_20260418_125330.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Top 50 Stocks",
+      "timestamp": "20260418_125330"
+    },
+    {
+      "name": "03_after_click_1",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/03_after_click_1_20260418_125333.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "After clicking: Top 50 Stocks - URL: https://st-technical-analysis.lovable.app/",
+      "timestamp": "20260418_125333"
+    },
+    {
+      "name": "04_form_page_1",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/04_form_page_1_20260418_125333.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Page with forms/inputs",
+      "timestamp": "20260418_125333"
+    },
+    {
+      "name": "02_before_click_2",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_2_20260418_125333.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Sector ETFs",
+      "timestamp": "20260418_125333"
+    },
+    {
+      "name": "02_before_click_3",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_3_20260418_125336.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Industry ETFs",
+      "timestamp": "20260418_125336"
+    },
+    {
+      "name": "02_before_click_4",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_4_20260418_125339.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Country ETFs",
+      "timestamp": "20260418_125339"
+    },
+    {
+      "name": "02_before_click_5",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_5_20260418_125343.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Currencies",
+      "timestamp": "20260418_125343"
+    },
+    {
+      "name": "02_before_click_6",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_6_20260418_125346.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Commodities",
+      "timestamp": "20260418_125346"
+    },
+    {
+      "name": "02_before_click_7",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_7_20260418_125349.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: India",
+      "timestamp": "20260418_125349"
+    },
+    {
+      "name": "02_before_click_8",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_8_20260418_125352.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Hong Kong",
+      "timestamp": "20260418_125352"
+    },
+    {
+      "name": "02_before_click_9",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_9_20260418_125355.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Singapore",
+      "timestamp": "20260418_125355"
+    },
+    {
+      "name": "02_before_click_10",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_10_20260418_125358.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Japan",
+      "timestamp": "20260418_125358"
+    },
+    {
+      "name": "02_before_click_11",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_11_20260418_125401.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Europe",
+      "timestamp": "20260418_125401"
+    },
+    {
+      "name": "02_before_click_12",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_12_20260418_125405.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Fixed Income",
+      "timestamp": "20260418_125405"
+    },
+    {
+      "name": "02_before_click_13",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_13_20260418_125408.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Broad Market",
+      "timestamp": "20260418_125408"
+    },
+    {
+      "name": "02_before_click_14",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_14_20260418_125411.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Growth/Value",
+      "timestamp": "20260418_125411"
+    },
+    {
+      "name": "02_before_click_15",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_15_20260418_125414.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Portfolio Builder",
+      "timestamp": "20260418_125414"
+    },
+    {
+      "name": "02_before_click_16",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_16_20260418_125417.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Signals Hub",
+      "timestamp": "20260418_125417"
+    },
+    {
+      "name": "02_before_click_17",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_17_20260418_125421.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Signal Change",
+      "timestamp": "20260418_125421"
+    },
+    {
+      "name": "02_before_click_18",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_18_20260418_125424.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Analytics",
+      "timestamp": "20260418_125424"
+    },
+    {
+      "name": "02_before_click_19",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/02_before_click_19_20260418_125427.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Before clicking: Methodology",
+      "timestamp": "20260418_125427"
+    },
+    {
+      "name": "99_final_state",
+      "filename": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/99_final_state_20260418_125431.png",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "description": "Final state after exploration",
+      "timestamp": "20260418_125431"
+    }
+  ],
+  "use_cases": [],
+  "total_screenshots": 23
+}

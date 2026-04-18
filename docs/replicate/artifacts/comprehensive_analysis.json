@@ -1,0 +1,783 @@
+{
+  "base_url": "https://st-technical-analysis.lovable.app",
+  "analysis_date": "2026-04-18T12:57:39.258261",
+  "pages_analyzed": 27,
+  "pages": [
+    {
+      "name": "homepage",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "TechTracker"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [
+        "Top 50 Stocks",
+        "Sector ETFs",
+        "Industry ETFs",
+        "Country ETFs",
+        "Currencies",
+        "Commodities",
+        "India",
+        "Hong Kong",
+        "Singapore",
+        "Japan",
+        "Europe",
+        "Fixed Income",
+        "Broad Market",
+        "Growth/Value",
+        "Portfolio Builder",
+        "Signals Hub",
+        "Signal Change",
+        "Analytics",
+        "Methodology",
+        "All"
+      ],
+      "links": [
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/homepage_20260418_125459.png",
+      "main_text": "TechTracker\nTechnical Analysis Dashboard\nLive\nTop 50 Stocks\nSector ETFs\nIndustry ETFs\nCountry ETFs\nCurrencies\nCommodities\nIndia\nHong Kong\nSingapore\nJapan\nEurope\nFixed Income\nBroad Market\nGrowth/Value\nPortfolio Builder\nSignals Hub\nSignal Change\nAnalytics\nMethodology\nLast refreshed: Apr 18, 12:54:55 PM\nAll\nCommunication Services\nConsumer Discretionary\nConsumer Staples\nEnergy\nFinancials\nHealth Care\nIndustrials\nInformation Technology\nMaterials\nUtilities\nAvg Score\n6.5\nStrong Buy\n4\nStrong Sell\n1\nShowing\n50 / 50\nTicker\n\tScore\n\tSignal\n\tPrice\n\t1M %\n\t3M %\n\tTrend\tMA Trend\n\tMACD\n\tRSI\n\tADX/DMI\n\tSAR\n\tBollinger\n\tStochastic\n\tOBV\n\tIchimoku\n\n\nAMD\nAdvanced Micro Devices, Inc.\n\t8.3\tStrong Buy\t$278.39\t+39.57%\t+25.99%\t\t10.0\t10.0\t0.7\t9.2\t10.0\t10.0\t9.7\t5.6\t8.0\n\nAVGO\nBroadcom Inc.\n\t8.1\tStrong Buy\t$406.54\t+28.68%\t+14.64%\t\t10.0\t10.0\t0.6\t8.5\t8.5\t9.7\t10.0\t5.7\t8.0\n\nINTC\nIntel Corporation\n\t8.0\tStrong Buy\t$68.50\t+52.12%\t+44.85%\t\t10.0\t10.0\t1.0\t9.2\t7.5\t9.0\t9.4\t5.3\t8.0\n\nCSCO\nCisco Systems, Inc.\n\t8.0\tStrong Buy\t$86.25\t+1"
+    },
+    {
+      "name": "home",
+      "url": "https://st-technical-analysis.lovable.app/",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "TechTracker"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [
+        "Top 50 Stocks",
+        "Sector ETFs",
+        "Industry ETFs",
+        "Country ETFs",
+        "Currencies",
+        "Commodities",
+        "India",
+        "Hong Kong",
+        "Singapore",
+        "Japan",
+        "Europe",
+        "Fixed Income",
+        "Broad Market",
+        "Growth/Value",
+        "Portfolio Builder",
+        "Signals Hub",
+        "Signal Change",
+        "Analytics",
+        "Methodology",
+        "All"
+      ],
+      "links": [
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/home_20260418_125506.png",
+      "main_text": "TechTracker\nTechnical Analysis Dashboard\nLive\nTop 50 Stocks\nSector ETFs\nIndustry ETFs\nCountry ETFs\nCurrencies\nCommodities\nIndia\nHong Kong\nSingapore\nJapan\nEurope\nFixed Income\nBroad Market\nGrowth/Value\nPortfolio Builder\nSignals Hub\nSignal Change\nAnalytics\nMethodology\nLast refreshed: Apr 18, 12:55:02 PM\nAll\nCommunication Services\nConsumer Discretionary\nConsumer Staples\nEnergy\nFinancials\nHealth Care\nIndustrials\nInformation Technology\nMaterials\nUtilities\nAvg Score\n6.5\nStrong Buy\n4\nStrong Sell\n1\nShowing\n50 / 50\nTicker\n\tScore\n\tSignal\n\tPrice\n\t1M %\n\t3M %\n\tTrend\tMA Trend\n\tMACD\n\tRSI\n\tADX/DMI\n\tSAR\n\tBollinger\n\tStochastic\n\tOBV\n\tIchimoku\n\n\nAMD\nAdvanced Micro Devices, Inc.\n\t8.3\tStrong Buy\t$278.39\t+39.57%\t+25.99%\t\t10.0\t10.0\t0.7\t9.2\t10.0\t10.0\t9.7\t5.6\t8.0\n\nAVGO\nBroadcom Inc.\n\t8.1\tStrong Buy\t$406.54\t+28.68%\t+14.64%\t\t10.0\t10.0\t0.6\t8.5\t8.5\t9.7\t10.0\t5.7\t8.0\n\nINTC\nIntel Corporation\n\t8.0\tStrong Buy\t$68.50\t+52.12%\t+44.85%\t\t10.0\t10.0\t1.0\t9.2\t7.5\t9.0\t9.4\t5.3\t8.0\n\nCSCO\nCisco Systems, Inc.\n\t8.0\tStrong Buy\t$86.25\t+1"
+    },
+    {
+      "name": "home",
+      "url": "https://st-technical-analysis.lovable.app/home",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/home_20260418_125512.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "events",
+      "url": "https://st-technical-analysis.lovable.app/events",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/events_20260418_125518.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "event",
+      "url": "https://st-technical-analysis.lovable.app/event",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/event_20260418_125524.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "signup",
+      "url": "https://st-technical-analysis.lovable.app/signup",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/signup_20260418_125530.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "sign_up",
+      "url": "https://st-technical-analysis.lovable.app/sign-up",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/sign_up_20260418_125535.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "login",
+      "url": "https://st-technical-analysis.lovable.app/login",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/login_20260418_125541.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "signin",
+      "url": "https://st-technical-analysis.lovable.app/signin",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/signin_20260418_125547.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "sign_in",
+      "url": "https://st-technical-analysis.lovable.app/sign-in",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/sign_in_20260418_125553.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "dashboard",
+      "url": "https://st-technical-analysis.lovable.app/dashboard",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/dashboard_20260418_125559.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "profile",
+      "url": "https://st-technical-analysis.lovable.app/profile",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/profile_20260418_125605.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "about",
+      "url": "https://st-technical-analysis.lovable.app/about",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/about_20260418_125611.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "contact",
+      "url": "https://st-technical-analysis.lovable.app/contact",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/contact_20260418_125617.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "help",
+      "url": "https://st-technical-analysis.lovable.app/help",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/help_20260418_125623.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "faq",
+      "url": "https://st-technical-analysis.lovable.app/faq",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/faq_20260418_125629.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "map",
+      "url": "https://st-technical-analysis.lovable.app/map",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/map_20260418_125635.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "assessments",
+      "url": "https://st-technical-analysis.lovable.app/assessments",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/assessments_20260418_125642.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "assessment",
+      "url": "https://st-technical-analysis.lovable.app/assessment",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/assessment_20260418_125649.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "field",
+      "url": "https://st-technical-analysis.lovable.app/field",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/field_20260418_125655.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "species",
+      "url": "https://st-technical-analysis.lovable.app/species",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/species_20260418_125701.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "organizations",
+      "url": "https://st-technical-analysis.lovable.app/organizations",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/organizations_20260418_125707.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "organization",
+      "url": "https://st-technical-analysis.lovable.app/organization",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/organization_20260418_125713.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "volunteer",
+      "url": "https://st-technical-analysis.lovable.app/volunteer",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/volunteer_20260418_125720.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "volunteers",
+      "url": "https://st-technical-analysis.lovable.app/volunteers",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/volunteers_20260418_125726.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "community",
+      "url": "https://st-technical-analysis.lovable.app/community",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/community_20260418_125732.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    },
+    {
+      "name": "hub",
+      "url": "https://st-technical-analysis.lovable.app/hub",
+      "title": "TechTracker — Technical Analysis Dashboard",
+      "headings": {
+        "h1": [
+          "404"
+        ],
+        "h2": [],
+        "h3": []
+      },
+      "buttons": [],
+      "links": [
+        {
+          "text": "Return to Home",
+          "href": "https://st-technical-analysis.lovable.app/"
+        },
+        {
+          "text": "Edit with",
+          "href": "https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge"
+        }
+      ],
+      "forms": [],
+      "sections": [],
+      "screenshot": "/Users/smathur/src/techanal/docs/replicate/artifacts/screenshots/hub_20260418_125738.png",
+      "main_text": "404\n\nOops! Page not found\n\nReturn to Home\nEdit with"
+    }
+  ],
+  "use_cases": [
+    {
+      "use_case": "Organization & Community Management",
+      "confidence": "low",
+      "evidence_count": 2,
+      "keywords_found": [
+        "hub",
+        "group"
+      ]
+    }
+  ],
+  "discovered_routes": [],
+  "total_screenshots": 27
+}

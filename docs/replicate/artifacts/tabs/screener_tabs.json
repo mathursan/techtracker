@@ -1,0 +1,100 @@
+{
+  "_note": "Captured 2026-04-18 from https://st-technical-analysis.lovable.app — 'screener' tabs all share same core table schema with minor additions.",
+  "base_schema_columns": ["Ticker", "Score", "Signal", "Price", "1M %", "3M %", "Trend", "MA Trend", "MACD", "RSI", "ADX/DMI", "SAR", "Bollinger", "Stochastic", "OBV", "Ichimoku"],
+  "score_summary_kpis": ["Avg Score", "Strong Buy", "Strong Sell", "Showing (N/total)"],
+  "signals_enum": ["Strong Buy", "Buy", "Neutral", "Sell", "Strong Sell"],
+  "tabs": {
+    "Top 50 Stocks": {
+      "extra_cols": [],
+      "row_count": 50,
+      "chips": ["All", "Communication Services", "Consumer Discretionary", "Consumer Staples", "Energy", "Financials", "Health Care", "Industrials", "Information Technology", "Materials", "Utilities"],
+      "sample_tickers": ["AMD", "NVDA", "MSFT", "AAPL", "META", "AMZN"],
+      "notes": "US large-cap equities, company name shown beneath ticker."
+    },
+    "Sector ETFs": {
+      "extra_cols": ["AUM"],
+      "row_count": 11,
+      "chips": ["All", "Communication Services", "Consumer Discretionary", "Consumer Staples", "Energy", "Financials", "Health Care", "Industrials", "Information Technology", "Materials", "Real Estate", "Utilities"],
+      "sample_tickers": ["XLRE", "XLK", "XLY", "XLC", "XLI", "XLB", "XLF", "XLV", "XLU", "XLP", "XLE"],
+      "notes": "State Street SPDR select sector ETFs."
+    },
+    "Industry ETFs": {
+      "extra_cols": ["AUM", "TER"],
+      "row_count": 24,
+      "chips": ["All", "Clean Energy", "Consumer", "Energy", "Financials", "Healthcare", "Industrials", "Materials", "Real Estate", "Technology", "Utilities"],
+      "sample_tickers": ["SMH", "VNQ", "JETS", "IBB", "FDN", "XME", "KRE", "XRT", "ICLN", "GDX"]
+    },
+    "Country ETFs": {
+      "extra_cols": ["Country"],
+      "row_count": 26,
+      "chips": ["All", "Africa", "Americas", "Asia Pac Dev", "Asia Pac EM", "Europe Dev", "Middle East"],
+      "flag_emojis": true,
+      "sample_tickers": ["EWT", "EWY", "VNM", "SPY", "EWC", "KSA", "TUR", "EWL", "EWN", "EWD", "EWS", "EZA", "EWW", "EWU", "EWI", "EWJ", "EWA", "INDA", "EWZ", "EWG", "EWQ", "EWP", "FXI", "THD", "ARGT", "EWH"]
+    },
+    "Currencies": {
+      "extra_cols": [],
+      "row_count": 15,
+      "chips": ["All", "Cross", "EM", "Major"],
+      "sample_tickers": ["AUDUSD=X", "USDTRY=X", "EURJPY=X", "GBPJPY=X", "GBPUSD=X", "EURUSD=X", "NZDUSD=X", "EURGBP=X", "EURCHF=X", "USDJPY=X", "USDCAD=X", "USDINR=X", "USDCHF=X", "USDMXN=X", "USDZAR=X"]
+    },
+    "Commodities": {
+      "extra_cols": [],
+      "row_count": 12,
+      "chips": ["All", "Agriculture", "Energy", "Industrial Metals", "Precious Metals"],
+      "sample_tickers": ["SI=F", "PL=F", "HG=F", "GC=F", "ZS=F", "CC=F", "ZW=F", "CL=F", "ZC=F", "NG=F", "BZ=F", "KC=F"]
+    },
+    "India": {
+      "extra_cols": [],
+      "row_count": 50,
+      "chips": ["All", "Communication Services", "Consumer Discretionary", "Consumer Staples", "Energy", "Financials", "Health Care", "Industrials", "Information Technology", "Materials"],
+      "ticker_suffix": ".NS",
+      "sample_tickers": ["ADANIPOWER.NS", "SIEMENS.NS", "POWERGRID.NS", "NESTLEIND.NS", "RELIANCE.NS", "TCS.NS", "INFY.NS"]
+    },
+    "Hong Kong": {
+      "extra_cols": [],
+      "row_count": 40,
+      "chips": ["All", "EV / Industrial", "Energy / SOEs", "Financials", "Healthcare", "High Beta", "Property", "Tech / Internet"],
+      "ticker_suffix": ".HK",
+      "sample_tickers": ["0939.HK"]
+    },
+    "Singapore": {
+      "extra_cols": [],
+      "row_count": 24,
+      "chips": ["All", "Airlines / Travel", "Banks", "Consumer", "High Beta", "Industrials", "Property", "REITs", "Telecom / Tech"],
+      "ticker_suffix": ".SI",
+      "sample_tickers": ["S68.SI"]
+    },
+    "Japan": {
+      "extra_cols": [],
+      "row_count": 67,
+      "chips": ["All", "Autos", "Consumer", "Electronics", "Energy", "Financials", "Industrials", "Materials", "Pharma", "Real Estate", "Telecom", "Trading"],
+      "ticker_suffix": ".T",
+      "sample_tickers": ["6762.T"]
+    },
+    "Europe": {
+      "extra_cols": [],
+      "row_count": 73,
+      "chips": ["All", "France", "Germany", "Italy", "Netherlands", "Nordics", "Spain", "Switzerland", "UK"],
+      "ticker_suffixes": [".MI", ".PA", ".DE", ".AS", ".MC", ".L", ".SW"],
+      "sample_tickers": ["STMMI.MI"]
+    },
+    "Fixed Income": {
+      "extra_cols": [],
+      "row_count": 26,
+      "chips": ["All", "Agency", "Aggregate", "Convertible", "Corporate", "Emerging Markets", "Floating Rate / Loans", "Government", "Inflation-Protected", "International", "Mortgage-Backed", "Municipal", "Preferred", "Short Duration"],
+      "sample_tickers": ["CWB"]
+    },
+    "Broad Market": {
+      "extra_cols": ["AUM"],
+      "row_count": 30,
+      "chips": ["All", "Emerging Markets", "Equal Weight", "Global", "Global ex-US", "Low Volatility", "Momentum", "Multi-Factor", "Quality", "Regional Broad", "UCITS", "US Large Cap", "US Total Market", "Value"],
+      "sample_tickers": ["VWRA.L"]
+    },
+    "Growth/Value": {
+      "extra_cols": ["AUM"],
+      "row_count": 21,
+      "chips": ["All", "Large Cap", "Mega Cap", "Mid Cap", "Russell 1000", "Russell 2000", "S&P 500", "Small Cap"],
+      "sample_tickers": ["VTWG"]
+    }
+  }
+}

@@ -1,0 +1,1344 @@
+### Page
+- Page URL: https://st-technical-analysis.lovable.app/
+- Page Title: TechTracker — Technical Analysis Dashboard
+- Console: 0 errors, 1 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications (F8)":
+      - list
+    - region "Notifications alt+T"
+    - generic [ref=e3]:
+      - banner [ref=e4]:
+        - generic [ref=e6]:
+          - generic [ref=e7]:
+            - img [ref=e9]
+            - heading "TechTracker" [level=1] [ref=e11]
+            - generic [ref=e12]: Technical Analysis Dashboard
+          - generic [ref=e13]:
+            - generic [ref=e14]:
+              - img [ref=e15]
+              - generic [ref=e19]: Live
+            - button [ref=e20] [cursor=pointer]:
+              - img
+      - navigation [ref=e21]:
+        - generic [ref=e23]:
+          - button "Top 50 Stocks" [ref=e24] [cursor=pointer]:
+            - img [ref=e25]
+            - generic [ref=e28]: Top 50 Stocks
+          - button "Sector ETFs" [ref=e29] [cursor=pointer]:
+            - img [ref=e30]
+            - generic [ref=e33]: Sector ETFs
+          - button "Industry ETFs" [ref=e34] [cursor=pointer]:
+            - img [ref=e35]
+            - generic [ref=e37]: Industry ETFs
+          - button "Country ETFs" [ref=e38] [cursor=pointer]:
+            - img [ref=e39]
+            - generic [ref=e42]: Country ETFs
+          - button "Currencies" [ref=e43] [cursor=pointer]:
+            - img [ref=e44]
+            - generic [ref=e46]: Currencies
+          - button "Commodities" [ref=e47] [cursor=pointer]:
+            - img [ref=e48]
+            - generic [ref=e51]: Commodities
+          - button "India" [ref=e52] [cursor=pointer]:
+            - img [ref=e53]
+            - generic [ref=e55]: India
+          - button "Hong Kong" [ref=e56] [cursor=pointer]:
+            - img [ref=e57]
+            - generic [ref=e61]: Hong Kong
+          - button "Singapore" [ref=e62] [cursor=pointer]:
+            - img [ref=e63]
+            - generic [ref=e65]: Singapore
+          - button "Japan" [ref=e66] [cursor=pointer]:
+            - img [ref=e67]
+            - generic [ref=e70]: Japan
+          - button "Europe" [ref=e71] [cursor=pointer]:
+            - img [ref=e72]
+            - generic [ref=e75]: Europe
+          - button "Fixed Income" [ref=e76] [cursor=pointer]:
+            - img [ref=e77]
+            - generic [ref=e80]: Fixed Income
+          - button "Broad Market" [ref=e81] [cursor=pointer]:
+            - img [ref=e82]
+            - generic [ref=e86]: Broad Market
+          - button "Growth/Value" [ref=e87] [cursor=pointer]:
+            - img [ref=e88]
+            - generic [ref=e93]: Growth/Value
+          - button "Portfolio Builder" [ref=e94] [cursor=pointer]:
+            - img [ref=e95]
+            - generic [ref=e98]: Portfolio Builder
+          - button "Signals Hub" [ref=e99] [cursor=pointer]:
+            - img [ref=e100]
+            - generic [ref=e106]: Signals Hub
+          - button "Signal Change" [ref=e107] [cursor=pointer]:
+            - img [ref=e108]
+            - generic [ref=e111]: Signal Change
+          - button "Analytics" [ref=e112] [cursor=pointer]:
+            - img [ref=e113]
+            - generic [ref=e115]: Analytics
+          - button "Methodology" [ref=e116] [cursor=pointer]:
+            - img [ref=e117]
+            - generic [ref=e119]: Methodology
+      - main [ref=e120]:
+        - generic [ref=e121]:
+          - generic [ref=e1397]:
+            - img [ref=e1398]
+            - generic [ref=e1401]: "Last refreshed: Apr 18, 01:11:30 PM"
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - generic [ref=e124]:
+                - img [ref=e125]
+                - textbox "Search ticker or name..." [ref=e128]
+              - generic [ref=e129]:
+                - button "All" [ref=e130] [cursor=pointer]
+                - button "Communication Services" [ref=e131] [cursor=pointer]
+                - button "Consumer Discretionary" [ref=e132] [cursor=pointer]
+                - button "Consumer Staples" [ref=e133] [cursor=pointer]
+                - button "Energy" [ref=e134] [cursor=pointer]
+                - button "Financials" [ref=e135] [cursor=pointer]
+                - button "Health Care" [ref=e136] [cursor=pointer]
+                - button "Industrials" [ref=e137] [cursor=pointer]
+                - button "Information Technology" [ref=e138] [cursor=pointer]
+                - button "Materials" [ref=e139] [cursor=pointer]
+                - button "Utilities" [ref=e140] [cursor=pointer]
+            - generic [ref=e141]:
+              - generic [ref=e142]:
+                - generic [ref=e143]: Avg Score
+                - generic [ref=e144]: "6.5"
+              - generic [ref=e145]:
+                - generic [ref=e146]: Strong Buy
+                - generic [ref=e147]: "4"
+              - generic [ref=e148]:
+                - generic [ref=e149]: Strong Sell
+                - generic [ref=e150]: "1"
+              - generic [ref=e151]:
+                - generic [ref=e152]: Showing
+                - generic [ref=e153]: 50 / 50
+            - table [ref=e156]:
+              - rowgroup [ref=e157]:
+                - row "Ticker Score Signal Price 1M % 3M % Trend MA Trend MACD RSI ADX/DMI SAR Bollinger Stochastic OBV Ichimoku" [ref=e158]:
+                  - columnheader "Ticker" [ref=e159] [cursor=pointer]:
+                    - generic [ref=e160]:
+                      - text: Ticker
+                      - img [ref=e1402]
+                  - columnheader "Score" [ref=e164] [cursor=pointer]:
+                    - generic [ref=e165]:
+                      - text: Score
+                      - img [ref=e1405]
+                  - columnheader "Signal" [ref=e168] [cursor=pointer]:
+                    - generic [ref=e169]:
+                      - text: Signal
+                      - img [ref=e1407]
+                  - columnheader "Price" [ref=e173] [cursor=pointer]:
+                    - generic [ref=e174]:
+                      - text: Price
+                      - img [ref=e1410]
+                  - columnheader "1M %" [ref=e178] [cursor=pointer]:
+                    - generic [ref=e179]:
+                      - text: 1M %
+                      - img [ref=e1413]
+                  - columnheader "3M %" [ref=e183] [cursor=pointer]:
+                    - generic [ref=e184]:
+                      - text: 3M %
+                      - img [ref=e1416]
+                  - columnheader "Trend" [ref=e188]:
+                    - generic [ref=e189]: Trend
+                  - columnheader "MA Trend" [ref=e190] [cursor=pointer]:
+                    - generic [ref=e191]:
+                      - text: MA Trend
+                      - img [ref=e1419]
+                  - columnheader "MACD" [ref=e195] [cursor=pointer]:
+                    - generic [ref=e196]:
+                      - text: MACD
+                      - img [ref=e1422]
+                  - columnheader "RSI" [ref=e200] [cursor=pointer]:
+                    - generic [ref=e201]:
+                      - text: RSI
+                      - img [ref=e1425]
+                  - columnheader "ADX/DMI" [ref=e205] [cursor=pointer]:
+                    - generic [ref=e206]:
+                      - text: ADX/DMI
+                      - img [ref=e1428]
+                  - columnheader "SAR" [ref=e210] [cursor=pointer]:
+                    - generic [ref=e211]:
+                      - text: SAR
+                      - img [ref=e1431]
+                  - columnheader "Bollinger" [ref=e215] [cursor=pointer]:
+                    - generic [ref=e216]:
+                      - text: Bollinger
+                      - img [ref=e1434]
+                  - columnheader "Stochastic" [ref=e220] [cursor=pointer]:
+                    - generic [ref=e221]:
+                      - text: Stochastic
+                      - img [ref=e1437]
+                  - columnheader "OBV" [ref=e225] [cursor=pointer]:
+                    - generic [ref=e226]:
+                      - text: OBV
+                      - img [ref=e1440]
+                  - columnheader "Ichimoku" [ref=e230] [cursor=pointer]:
+                    - generic [ref=e231]:
+                      - text: Ichimoku
+                      - img [ref=e1443]
+              - rowgroup [ref=e235]:
+                - row "AMD Advanced Micro Devices, Inc. 8.3 Strong Buy $278.39 +39.57% +25.99% 10.0 10.0 0.7 9.2 10.0 10.0 9.7 5.6 8.0" [ref=e1446] [cursor=pointer]:
+                  - cell "AMD Advanced Micro Devices, Inc." [ref=e1447]:
+                    - generic [ref=e1319]:
+                      - text: AMD
+                      - generic [ref=e1320]: Advanced Micro Devices, Inc.
+                  - cell "8.3" [ref=e1448]
+                  - cell "Strong Buy" [ref=e1449]
+                  - cell "$278.39" [ref=e1450]
+                  - cell "+39.57%" [ref=e1451]:
+                    - generic [ref=e1325]: +39.57%
+                  - cell "+25.99%" [ref=e1452]:
+                    - generic [ref=e1327]: +25.99%
+                  - cell [ref=e1328]:
+                    - img [ref=e1329]
+                  - cell "10.0" [ref=e1453]
+                  - cell "10.0" [ref=e1454]
+                  - cell "0.7" [ref=e1455]
+                  - cell "9.2" [ref=e1456]
+                  - cell "10.0" [ref=e1457]
+                  - cell "10.0" [ref=e1458]
+                  - cell "9.7" [ref=e1459]
+                  - cell "5.6" [ref=e1460]
+                  - cell "8.0" [ref=e1461]
+                - row "AVGO Broadcom Inc. 8.1 Strong Buy $406.54 +28.68% +14.64% 10.0 10.0 0.6 8.5 8.5 9.7 10.0 5.7 8.0" [ref=e1462] [cursor=pointer]:
+                  - cell "AVGO Broadcom Inc." [ref=e1065]:
+                    - generic [ref=e1066]:
+                      - text: AVGO
+                      - generic [ref=e1067]: Broadcom Inc.
+                  - cell "8.1" [ref=e1463]
+                  - cell "Strong Buy" [ref=e1464]
+                  - cell "$406.54" [ref=e1465]
+                  - cell "+28.68%" [ref=e1466]:
+                    - generic [ref=e1072]: +28.68%
+                  - cell "+14.64%" [ref=e1467]:
+                    - generic [ref=e1074]: +14.64%
+                  - cell [ref=e1075]:
+                    - img [ref=e1076]
+                  - cell "10.0" [ref=e1468]
+                  - cell "10.0" [ref=e1469]
+                  - cell "0.6" [ref=e1470]
+                  - cell "8.5" [ref=e1471]
+                  - cell "8.5" [ref=e1472]
+                  - cell "9.7" [ref=e1473]
+                  - cell "10.0" [ref=e1474]
+                  - cell "5.7" [ref=e1475]
+                  - cell "8.0" [ref=e1476]
+                - row "INTC Intel Corporation 8.0 Strong Buy $68.50 +52.12% +44.85% 10.0 10.0 1.0 9.2 7.5 9.0 9.4 5.3 8.0" [ref=e1477] [cursor=pointer]:
+                  - cell "INTC Intel Corporation" [ref=e1478]:
+                    - generic [ref=e1250]:
+                      - text: INTC
+                      - generic [ref=e1251]: Intel Corporation
+                  - cell "8.0" [ref=e1479]
+                  - cell "Strong Buy" [ref=e1480]
+                  - cell "$68.50" [ref=e1481]
+                  - cell "+52.12%" [ref=e1482]:
+                    - generic [ref=e1256]: +52.12%
+                  - cell "+44.85%" [ref=e1483]:
+                    - generic [ref=e1258]: +44.85%
+                  - cell [ref=e1259]:
+                    - img [ref=e1260]
+                  - cell "10.0" [ref=e1484]
+                  - cell "10.0" [ref=e1485]
+                  - cell "1.0" [ref=e1486]
+                  - cell "9.2" [ref=e1487]
+                  - cell "7.5" [ref=e1488]
+                  - cell "9.0" [ref=e1489]
+                  - cell "9.4" [ref=e1490]
+                  - cell "5.3" [ref=e1491]
+                  - cell "8.0" [ref=e1492]
+                - row "CSCO Cisco Systems, Inc. 8.0 Strong Buy $86.25 +11.15% +14.28% 10.0 10.0 3.0 6.5 7.4 10.0 9.9 5.6 8.0" [ref=e1493] [cursor=pointer]:
+                  - cell "CSCO Cisco Systems, Inc." [ref=e1494]:
+                    - generic [ref=e951]:
+                      - text: CSCO
+                      - generic [ref=e952]: Cisco Systems, Inc.
+                  - cell "8.0" [ref=e1495]
+                  - cell "Strong Buy" [ref=e1496]
+                  - cell "$86.25" [ref=e1497]
+                  - cell "+11.15%" [ref=e1498]:
+                    - generic [ref=e957]: +11.15%
+                  - cell "+14.28%" [ref=e1499]:
+                    - generic [ref=e959]: +14.28%
+                  - cell [ref=e960]:
+                    - img [ref=e961]
+                  - cell "10.0" [ref=e1500]
+                  - cell "10.0" [ref=e1501]
+                  - cell "3.0" [ref=e1502]
+                  - cell "6.5" [ref=e1503]
+                  - cell "7.4" [ref=e1504]
+                  - cell "10.0" [ref=e1505]
+                  - cell "9.9" [ref=e1506]
+                  - cell "5.6" [ref=e1507]
+                  - cell "8.0" [ref=e1508]
+                - row "GOOGL Alphabet Inc. 7.9 Buy $341.68 +11.05% +1.70% 9.0 10.0 0.6 9.0 8.2 9.4 9.9 5.5 8.0" [ref=e1509] [cursor=pointer]:
+                  - cell "GOOGL Alphabet Inc." [ref=e812]:
+                    - generic [ref=e813]:
+                      - text: GOOGL
+                      - generic [ref=e814]: Alphabet Inc.
+                  - cell "7.9" [ref=e1510]
+                  - cell "Buy" [ref=e1511]
+                  - cell "$341.68" [ref=e1512]
+                  - cell "+11.05%" [ref=e1513]:
+                    - generic [ref=e819]: +11.05%
+                  - cell "+1.70%" [ref=e1514]:
+                    - generic [ref=e821]: +1.70%
+                  - cell [ref=e822]:
+                    - img [ref=e823]
+                  - cell "9.0" [ref=e1515]
+                  - cell "10.0" [ref=e1516]
+                  - cell "0.6" [ref=e1517]
+                  - cell "9.0" [ref=e1518]
+                  - cell "8.2" [ref=e1519]
+                  - cell "9.4" [ref=e1520]
+                  - cell "9.9" [ref=e1521]
+                  - cell "5.5" [ref=e1522]
+                  - cell "8.0" [ref=e1523]
+                - row "TXN Texas Instruments Incorporated 7.9 Buy $229.82 +20.46% +21.90% 9.0 10.0 1.5 7.7 8.0 10.0 9.8 5.3 8.0" [ref=e1524] [cursor=pointer]:
+                  - cell "TXN Texas Instruments Incorporated" [ref=e1525]:
+                    - generic [ref=e1181]:
+                      - text: TXN
+                      - generic [ref=e1182]: Texas Instruments Incorporated
+                  - cell "7.9" [ref=e1526]
+                  - cell "Buy" [ref=e1527]
+                  - cell "$229.82" [ref=e1528]
+                  - cell "+20.46%" [ref=e1529]:
+                    - generic [ref=e1187]: +20.46%
+                  - cell "+21.90%" [ref=e1530]:
+                    - generic [ref=e1189]: +21.90%
+                  - cell [ref=e1190]:
+                    - img [ref=e1191]
+                  - cell "9.0" [ref=e1531]
+                  - cell "10.0" [ref=e1532]
+                  - cell "1.5" [ref=e1533]
+                  - cell "7.7" [ref=e1534]
+                  - cell "8.0" [ref=e1535]
+                  - cell "10.0" [ref=e1536]
+                  - cell "9.8" [ref=e1537]
+                  - cell "5.3" [ref=e1538]
+                  - cell "8.0" [ref=e1539]
+                - row "MS Morgan Stanley 7.9 Buy $188.82 +18.81% +3.32% 10.0 10.0 1.3 9.0 7.1 9.2 8.5 5.9 8.0" [ref=e1540] [cursor=pointer]:
+                  - cell "MS Morgan Stanley" [ref=e628]:
+                    - generic [ref=e629]:
+                      - text: MS
+                      - generic [ref=e630]: Morgan Stanley
+                  - cell "7.9" [ref=e1541]
+                  - cell "Buy" [ref=e1542]
+                  - cell "$188.82" [ref=e1543]
+                  - cell "+18.81%" [ref=e1544]:
+                    - generic [ref=e635]: +18.81%
+                  - cell "+3.32%" [ref=e1545]:
+                    - generic [ref=e637]: +3.32%
+                  - cell [ref=e638]:
+                    - img [ref=e639]
+                  - cell "10.0" [ref=e1546]
+                  - cell "10.0" [ref=e1547]
+                  - cell "1.3" [ref=e1548]
+                  - cell "9.0" [ref=e1549]
+                  - cell "7.1" [ref=e1550]
+                  - cell "9.2" [ref=e1551]
+                  - cell "8.5" [ref=e1552]
+                  - cell "5.9" [ref=e1553]
+                  - cell "8.0" [ref=e1554]
+                - row "NVDA NVIDIA Corporation 7.8 Buy $201.68 +11.80% +8.54% 9.0 10.0 0.7 8.0 8.3 9.8 10.0 5.6 8.0" [ref=e1555] [cursor=pointer]:
+                  - cell "NVDA NVIDIA Corporation" [ref=e1556]:
+                    - generic [ref=e882]:
+                      - text: NVDA
+                      - generic [ref=e883]: NVIDIA Corporation
+                  - cell "7.8" [ref=e1557]
+                  - cell "Buy" [ref=e1558]
+                  - cell "$201.68" [ref=e1559]
+                  - cell "+11.80%" [ref=e1560]:
+                    - generic [ref=e888]: +11.80%
+                  - cell "+8.54%" [ref=e1561]:
+                    - generic [ref=e890]: +8.54%
+                  - cell [ref=e891]:
+                    - img [ref=e892]
+                  - cell "9.0" [ref=e1562]
+                  - cell "10.0" [ref=e1563]
+                  - cell "0.7" [ref=e1564]
+                  - cell "8.0" [ref=e1565]
+                  - cell "8.3" [ref=e1566]
+                  - cell "9.8" [ref=e1567]
+                  - cell "10.0" [ref=e1568]
+                  - cell "5.6" [ref=e1569]
+                  - cell "8.0" [ref=e1570]
+                - row "META Meta Platforms, Inc. 7.8 Buy $688.55 +11.84% +9.10% 8.0 10.0 0.4 8.9 9.3 9.7 9.8 5.3 8.0" [ref=e1571] [cursor=pointer]:
+                  - cell "META Meta Platforms, Inc." [ref=e1572]:
+                    - generic [ref=e514]:
+                      - text: META
+                      - generic [ref=e515]: Meta Platforms, Inc.
+                  - cell "7.8" [ref=e1573]
+                  - cell "Buy" [ref=e517]
+                  - cell "$688.55" [ref=e1574]
+                  - cell "+11.84%" [ref=e1575]:
+                    - generic [ref=e520]: +11.84%
+                  - cell "+9.10%" [ref=e1576]:
+                    - generic [ref=e522]: +9.10%
+                  - cell [ref=e523]:
+                    - img [ref=e524]
+                  - cell "8.0" [ref=e1577]
+                  - cell "10.0" [ref=e1578]
+                  - cell "0.4" [ref=e1579]
+                  - cell "8.9" [ref=e1580]
+                  - cell "9.3" [ref=e1581]
+                  - cell "9.7" [ref=e1582]
+                  - cell "9.8" [ref=e1583]
+                  - cell "5.3" [ref=e1584]
+                  - cell "8.0" [ref=e1585]
+                - row "UNH UnitedHealth Group Incorporated 7.8 Buy $324.63 +14.17% -2.79% 9.0 10.0 0.6 9.7 6.9 9.1 9.9 4.9 8.0" [ref=e1586] [cursor=pointer]:
+                  - cell "UNH UnitedHealth Group Incorporated" [ref=e1587]:
+                    - generic [ref=e767]:
+                      - text: UNH
+                      - generic [ref=e768]: UnitedHealth Group Incorporated
+                  - cell "7.8" [ref=e1588]
+                  - cell "Buy" [ref=e1589]
+                  - cell "$324.63" [ref=e1590]
+                  - cell "+14.17%" [ref=e1591]:
+                    - generic [ref=e773]: +14.17%
+                  - cell "-2.79%" [ref=e1592]:
+                    - generic [ref=e775]: "-2.79%"
+                  - cell [ref=e776]:
+                    - img [ref=e777]
+                  - cell "9.0" [ref=e1593]
+                  - cell "10.0" [ref=e1594]
+                  - cell "0.6" [ref=e1595]
+                  - cell "9.7" [ref=e1596]
+                  - cell "6.9" [ref=e1597]
+                  - cell "9.1" [ref=e1598]
+                  - cell "9.9" [ref=e1599]
+                  - cell "4.9" [ref=e1600]
+                  - cell "8.0" [ref=e1601]
+                - row "AAPL Apple Inc. 7.7 Buy $270.23 +8.12% +3.52% 9.0 10.0 2.7 6.2 7.1 10.0 9.2 5.3 8.0" [ref=e1602] [cursor=pointer]:
+                  - cell "AAPL Apple Inc." [ref=e1272]:
+                    - generic [ref=e1273]:
+                      - text: AAPL
+                      - generic [ref=e1274]: Apple Inc.
+                  - cell "7.7" [ref=e1603]
+                  - cell "Buy" [ref=e1604]
+                  - cell "$270.23" [ref=e1605]
+                  - cell "+8.12%" [ref=e1606]:
+                    - generic [ref=e1279]: +8.12%
+                  - cell "+3.52%" [ref=e1607]:
+                    - generic [ref=e1281]: +3.52%
+                  - cell [ref=e1282]:
+                    - img [ref=e1283]
+                  - cell "9.0" [ref=e1608]
+                  - cell "10.0" [ref=e1609]
+                  - cell "2.7" [ref=e1610]
+                  - cell "6.2" [ref=e1611]
+                  - cell "7.1" [ref=e1612]
+                  - cell "10.0" [ref=e1613]
+                  - cell "9.2" [ref=e1614]
+                  - cell "5.3" [ref=e1615]
+                  - cell "8.0" [ref=e1616]
+                - row "GS The Goldman Sachs Group, Inc. 7.7 Buy $925.95 +14.96% -1.30% 9.0 10.0 1.7 7.3 7.0 9.1 9.7 5.9 8.0" [ref=e1617] [cursor=pointer]:
+                  - cell "GS The Goldman Sachs Group, Inc." [ref=e1618]:
+                    - generic [ref=e744]:
+                      - text: GS
+                      - generic [ref=e745]: The Goldman Sachs Group, Inc.
+                  - cell "7.7" [ref=e1619]
+                  - cell "Buy" [ref=e1620]
+                  - cell "$925.95" [ref=e1621]
+                  - cell "+14.96%" [ref=e1622]:
+                    - generic [ref=e750]: +14.96%
+                  - cell "-1.30%" [ref=e1623]:
+                    - generic [ref=e752]: "-1.30%"
+                  - cell [ref=e753]:
+                    - img [ref=e754]
+                  - cell "9.0" [ref=e1624]
+                  - cell "10.0" [ref=e1625]
+                  - cell "1.7" [ref=e1626]
+                  - cell "7.3" [ref=e1627]
+                  - cell "7.0" [ref=e1628]
+                  - cell "9.1" [ref=e1629]
+                  - cell "9.7" [ref=e1630]
+                  - cell "5.9" [ref=e1631]
+                  - cell "8.0" [ref=e1632]
+                - row "MSFT Microsoft Corporation 7.6 Buy $422.79 +7.91% -10.17% 7.0 10.0 0.7 8.8 10.0 10.0 8.8 5.4 8.0" [ref=e1633] [cursor=pointer]:
+                  - cell "MSFT Microsoft Corporation" [ref=e1634]:
+                    - generic [ref=e1204]:
+                      - text: MSFT
+                      - generic [ref=e1205]: Microsoft Corporation
+                  - cell "7.6" [ref=e1635]
+                  - cell "Buy" [ref=e1636]
+                  - cell "$422.79" [ref=e1637]
+                  - cell "+7.91%" [ref=e1638]:
+                    - generic [ref=e1210]: +7.91%
+                  - cell "-10.17%" [ref=e1639]:
+                    - generic [ref=e1212]: "-10.17%"
+                  - cell [ref=e1213]:
+                    - img [ref=e1214]
+                  - cell "7.0" [ref=e1640]
+                  - cell "10.0" [ref=e1641]
+                  - cell "0.7" [ref=e1642]
+                  - cell "8.8" [ref=e1643]
+                  - cell "10.0" [ref=e1644]
+                  - cell "10.0" [ref=e1645]
+                  - cell "8.8" [ref=e1646]
+                  - cell "5.4" [ref=e1647]
+                  - cell "8.0" [ref=e1648]
+                - row "AMZN Amazon.com, Inc. 7.6 Buy $250.56 +19.39% +3.28% 9.0 10.0 0.2 9.0 7.2 9.1 9.0 5.6 8.0" [ref=e1649] [cursor=pointer]:
+                  - cell "AMZN Amazon.com, Inc." [ref=e1650]:
+                    - generic [ref=e583]:
+                      - text: AMZN
+                      - generic [ref=e584]: Amazon.com, Inc.
+                  - cell "7.6" [ref=e1651]
+                  - cell "Buy" [ref=e586]
+                  - cell "$250.56" [ref=e1652]
+                  - cell "+19.39%" [ref=e1653]:
+                    - generic [ref=e589]: +19.39%
+                  - cell "+3.28%" [ref=e1654]:
+                    - generic [ref=e591]: +3.28%
+                  - cell [ref=e592]:
+                    - img [ref=e593]
+                  - cell "9.0" [ref=e1655]
+                  - cell "10.0" [ref=e1656]
+                  - cell "0.2" [ref=e1657]
+                  - cell "9.0" [ref=e1658]
+                  - cell "7.2" [ref=e1659]
+                  - cell "9.1" [ref=e1660]
+                  - cell "9.0" [ref=e1661]
+                  - cell "5.6" [ref=e1662]
+                  - cell "8.0" [ref=e1663]
+                - row "ORCL Oracle Corporation 7.6 Buy $175.06 +14.49% -13.46% 7.0 10.0 2.3 7.7 10.0 10.0 8.1 5.3 8.0" [ref=e1664] [cursor=pointer]:
+                  - cell "ORCL Oracle Corporation" [ref=e1665]:
+                    - generic [ref=e606]:
+                      - text: ORCL
+                      - generic [ref=e607]: Oracle Corporation
+                  - cell "7.6" [ref=e1666]
+                  - cell "Buy" [ref=e609]
+                  - cell "$175.06" [ref=e1667]
+                  - cell "+14.49%" [ref=e1668]:
+                    - generic [ref=e612]: +14.49%
+                  - cell "-13.46%" [ref=e1669]:
+                    - generic [ref=e614]: "-13.46%"
+                  - cell [ref=e615]:
+                    - img [ref=e616]
+                  - cell "7.0" [ref=e1670]
+                  - cell "10.0" [ref=e1671]
+                  - cell "2.3" [ref=e1672]
+                  - cell "7.7" [ref=e1673]
+                  - cell "10.0" [ref=e1674]
+                  - cell "10.0" [ref=e1675]
+                  - cell "8.1" [ref=e624]
+                  - cell "5.3" [ref=e1676]
+                  - cell "8.0" [ref=e1677]
+                - row "CAT Caterpillar Inc. 7.6 Buy $794.65 +14.57% +24.84% 10.0 10.0 2.8 6.5 5.2 8.5 9.5 5.9 8.0" [ref=e1678] [cursor=pointer]:
+                  - cell "CAT Caterpillar Inc." [ref=e973]:
+                    - generic [ref=e974]:
+                      - text: CAT
+                      - generic [ref=e975]: Caterpillar Inc.
+                  - cell "7.6" [ref=e1679]
+                  - cell "Buy" [ref=e1680]
+                  - cell "$794.65" [ref=e1681]
+                  - cell "+14.57%" [ref=e1682]:
+                    - generic [ref=e980]: +14.57%
+                  - cell "+24.84%" [ref=e1683]:
+                    - generic [ref=e982]: +24.84%
+                  - cell [ref=e983]:
+                    - img [ref=e984]
+                  - cell "10.0" [ref=e1684]
+                  - cell "10.0" [ref=e1685]
+                  - cell "2.8" [ref=e1686]
+                  - cell "6.5" [ref=e1687]
+                  - cell "5.2" [ref=e1688]
+                  - cell "8.5" [ref=e1689]
+                  - cell "9.5" [ref=e1690]
+                  - cell "5.9" [ref=e1691]
+                  - cell "8.0" [ref=e1692]
+                - row "BA The Boeing Company 7.4 Buy $223.38 +8.44% -8.66% 9.0 10.0 2.0 8.1 5.3 8.2 8.4 5.2 8.0" [ref=e1693] [cursor=pointer]:
+                  - cell "BA The Boeing Company" [ref=e1694]:
+                    - generic [ref=e1135]:
+                      - text: BA
+                      - generic [ref=e1136]: The Boeing Company
+                  - cell "7.4" [ref=e1695]
+                  - cell "Buy" [ref=e1696]
+                  - cell "$223.38" [ref=e1697]
+                  - cell "+8.44%" [ref=e1698]:
+                    - generic [ref=e1141]: +8.44%
+                  - cell "-8.66%" [ref=e1699]:
+                    - generic [ref=e1143]: "-8.66%"
+                  - cell [ref=e1144]:
+                    - img [ref=e1145]
+                  - cell "9.0" [ref=e1700]
+                  - cell "10.0" [ref=e1701]
+                  - cell "2.0" [ref=e1702]
+                  - cell "8.1" [ref=e1703]
+                  - cell "5.3" [ref=e1704]
+                  - cell "8.2" [ref=e1705]
+                  - cell "8.4" [ref=e1706]
+                  - cell "5.2" [ref=e1707]
+                  - cell "8.0" [ref=e1708]
+                - row "V Visa Inc. 7.3 Buy $317.02 +6.02% -3.31% 7.0 10.0 2.4 7.2 6.2 10.0 9.1 5.1 8.0" [ref=e1709] [cursor=pointer]:
+                  - cell "V Visa Inc." [ref=e927]:
+                    - generic [ref=e928]:
+                      - text: V
+                      - generic [ref=e929]: Visa Inc.
+                  - cell "7.3" [ref=e1710]
+                  - cell "Buy" [ref=e1711]
+                  - cell "$317.02" [ref=e1712]
+                  - cell "+6.02%" [ref=e1713]:
+                    - generic [ref=e934]: +6.02%
+                  - cell "-3.31%" [ref=e1714]:
+                    - generic [ref=e936]: "-3.31%"
+                  - cell [ref=e937]:
+                    - img [ref=e938]
+                  - cell "7.0" [ref=e1715]
+                  - cell "10.0" [ref=e1716]
+                  - cell "2.4" [ref=e1717]
+                  - cell "7.2" [ref=e1718]
+                  - cell "6.2" [ref=e1719]
+                  - cell "10.0" [ref=e1720]
+                  - cell "9.1" [ref=e1721]
+                  - cell "5.1" [ref=e1722]
+                  - cell "8.0" [ref=e1723]
+                - row "MA Mastercard Incorporated 7.3 Buy $521.30 +6.72% -4.35% 7.0 10.0 2.7 7.3 6.3 9.9 8.5 5.3 8.0" [ref=e1724] [cursor=pointer]:
+                  - cell "MA Mastercard Incorporated" [ref=e1725]:
+                    - generic [ref=e1227]:
+                      - text: MA
+                      - generic [ref=e1228]: Mastercard Incorporated
+                  - cell "7.3" [ref=e1726]
+                  - cell "Buy" [ref=e1727]
+                  - cell "$521.30" [ref=e1728]
+                  - cell "+6.72%" [ref=e1729]:
+                    - generic [ref=e1233]: +6.72%
+                  - cell "-4.35%" [ref=e1730]:
+                    - generic [ref=e1235]: "-4.35%"
+                  - cell [ref=e1236]:
+                    - img [ref=e1237]
+                  - cell "7.0" [ref=e1731]
+                  - cell "10.0" [ref=e1732]
+                  - cell "2.7" [ref=e1733]
+                  - cell "7.3" [ref=e1734]
+                  - cell "6.3" [ref=e1735]
+                  - cell "9.9" [ref=e1736]
+                  - cell "8.5" [ref=e1737]
+                  - cell "5.3" [ref=e1738]
+                  - cell "8.0" [ref=e1739]
+                - row "TMO Thermo Fisher Scientific Inc. 7.3 Buy $526.60 +13.32% -13.26% 8.0 10.0 2.6 6.7 6.2 9.3 8.9 5.1 8.0" [ref=e1740] [cursor=pointer]:
+                  - cell "TMO Thermo Fisher Scientific Inc." [ref=e1741]:
+                    - generic [ref=e905]:
+                      - text: TMO
+                      - generic [ref=e906]: Thermo Fisher Scientific Inc.
+                  - cell "7.3" [ref=e1742]
+                  - cell "Buy" [ref=e1743]
+                  - cell "$526.60" [ref=e1744]
+                  - cell "+13.32%" [ref=e1745]:
+                    - generic [ref=e911]: +13.32%
+                  - cell "-13.26%" [ref=e1746]:
+                    - generic [ref=e913]: "-13.26%"
+                  - cell [ref=e914]:
+                    - img [ref=e915]
+                  - cell "8.0" [ref=e1747]
+                  - cell "10.0" [ref=e1748]
+                  - cell "2.6" [ref=e1749]
+                  - cell "6.7" [ref=e1750]
+                  - cell "6.2" [ref=e1751]
+                  - cell "9.3" [ref=e1752]
+                  - cell "8.9" [ref=e1753]
+                  - cell "5.1" [ref=e1754]
+                  - cell "8.0" [ref=e1755]
+                - row "LOW Lowe's Companies, Inc. 7.3 Buy $251.72 +8.93% -8.22% 8.0 10.0 3.2 6.4 5.9 9.7 8.6 5.2 8.0" [ref=e1756] [cursor=pointer]:
+                  - cell "LOW Lowe's Companies, Inc." [ref=e1757]:
+                    - generic [ref=e422]:
+                      - text: LOW
+                      - generic [ref=e423]: Lowe's Companies, Inc.
+                  - cell "7.3" [ref=e1758]
+                  - cell "Buy" [ref=e425]
+                  - cell "$251.72" [ref=e1759]
+                  - cell "+8.93%" [ref=e1760]:
+                    - generic [ref=e428]: +8.93%
+                  - cell "-8.22%" [ref=e1761]:
+                    - generic [ref=e430]: "-8.22%"
+                  - cell [ref=e431]:
+                    - img [ref=e432]
+                  - cell "8.0" [ref=e1762]
+                  - cell "10.0" [ref=e1763]
+                  - cell "3.2" [ref=e1764]
+                  - cell "6.4" [ref=e1765]
+                  - cell "5.9" [ref=e1766]
+                  - cell "9.7" [ref=e1767]
+                  - cell "8.6" [ref=e1768]
+                  - cell "5.2" [ref=e1769]
+                  - cell "8.0" [ref=e1770]
+                - row "SPGI S&P Global Inc. 7.3 Buy $442.57 +3.73% -18.37% 7.0 10.0 3.1 6.3 6.5 9.5 9.3 5.5 8.0" [ref=e1771] [cursor=pointer]:
+                  - cell "SPGI S&P Global Inc." [ref=e1772]:
+                    - generic [ref=e445]:
+                      - text: SPGI
+                      - generic [ref=e446]: S&P Global Inc.
+                  - cell "7.3" [ref=e447]
+                  - cell "Buy" [ref=e448]
+                  - cell "$442.57" [ref=e1773]
+                  - cell "+3.73%" [ref=e1774]:
+                    - generic [ref=e451]: +3.73%
+                  - cell "-18.37%" [ref=e1775]:
+                    - generic [ref=e453]: "-18.37%"
+                  - cell [ref=e454]:
+                    - img [ref=e455]
+                  - cell "7.0" [ref=e1776]
+                  - cell "10.0" [ref=e1777]
+                  - cell "3.1" [ref=e1778]
+                  - cell "6.3" [ref=e1779]
+                  - cell "6.5" [ref=e1780]
+                  - cell "9.5" [ref=e1781]
+                  - cell "9.3" [ref=e1782]
+                  - cell "5.5" [ref=e1783]
+                  - cell "8.0" [ref=e1784]
+                - row "WMT Walmart Inc. 7.2 Buy $127.50 +4.53% +5.93% 9.0 10.0 4.0 5.2 6.2 8.3 7.4 5.3 8.0" [ref=e1785] [cursor=pointer]:
+                  - cell "WMT Walmart Inc." [ref=e375]:
+                    - generic [ref=e376]:
+                      - text: WMT
+                      - generic [ref=e377]: Walmart Inc.
+                  - cell "7.2" [ref=e1786]
+                  - cell "Buy" [ref=e379]
+                  - cell "$127.50" [ref=e1787]
+                  - cell "+4.53%" [ref=e1788]:
+                    - generic [ref=e382]: +4.53%
+                  - cell "+5.93%" [ref=e1789]:
+                    - generic [ref=e384]: +5.93%
+                  - cell [ref=e385]:
+                    - img [ref=e386]
+                  - cell "9.0" [ref=e1790]
+                  - cell "10.0" [ref=e389]
+                  - cell "4.0" [ref=e1791]
+                  - cell "5.2" [ref=e1792]
+                  - cell "6.2" [ref=e1793]
+                  - cell "8.3" [ref=e1794]
+                  - cell "7.4" [ref=e1795]
+                  - cell "5.3" [ref=e1796]
+                  - cell "8.0" [ref=e1797]
+                - row "JPM JPMorgan Chase & Co. 7.1 Buy $310.29 +7.84% -0.20% 8.0 10.0 2.0 8.0 4.5 7.9 8.6 5.7 8.0" [ref=e1798] [cursor=pointer]:
+                  - cell "JPM JPMorgan Chase & Co." [ref=e1799]:
+                    - generic [ref=e1043]:
+                      - text: JPM
+                      - generic [ref=e1044]: JPMorgan Chase & Co.
+                  - cell "7.1" [ref=e1800]
+                  - cell "Buy" [ref=e1801]
+                  - cell "$310.29" [ref=e1802]
+                  - cell "+7.84%" [ref=e1803]:
+                    - generic [ref=e1049]: +7.84%
+                  - cell "-0.20%" [ref=e1804]:
+                    - generic [ref=e1051]: "-0.20%"
+                  - cell [ref=e1052]:
+                    - img [ref=e1053]
+                  - cell "8.0" [ref=e1805]
+                  - cell "10.0" [ref=e1806]
+                  - cell "2.0" [ref=e1807]
+                  - cell "8.0" [ref=e1808]
+                  - cell "4.5" [ref=e1809]
+                  - cell "7.9" [ref=e1810]
+                  - cell "8.6" [ref=e1811]
+                  - cell "5.7" [ref=e1812]
+                  - cell "8.0" [ref=e1813]
+                - row "BLK BlackRock, Inc. 7.1 Buy $1052.14 +8.66% -3.43% 7.0 10.0 2.1 6.7 6.4 9.5 8.5 5.3 8.0" [ref=e1814] [cursor=pointer]:
+                  - cell "BLK BlackRock, Inc." [ref=e1815]:
+                    - generic [ref=e307]:
+                      - text: BLK
+                      - generic [ref=e308]: BlackRock, Inc.
+                  - cell "7.1" [ref=e1816]
+                  - cell "Buy" [ref=e1817]
+                  - cell "$1052.14" [ref=e1818]
+                  - cell "+8.66%" [ref=e1819]:
+                    - generic [ref=e313]: +8.66%
+                  - cell "-3.43%" [ref=e1820]:
+                    - generic [ref=e315]: "-3.43%"
+                  - cell [ref=e316]:
+                    - img [ref=e317]
+                  - cell "7.0" [ref=e1821]
+                  - cell "10.0" [ref=e1822]
+                  - cell "2.1" [ref=e1823]
+                  - cell "6.7" [ref=e1824]
+                  - cell "6.4" [ref=e1825]
+                  - cell "9.5" [ref=e1826]
+                  - cell "8.5" [ref=e1827]
+                  - cell "5.3" [ref=e1828]
+                  - cell "8.0" [ref=e1829]
+                - row "HD The Home Depot, Inc. 7.0 Buy $349.40 +5.58% -7.99% 6.0 10.0 3.1 5.9 6.2 10.0 9.3 4.8 8.0" [ref=e1830] [cursor=pointer]:
+                  - cell "HD The Home Depot, Inc." [ref=e1831]:
+                    - generic [ref=e859]:
+                      - text: HD
+                      - generic [ref=e860]: The Home Depot, Inc.
+                  - cell "7.0" [ref=e1832]
+                  - cell "Buy" [ref=e1833]
+                  - cell "$349.40" [ref=e1834]
+                  - cell "+5.58%" [ref=e1835]:
+                    - generic [ref=e865]: +5.58%
+                  - cell "-7.99%" [ref=e1836]:
+                    - generic [ref=e867]: "-7.99%"
+                  - cell [ref=e868]:
+                    - img [ref=e869]
+                  - cell "6.0" [ref=e1837]
+                  - cell "10.0" [ref=e1838]
+                  - cell "3.1" [ref=e1839]
+                  - cell "5.9" [ref=e1840]
+                  - cell "6.2" [ref=e1841]
+                  - cell "10.0" [ref=e1842]
+                  - cell "9.3" [ref=e1843]
+                  - cell "4.8" [ref=e1844]
+                  - cell "8.0" [ref=e1845]
+                - row "PEP PepsiCo, Inc. 7.0 Buy $157.67 +2.69% +9.89% 8.0 10.0 4.0 6.4 5.6 7.9 7.1 4.6 8.0" [ref=e1846] [cursor=pointer]:
+                  - cell "PEP PepsiCo, Inc." [ref=e1847]:
+                    - generic [ref=e1158]:
+                      - text: PEP
+                      - generic [ref=e1159]: PepsiCo, Inc.
+                  - cell "7.0" [ref=e1848]
+                  - cell "Buy" [ref=e1849]
+                  - cell "$157.67" [ref=e1850]
+                  - cell "+2.69%" [ref=e1851]:
+                    - generic [ref=e1164]: +2.69%
+                  - cell "+9.89%" [ref=e1852]:
+                    - generic [ref=e1166]: +9.89%
+                  - cell [ref=e1167]:
+                    - img [ref=e1168]
+                  - cell "8.0" [ref=e1853]
+                  - cell "10.0" [ref=e1854]
+                  - cell "4.0" [ref=e1855]
+                  - cell "6.4" [ref=e1856]
+                  - cell "5.6" [ref=e1857]
+                  - cell "7.9" [ref=e1858]
+                  - cell "7.1" [ref=e1859]
+                  - cell "4.6" [ref=e1860]
+                  - cell "8.0" [ref=e1861]
+                - row "UNP Union Pacific Corporation 7.0 Buy $251.14 +6.16% +9.53% 8.0 10.0 2.1 7.9 5.0 7.9 7.2 5.5 8.0" [ref=e1862] [cursor=pointer]:
+                  - cell "UNP Union Pacific Corporation" [ref=e1863]:
+                    - generic [ref=e261]:
+                      - text: UNP
+                      - generic [ref=e262]: Union Pacific Corporation
+                  - cell "7.0" [ref=e1864]
+                  - cell "Buy" [ref=e1865]
+                  - cell "$251.14" [ref=e1866]
+                  - cell "+6.16%" [ref=e1867]:
+                    - generic [ref=e267]: +6.16%
+                  - cell "+9.53%" [ref=e1868]:
+                    - generic [ref=e269]: +9.53%
+                  - cell [ref=e270]:
+                    - img [ref=e271]
+                  - cell "8.0" [ref=e1869]
+                  - cell "10.0" [ref=e1870]
+                  - cell "2.1" [ref=e1871]
+                  - cell "7.9" [ref=e1872]
+                  - cell "5.0" [ref=e1873]
+                  - cell "7.9" [ref=e1874]
+                  - cell "7.2" [ref=e1875]
+                  - cell "5.5" [ref=e1876]
+                  - cell "8.0" [ref=e1877]
+                - row "COST Costco Wholesale Corporation 6.6 Buy $999.89 +2.04% +6.15% 9.0 10.0 4.4 5.7 6.0 5.8 4.9 4.9 3.5" [ref=e1878] [cursor=pointer]:
+                  - cell "COST Costco Wholesale Corporation" [ref=e1879]:
+                    - generic [ref=e1112]:
+                      - text: COST
+                      - generic [ref=e1113]: Costco Wholesale Corporation
+                  - cell "6.6" [ref=e1880]
+                  - cell "Buy" [ref=e1881]
+                  - cell "$999.89" [ref=e1882]
+                  - cell "+2.04%" [ref=e1883]:
+                    - generic [ref=e1118]: +2.04%
+                  - cell "+6.15%" [ref=e1884]:
+                    - generic [ref=e1120]: +6.15%
+                  - cell [ref=e1121]:
+                    - img [ref=e1122]
+                  - cell "9.0" [ref=e1885]
+                  - cell "10.0" [ref=e1886]
+                  - cell "4.4" [ref=e1887]
+                  - cell "5.7" [ref=e1888]
+                  - cell "6.0" [ref=e1889]
+                  - cell "5.8" [ref=e1890]
+                  - cell "4.9" [ref=e1891]
+                  - cell "4.9" [ref=e1892]
+                  - cell "3.5" [ref=e1893]
+                - row "TSLA Tesla, Inc. 6.4 Neutral $400.62 +2.00% -10.42% 8.0 0.0 3.6 6.7 10.0 9.9 8.8 5.4 8.0" [ref=e1894] [cursor=pointer]:
+                  - cell "TSLA Tesla, Inc." [ref=e1895]:
+                    - generic [ref=e284]:
+                      - text: TSLA
+                      - generic [ref=e285]: Tesla, Inc.
+                  - cell "6.4" [ref=e1896]
+                  - cell "Neutral" [ref=e1897]
+                  - cell "$400.62" [ref=e1898]
+                  - cell "+2.00%" [ref=e1899]:
+                    - generic [ref=e290]: +2.00%
+                  - cell "-10.42%" [ref=e1900]:
+                    - generic [ref=e292]: "-10.42%"
+                  - cell [ref=e293]:
+                    - img [ref=e294]
+                  - cell "8.0" [ref=e1901]
+                  - cell "0.0" [ref=e1902]
+                  - cell "3.6" [ref=e1903]
+                  - cell "6.7" [ref=e1904]
+                  - cell "10.0" [ref=e1905]
+                  - cell "9.9" [ref=e1906]
+                  - cell "8.8" [ref=e1907]
+                  - cell "5.4" [ref=e1908]
+                  - cell "8.0" [ref=e1909]
+                - row "LLY Eli Lilly and Company 6.4 Neutral $927.03 +0.98% -13.94% 8.0 10.0 3.8 5.9 4.9 5.8 4.7 5.5 6.5" [ref=e1910] [cursor=pointer]:
+                  - cell "LLY Eli Lilly and Company" [ref=e1911]:
+                    - generic [ref=e997]:
+                      - text: LLY
+                      - generic [ref=e998]: Eli Lilly and Company
+                  - cell "6.4" [ref=e1912]
+                  - cell "Neutral" [ref=e1913]
+                  - cell "$927.03" [ref=e1914]
+                  - cell "+0.98%" [ref=e1915]:
+                    - generic [ref=e1003]: +0.98%
+                  - cell "-13.94%" [ref=e1916]:
+                    - generic [ref=e1005]: "-13.94%"
+                  - cell [ref=e1006]:
+                    - img [ref=e1007]
+                  - cell "8.0" [ref=e1917]
+                  - cell "10.0" [ref=e1918]
+                  - cell "3.8" [ref=e1919]
+                  - cell "5.9" [ref=e1920]
+                  - cell "4.9" [ref=e1921]
+                  - cell "5.8" [ref=e1922]
+                  - cell "4.7" [ref=e1923]
+                  - cell "5.5" [ref=e1924]
+                  - cell "6.5" [ref=e1925]
+                - row "DHR Danaher Corporation 6.4 Neutral $194.75 +1.70% -17.32% 6.0 10.0 3.3 6.3 4.7 7.1 7.0 5.2 8.0" [ref=e1926] [cursor=pointer]:
+                  - cell "DHR Danaher Corporation" [ref=e1927]:
+                    - generic [ref=e238]:
+                      - text: DHR
+                      - generic [ref=e239]: Danaher Corporation
+                  - cell "6.4" [ref=e1928]
+                  - cell "Neutral" [ref=e1929]
+                  - cell "$194.75" [ref=e1930]
+                  - cell "+1.70%" [ref=e1931]:
+                    - generic [ref=e244]: +1.70%
+                  - cell "-17.32%" [ref=e1932]:
+                    - generic [ref=e246]: "-17.32%"
+                  - cell [ref=e247]:
+                    - img [ref=e248]
+                  - cell "6.0" [ref=e1933]
+                  - cell "10.0" [ref=e1934]
+                  - cell "3.3" [ref=e1935]
+                  - cell "6.3" [ref=e1936]
+                  - cell "4.7" [ref=e1937]
+                  - cell "7.1" [ref=e1938]
+                  - cell "7.0" [ref=e1939]
+                  - cell "5.2" [ref=e1940]
+                  - cell "8.0" [ref=e1941]
+                - row "MRK Merck & Co., Inc. 6.0 Neutral $119.07 +3.99% +9.99% 8.0 10.0 5.1 3.5 4.6 4.8 4.7 5.2 3.5" [ref=e1942] [cursor=pointer]:
+                  - cell "MRK Merck & Co., Inc." [ref=e1943]:
+                    - generic [ref=e537]:
+                      - text: MRK
+                      - generic [ref=e538]: Merck & Co., Inc.
+                  - cell "6.0" [ref=e1944]
+                  - cell "Neutral" [ref=e1945]
+                  - cell "$119.07" [ref=e1946]
+                  - cell "+3.99%" [ref=e1947]:
+                    - generic [ref=e543]: +3.99%
+                  - cell "+9.99%" [ref=e1948]:
+                    - generic [ref=e545]: +9.99%
+                  - cell [ref=e546]:
+                    - img [ref=e547]
+                  - cell "8.0" [ref=e1949]
+                  - cell "10.0" [ref=e1950]
+                  - cell "5.1" [ref=e1951]
+                  - cell "3.5" [ref=e1952]
+                  - cell "4.6" [ref=e1953]
+                  - cell "4.8" [ref=e1954]
+                  - cell "4.7" [ref=e1955]
+                  - cell "5.2" [ref=e1956]
+                  - cell "3.5" [ref=e1957]
+                - row "NEE NextEra Energy, Inc. 5.9 Neutral $91.98 +1.12% +12.67% 8.0 10.0 4.6 5.3 4.8 4.6 3.2 5.7 2.0" [ref=e1958] [cursor=pointer]:
+                  - cell "NEE NextEra Energy, Inc." [ref=e1959]:
+                    - generic [ref=e560]:
+                      - text: NEE
+                      - generic [ref=e561]: NextEra Energy, Inc.
+                  - cell "5.9" [ref=e1960]
+                  - cell "Neutral" [ref=e1961]
+                  - cell "$91.98" [ref=e1962]
+                  - cell "+1.12%" [ref=e1963]:
+                    - generic [ref=e566]: +1.12%
+                  - cell "+12.67%" [ref=e1964]:
+                    - generic [ref=e568]: +12.67%
+                  - cell [ref=e569]:
+                    - img [ref=e570]
+                  - cell "8.0" [ref=e1965]
+                  - cell "10.0" [ref=e1966]
+                  - cell "4.6" [ref=e1967]
+                  - cell "5.3" [ref=e1968]
+                  - cell "4.8" [ref=e1969]
+                  - cell "4.6" [ref=e1970]
+                  - cell "3.2" [ref=e1971]
+                  - cell "5.7" [ref=e1972]
+                  - cell "2.0" [ref=e1973]
+                - row "LIN Linde plc 5.8 Neutral $492.23 +0.75% +11.14% 9.0 10.0 4.9 3.8 3.4 3.8 3.6 5.3 3.5" [ref=e1974] [cursor=pointer]:
+                  - cell "LIN Linde plc" [ref=e789]:
+                    - generic [ref=e790]:
+                      - text: LIN
+                      - generic [ref=e791]: Linde plc
+                  - cell "5.8" [ref=e1975]
+                  - cell "Neutral" [ref=e793]
+                  - cell "$492.23" [ref=e1976]
+                  - cell "+0.75%" [ref=e1977]:
+                    - generic [ref=e796]: +0.75%
+                  - cell "+11.14%" [ref=e1978]:
+                    - generic [ref=e798]: +11.14%
+                  - cell [ref=e799]:
+                    - img [ref=e800]
+                  - cell "9.0" [ref=e1979]
+                  - cell "10.0" [ref=e1980]
+                  - cell "4.9" [ref=e1981]
+                  - cell "3.8" [ref=e1982]
+                  - cell "3.4" [ref=e1983]
+                  - cell "3.8" [ref=e1984]
+                  - cell "3.6" [ref=e1985]
+                  - cell "5.3" [ref=e1986]
+                  - cell "3.5" [ref=e1987]
+                - row "RTX RTX Corporation 5.8 Neutral $196.42 -3.98% +1.21% 7.0 10.0 3.9 4.8 3.8 4.8 5.5 5.7 2.0" [ref=e1988] [cursor=pointer]:
+                  - cell "RTX RTX Corporation" [ref=e1989]:
+                    - generic [ref=e1365]:
+                      - text: RTX
+                      - generic [ref=e1366]: RTX Corporation
+                  - cell "5.8" [ref=e1990]
+                  - cell "Neutral" [ref=e1991]
+                  - cell "$196.42" [ref=e1992]
+                  - cell "-3.98%" [ref=e1993]:
+                    - generic [ref=e1371]: "-3.98%"
+                  - cell "+1.21%" [ref=e1994]:
+                    - generic [ref=e1373]: +1.21%
+                  - cell [ref=e1374]:
+                    - img [ref=e1375]
+                  - cell "7.0" [ref=e1995]
+                  - cell "10.0" [ref=e1996]
+                  - cell "3.9" [ref=e1997]
+                  - cell "4.8" [ref=e1998]
+                  - cell "3.8" [ref=e1999]
+                  - cell "4.8" [ref=e2000]
+                  - cell "5.5" [ref=e2001]
+                  - cell "5.7" [ref=e2002]
+                  - cell "2.0" [ref=e2003]
+                - row "PG The Procter & Gamble Company 5.7 Neutral $146.93 +0.15% +1.86% 7.0 0.0 3.9 6.3 6.2 10.0 9.0 4.8 6.5" [ref=e2004] [cursor=pointer]:
+                  - cell "PG The Procter & Gamble Company" [ref=e2005]:
+                    - generic [ref=e1089]:
+                      - text: PG
+                      - generic [ref=e1090]: The Procter & Gamble Company
+                  - cell "5.7" [ref=e2006]
+                  - cell "Neutral" [ref=e2007]
+                  - cell "$146.93" [ref=e2008]
+                  - cell "+0.15%" [ref=e2009]:
+                    - generic [ref=e1095]: +0.15%
+                  - cell "+1.86%" [ref=e2010]:
+                    - generic [ref=e1097]: +1.86%
+                  - cell [ref=e1098]:
+                    - img [ref=e1099]
+                  - cell "7.0" [ref=e2011]
+                  - cell "0.0" [ref=e2012]
+                  - cell "3.9" [ref=e2013]
+                  - cell "6.3" [ref=e2014]
+                  - cell "6.2" [ref=e2015]
+                  - cell "10.0" [ref=e2016]
+                  - cell "9.0" [ref=e2017]
+                  - cell "4.8" [ref=e2018]
+                  - cell "6.5" [ref=e2019]
+                - row "KO The Coca-Cola Company 5.5 Neutral $75.74 -0.30% +6.32% 7.0 10.0 5.0 4.4 4.6 4.3 2.9 4.8 2.0" [ref=e2020] [cursor=pointer]:
+                  - cell "KO The Coca-Cola Company" [ref=e2021]:
+                    - generic [ref=e1296]:
+                      - text: KO
+                      - generic [ref=e1297]: The Coca-Cola Company
+                  - cell "5.5" [ref=e2022]
+                  - cell "Neutral" [ref=e2023]
+                  - cell "$75.74" [ref=e2024]
+                  - cell "-0.30%" [ref=e2025]:
+                    - generic [ref=e1302]: "-0.30%"
+                  - cell "+6.32%" [ref=e2026]:
+                    - generic [ref=e1304]: +6.32%
+                  - cell [ref=e1305]:
+                    - img [ref=e1306]
+                  - cell "7.0" [ref=e2027]
+                  - cell "10.0" [ref=e2028]
+                  - cell "5.0" [ref=e2029]
+                  - cell "4.4" [ref=e2030]
+                  - cell "4.6" [ref=e2031]
+                  - cell "4.3" [ref=e2032]
+                  - cell "2.9" [ref=e2033]
+                  - cell "4.8" [ref=e2034]
+                  - cell "2.0" [ref=e2035]
+                - row "NFLX Netflix, Inc. 5.5 Neutral $97.31 +2.76% +7.74% 7.0 10.0 4.3 5.7 2.2 4.6 3.0 5.1 2.0" [ref=e2036] [cursor=pointer]:
+                  - cell "NFLX Netflix, Inc." [ref=e2037]:
+                    - generic [ref=e353]:
+                      - text: NFLX
+                      - generic [ref=e354]: Netflix, Inc.
+                  - cell "5.5" [ref=e2038]
+                  - cell "Neutral" [ref=e2039]
+                  - cell "$97.31" [ref=e2040]
+                  - cell "+2.76%" [ref=e2041]:
+                    - generic [ref=e359]: +2.76%
+                  - cell "+7.74%" [ref=e2042]:
+                    - generic [ref=e361]: +7.74%
+                  - cell [ref=e362]:
+                    - img [ref=e363]
+                  - cell "7.0" [ref=e2043]
+                  - cell "10.0" [ref=e2044]
+                  - cell "4.3" [ref=e2045]
+                  - cell "5.7" [ref=e2046]
+                  - cell "2.2" [ref=e2047]
+                  - cell "4.6" [ref=e2048]
+                  - cell "3.0" [ref=e2049]
+                  - cell "5.1" [ref=e2050]
+                  - cell "2.0" [ref=e2051]
+                - row "ACN Accenture plc 5.1 Neutral $197.65 +1.28% -28.59% 6.0 0.0 4.5 5.0 6.5 6.5 8.2 4.9 8.0" [ref=e2052] [cursor=pointer]:
+                  - cell "ACN Accenture plc" [ref=e835]:
+                    - generic [ref=e836]:
+                      - text: ACN
+                      - generic [ref=e837]: Accenture plc
+                  - cell "5.1" [ref=e2053]
+                  - cell "Neutral" [ref=e2054]
+                  - cell "$197.65" [ref=e2055]
+                  - cell "+1.28%" [ref=e2056]:
+                    - generic [ref=e842]: +1.28%
+                  - cell "-28.59%" [ref=e2057]:
+                    - generic [ref=e844]: "-28.59%"
+                  - cell [ref=e845]:
+                    - img [ref=e846]
+                  - cell "6.0" [ref=e2058]
+                  - cell "0.0" [ref=e2059]
+                  - cell "4.5" [ref=e2060]
+                  - cell "5.0" [ref=e2061]
+                  - cell "6.5" [ref=e2062]
+                  - cell "6.5" [ref=e2063]
+                  - cell "8.2" [ref=e2064]
+                  - cell "4.9" [ref=e2065]
+                  - cell "8.0" [ref=e2066]
+                - row "ADBE Adobe Inc. 5.0 Neutral $244.45 -0.63% -21.13% 6.0 0.0 4.3 6.0 5.9 6.8 6.7 5.0 6.5" [ref=e2067] [cursor=pointer]:
+                  - cell "ADBE Adobe Inc." [ref=e651]:
+                    - generic [ref=e652]:
+                      - text: ADBE
+                      - generic [ref=e653]: Adobe Inc.
+                  - cell "5.0" [ref=e2068]
+                  - cell "Neutral" [ref=e655]
+                  - cell "$244.45" [ref=e2069]
+                  - cell "-0.63%" [ref=e2070]:
+                    - generic [ref=e658]: "-0.63%"
+                  - cell "-21.13%" [ref=e2071]:
+                    - generic [ref=e660]: "-21.13%"
+                  - cell [ref=e661]:
+                    - img [ref=e662]
+                  - cell "6.0" [ref=e2072]
+                  - cell "0.0" [ref=e2073]
+                  - cell "4.3" [ref=e2074]
+                  - cell "6.0" [ref=e2075]
+                  - cell "5.9" [ref=e2076]
+                  - cell "6.8" [ref=e2077]
+                  - cell "6.7" [ref=e2078]
+                  - cell "5.0" [ref=e2079]
+                  - cell "6.5" [ref=e2080]
+                - row "CRM Salesforce, Inc. 5.0 Neutral $182.14 -6.28% -24.44% 6.0 0.0 4.7 5.1 7.7 5.2 7.3 5.1 6.5" [ref=e2081] [cursor=pointer]:
+                  - cell "CRM Salesforce, Inc." [ref=e2082]:
+                    - generic [ref=e399]:
+                      - text: CRM
+                      - generic [ref=e400]: Salesforce, Inc.
+                  - cell "5.0" [ref=e2083]
+                  - cell "Neutral" [ref=e2084]
+                  - cell "$182.14" [ref=e2085]
+                  - cell "-6.28%" [ref=e2086]:
+                    - generic [ref=e405]: "-6.28%"
+                  - cell "-24.44%" [ref=e2087]:
+                    - generic [ref=e407]: "-24.44%"
+                  - cell [ref=e408]:
+                    - img [ref=e409]
+                  - cell "6.0" [ref=e2088]
+                  - cell "0.0" [ref=e2089]
+                  - cell "4.7" [ref=e2090]
+                  - cell "5.1" [ref=e2091]
+                  - cell "7.7" [ref=e2092]
+                  - cell "5.2" [ref=e2093]
+                  - cell "7.3" [ref=e2094]
+                  - cell "5.1" [ref=e2095]
+                  - cell "6.5" [ref=e2096]
+                - row "ABBV AbbVie Inc. 4.4 Sell $208.38 +0.02% -5.60% 6.0 0.0 5.1 5.2 5.5 4.3 3.6 5.2 6.5" [ref=e2097] [cursor=pointer]:
+                  - cell "ABBV AbbVie Inc." [ref=e329]:
+                    - generic [ref=e330]:
+                      - text: ABBV
+                      - generic [ref=e331]: AbbVie Inc.
+                  - cell "4.4" [ref=e2098]
+                  - cell "Sell" [ref=e2099]
+                  - cell "$208.38" [ref=e2100]
+                  - cell "+0.02%" [ref=e2101]:
+                    - generic [ref=e336]: +0.02%
+                  - cell "-5.60%" [ref=e2102]:
+                    - generic [ref=e338]: "-5.60%"
+                  - cell [ref=e339]:
+                    - img [ref=e340]
+                  - cell "6.0" [ref=e2103]
+                  - cell "0.0" [ref=e2104]
+                  - cell "5.1" [ref=e2105]
+                  - cell "5.2" [ref=e2106]
+                  - cell "5.5" [ref=e2107]
+                  - cell "4.3" [ref=e2108]
+                  - cell "3.6" [ref=e2109]
+                  - cell "5.2" [ref=e2110]
+                  - cell "6.5" [ref=e2111]
+                - row "NKE NIKE, Inc. 4.4 Sell $46.03 -13.91% -30.57% 5.0 0.0 6.5 3.3 8.6 4.2 3.6 4.7 6.5" [ref=e2112] [cursor=pointer]:
+                  - cell "NKE NIKE, Inc." [ref=e2113]:
+                    - generic [ref=e1020]:
+                      - text: NKE
+                      - generic [ref=e1021]: NIKE, Inc.
+                  - cell "4.4" [ref=e2114]
+                  - cell "Sell" [ref=e2115]
+                  - cell "$46.03" [ref=e2116]
+                  - cell "-13.91%" [ref=e2117]:
+                    - generic [ref=e1026]: "-13.91%"
+                  - cell "-30.57%" [ref=e2118]:
+                    - generic [ref=e1028]: "-30.57%"
+                  - cell [ref=e1029]:
+                    - img [ref=e1030]
+                  - cell "5.0" [ref=e2119]
+                  - cell "0.0" [ref=e2120]
+                  - cell "6.5" [ref=e2121]
+                  - cell "3.3" [ref=e2122]
+                  - cell "8.6" [ref=e2123]
+                  - cell "4.2" [ref=e2124]
+                  - cell "3.6" [ref=e2125]
+                  - cell "4.7" [ref=e2126]
+                  - cell "6.5" [ref=e2127]
+                - row "JNJ Johnson & Johnson 4.3 Sell $234.18 -1.31% +9.61% 7.0 4.9 6.3 3.6 4.2 0.8 1.4 5.5 2.0" [ref=e2128] [cursor=pointer]:
+                  - cell "JNJ Johnson & Johnson" [ref=e467]:
+                    - generic [ref=e468]:
+                      - text: JNJ
+                      - generic [ref=e469]: Johnson & Johnson
+                  - cell "4.3" [ref=e2129]
+                  - cell "Sell" [ref=e2130]
+                  - cell "$234.18" [ref=e2131]
+                  - cell "-1.31%" [ref=e2132]:
+                    - generic [ref=e474]: "-1.31%"
+                  - cell "+9.61%" [ref=e2133]:
+                    - generic [ref=e476]: +9.61%
+                  - cell [ref=e477]:
+                    - img [ref=e478]
+                  - cell "7.0" [ref=e2134]
+                  - cell "4.9" [ref=e2135]
+                  - cell "6.3" [ref=e2136]
+                  - cell "3.6" [ref=e2137]
+                  - cell "4.2" [ref=e2138]
+                  - cell "0.8" [ref=e2139]
+                  - cell "1.4" [ref=e2140]
+                  - cell "5.5" [ref=e2141]
+                  - cell "2.0" [ref=e2142]
+                - row "XOM Exxon Mobil Corporation 3.8 Sell $146.44 -7.08% +15.73% 8.0 0.0 8.2 2.6 3.0 0.6 1.3 5.7 2.0" [ref=e2143] [cursor=pointer]:
+                  - cell "XOM Exxon Mobil Corporation" [ref=e2144]:
+                    - generic [ref=e675]:
+                      - text: XOM
+                      - generic [ref=e676]: Exxon Mobil Corporation
+                  - cell "3.8" [ref=e2145]
+                  - cell "Sell" [ref=e2146]
+                  - cell "$146.44" [ref=e2147]
+                  - cell "-7.08%" [ref=e2148]:
+                    - generic [ref=e681]: "-7.08%"
+                  - cell "+15.73%" [ref=e2149]:
+                    - generic [ref=e683]: +15.73%
+                  - cell [ref=e684]:
+                    - img [ref=e685]
+                  - cell "8.0" [ref=e2150]
+                  - cell "0.0" [ref=e2151]
+                  - cell "8.2" [ref=e2152]
+                  - cell "2.6" [ref=e2153]
+                  - cell "3.0" [ref=e2154]
+                  - cell "0.6" [ref=e2155]
+                  - cell "1.3" [ref=e2156]
+                  - cell "5.7" [ref=e2157]
+                  - cell "2.0" [ref=e2158]
+                - row "CVX Chevron Corporation 3.7 Sell $183.99 -7.36% +12.28% 8.0 0.0 7.8 2.4 3.0 1.0 1.7 5.5 2.0" [ref=e2159] [cursor=pointer]:
+                  - cell "CVX Chevron Corporation" [ref=e2160]:
+                    - generic [ref=e698]:
+                      - text: CVX
+                      - generic [ref=e699]: Chevron Corporation
+                  - cell "3.7" [ref=e2161]
+                  - cell "Sell" [ref=e2162]
+                  - cell "$183.99" [ref=e2163]
+                  - cell "-7.36%" [ref=e2164]:
+                    - generic [ref=e704]: "-7.36%"
+                  - cell "+12.28%" [ref=e2165]:
+                    - generic [ref=e706]: +12.28%
+                  - cell [ref=e707]:
+                    - img [ref=e708]
+                  - cell "8.0" [ref=e2166]
+                  - cell "0.0" [ref=e2167]
+                  - cell "7.8" [ref=e2168]
+                  - cell "2.4" [ref=e2169]
+                  - cell "3.0" [ref=e2170]
+                  - cell "1.0" [ref=e2171]
+                  - cell "1.7" [ref=e2172]
+                  - cell "5.5" [ref=e2173]
+                  - cell "2.0" [ref=e2174]
+                - row "BRK-B Berkshire Hathaway Inc. 3.6 Sell $474.58 -2.04% -4.17% 5.0 0.0 4.1 5.0 4.4 2.8 4.4 4.9 2.0" [ref=e2175] [cursor=pointer]:
+                  - cell "BRK-B Berkshire Hathaway Inc." [ref=e2176]:
+                    - generic [ref=e1342]:
+                      - text: BRK-B
+                      - generic [ref=e1343]: Berkshire Hathaway Inc.
+                  - cell "3.6" [ref=e2177]
+                  - cell "Sell" [ref=e2178]
+                  - cell "$474.58" [ref=e2179]
+                  - cell "-2.04%" [ref=e2180]:
+                    - generic [ref=e1348]: "-2.04%"
+                  - cell "-4.17%" [ref=e2181]:
+                    - generic [ref=e1350]: "-4.17%"
+                  - cell [ref=e1351]:
+                    - img [ref=e1352]
+                  - cell "5.0" [ref=e2182]
+                  - cell "0.0" [ref=e2183]
+                  - cell "4.1" [ref=e2184]
+                  - cell "5.0" [ref=e2185]
+                  - cell "4.4" [ref=e2186]
+                  - cell "2.8" [ref=e2187]
+                  - cell "4.4" [ref=e2188]
+                  - cell "4.9" [ref=e2189]
+                  - cell "2.0" [ref=e2190]
+                - row "PM Philip Morris International Inc. 3.5 Sell $157.79 -5.03% -4.86% 6.0 0.0 5.9 2.2 3.5 2.2 4.1 5.6 2.0" [ref=e2191] [cursor=pointer]:
+                  - cell "PM Philip Morris International Inc." [ref=e2192]:
+                    - generic [ref=e721]:
+                      - text: PM
+                      - generic [ref=e722]: Philip Morris International Inc.
+                  - cell "3.5" [ref=e2193]
+                  - cell "Sell" [ref=e2194]
+                  - cell "$157.79" [ref=e2195]
+                  - cell "-5.03%" [ref=e2196]:
+                    - generic [ref=e727]: "-5.03%"
+                  - cell "-4.86%" [ref=e2197]:
+                    - generic [ref=e729]: "-4.86%"
+                  - cell [ref=e730]:
+                    - img [ref=e731]
+                  - cell "6.0" [ref=e2198]
+                  - cell "0.0" [ref=e2199]
+                  - cell "5.9" [ref=e2200]
+                  - cell "2.2" [ref=e2201]
+                  - cell "3.5" [ref=e2202]
+                  - cell "2.2" [ref=e2203]
+                  - cell "4.1" [ref=e2204]
+                  - cell "5.6" [ref=e2205]
+                  - cell "2.0" [ref=e2206]
+                - row "ABT Abbott Laboratories 3.0 Strong Sell $96.81 -10.77% -22.12% 5.0 0.0 7.0 1.7 3.1 0.0 2.7 4.9 2.0" [ref=e2207] [cursor=pointer]:
+                  - cell "ABT Abbott Laboratories" [ref=e2208]:
+                    - generic [ref=e491]:
+                      - text: ABT
+                      - generic [ref=e492]: Abbott Laboratories
+                  - cell "3.0" [ref=e2209]
+                  - cell "Strong Sell" [ref=e2210]
+                  - cell "$96.81" [ref=e2211]
+                  - cell "-10.77%" [ref=e2212]:
+                    - generic [ref=e497]: "-10.77%"
+                  - cell "-22.12%" [ref=e2213]:
+                    - generic [ref=e499]: "-22.12%"
+                  - cell [ref=e500]:
+                    - img [ref=e501]
+                  - cell "5.0" [ref=e2214]
+                  - cell "0.0" [ref=e2215]
+                  - cell "7.0" [ref=e2216]
+                  - cell "1.7" [ref=e2217]
+                  - cell "3.1" [ref=e2218]
+                  - cell "0.0" [ref=e2219]
+                  - cell "2.7" [ref=e2220]
+                  - cell "4.9" [ref=e2221]
+                  - cell "2.0" [ref=e2222]
+  - complementary "Edit with Lovable" [ref=e1386]:
+    - link "Edit with Lovable" [ref=e1387] [cursor=pointer]:
+      - /url: https://lovable.dev/projects/ffe7302f-68f7-4584-90a7-5772195197fe?utm_source=lovable-badge
+      - generic [ref=e1388]: Edit with
+      - img [ref=e1389]
+    - button "Dismiss" [ref=e1394] [cursor=pointer]:
+      - img [ref=e1395]
+```
+### Events
+- New console entries: .playwright-mcp/console-2026-04-18T18-11-24-589Z.log#L1
