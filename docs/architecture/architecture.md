@@ -35,7 +35,7 @@ Non-goals (explicitly **not** building):
 | **Table** | @tanstack/react-table | Declarative sort/filter for 13 screener variants with differing column sets. |
 | **Server state** | @tanstack/react-query | Cache + background refresh of snapshot JSON; disables SSR waterfalls. |
 | **Client state** | zustand | Portfolio holdings, active weight preset, saved presets, persisted theme. Lightweight and test-friendly. |
-| **Theme** | next-themes | Drives dark-mode toggle (UC-12) with `prefers-color-scheme` fallback. |
+| **Theme** | hand-rolled bootstrap script + `useSyncExternalStore` hook | Owned in `src/components/shell/theme-provider.tsx` + `theme-toggle.tsx`. `next-themes` was the initial choice but its Provider did not hydrate under Next 16 + Turbopack during #2; the 50-line primitive is deterministic and small enough to own. Respects `prefers-color-scheme`; persists to `localStorage['theme']`; cross-tab sync via `storage` event. |
 | **Testing** | Vitest (unit), Playwright (E2E), Storybook (component visual) | Vitest ships with Vite/Next; Playwright already proven during discovery; Storybook lets us diff against replication screenshots. |
 | **Linting** | ESLint + Prettier + TypeScript strict | Standard Next.js defaults. |
 

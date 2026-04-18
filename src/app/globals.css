@@ -83,15 +83,11 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --muted: #18181b;
-    --muted-foreground: #a1a1aa;
-    --border: #27272a;
-    --primary: #60a5fa;
-    --primary-foreground: #09090b;
-  }
-}
+/*
+ * Previously a duplicate @media (prefers-color-scheme: dark) block lived
+ * here with ad-hoc hex colours. We now ship a single source of truth: the
+ * `.dark` class below, flipped by ThemeBootstrapScript + ThemeToggle.
+ */
 
 body {
   font-family:
@@ -115,8 +111,8 @@ body {
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
+  --border: oklch(1 0 0 / 18%);
+  --input: oklch(1 0 0 / 22%);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
