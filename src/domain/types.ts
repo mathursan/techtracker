@@ -20,8 +20,8 @@ export type Signal = "Strong Buy" | "Buy" | "Neutral" | "Sell" | "Strong Sell";
 export type IndicatorId =
   | "ma_trend"
   | "macd"
-  | "rsi"
   | "adx_dmi"
+  | "rsi"
   | "sar"
   | "bollinger"
   | "stochastic"
@@ -93,13 +93,20 @@ export interface ScoreSnapshot {
   universe: Universe;
   instruments: Instrument[];
   summary: UniverseSummary;
+  placeholder?: boolean;
 }
 
+/**
+ * Canonical indicator order — matches the weight table in the Methodology tab
+ * (see docs/replicate/analysis/uc-11-methodology-weights.md). Any UI that
+ * iterates indicators MUST use this order so the rendering matches the
+ * published methodology.
+ */
 export const INDICATOR_IDS: readonly IndicatorId[] = [
   "ma_trend",
   "macd",
-  "rsi",
   "adx_dmi",
+  "rsi",
   "sar",
   "bollinger",
   "stochastic",

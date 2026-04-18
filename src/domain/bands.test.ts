@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { signalForScore, SIGNAL_BANDS } from "./bands";
+import { signalForScore } from "./bands";
 
 describe("signalForScore", () => {
   it.each([
@@ -27,14 +27,5 @@ describe("signalForScore", () => {
 
   it("throws on NaN", () => {
     expect(() => signalForScore(NaN)).toThrow();
-  });
-
-  it("bands cover [0, 10] with no gaps", () => {
-    const ranges = [...SIGNAL_BANDS].sort((a, b) => a.min - b.min);
-    for (let i = 1; i < ranges.length; i++) {
-      const gap = ranges[i].min - ranges[i - 1].max;
-      expect(gap).toBeGreaterThan(0);
-      expect(gap).toBeLessThanOrEqual(0.11);
-    }
   });
 });

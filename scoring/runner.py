@@ -55,9 +55,16 @@ def main(argv: list[str] | None = None) -> int:
             current, history = write_snapshot(
                 args.project_root, universe, payload
             )
-            print(f"[{universe}] wrote {current.relative_to(args.project_root)}")
-            print(f"[{universe}] history {history.relative_to(args.project_root)}")
-        except Exception as exc:  # noqa: BLE001 — boundary: report and continue
+            print(
+                f"[{universe}] wrote {current.relative_to(args.project_root)}"
+            )
+            print(
+                f"[{universe}] history {history.relative_to(args.project_root)}"
+            )
+        except (OSError, ValueError) as exc:
+            # Boundary: report and continue. Programmer errors (ImportError,
+            # AttributeError, TypeError, …) intentionally propagate so the
+            # workflow fails loudly.
             print(f"[{universe}] FAILED: {exc}", file=sys.stderr)
             failures.append(universe)
 

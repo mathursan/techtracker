@@ -1,13 +1,11 @@
 import type { Signal } from "./types";
 
-export const SIGNAL_BANDS = [
-  { min: 8.0, max: 10.0, signal: "Strong Buy" as const },
-  { min: 6.5, max: 7.9, signal: "Buy" as const },
-  { min: 5.0, max: 6.4, signal: "Neutral" as const },
-  { min: 3.5, max: 4.9, signal: "Sell" as const },
-  { min: 0.0, max: 3.4, signal: "Strong Sell" as const },
-] as const;
-
+/**
+ * Single source of truth for the score → signal mapping.
+ *
+ * `compositeScore` rounds to 1 decimal place, so the upper edges (e.g. 7.9)
+ * are exact — no instrument ever lands at 7.95 and surprises us.
+ */
 export const SIGNAL_SEVERITY: Record<Signal, number> = {
   "Strong Buy": 5,
   Buy: 4,

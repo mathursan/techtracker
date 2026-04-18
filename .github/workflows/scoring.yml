@@ -1,9 +1,15 @@
 name: Scoring snapshot
 
+# Schedule intentionally DISABLED until issue #3 replaces the placeholder
+# scorer with real indicator logic. Leaving only `workflow_dispatch` prevents
+# `placeholder: true` data from being auto-committed to main on weekdays.
+# Re-enable (and finalize the UTC/ET window) as part of #3.
+#
+# on:
+#   schedule:
+#     - cron: "0 21 * * 1-5"   # 17:00 ET during standard time / 16:00 during DST
+
 on:
-  schedule:
-    # Weekdays at 21:30 UTC (~30 min after US market close).
-    - cron: "30 21 * * 1-5"
   workflow_dispatch:
     inputs:
       universe:
