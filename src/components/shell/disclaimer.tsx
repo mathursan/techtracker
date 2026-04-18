@@ -21,8 +21,12 @@ export function Disclaimer({
     >
       TechTracker provides technical analysis for informational purposes only.
       It is <strong className="font-medium">not investment advice</strong>, a
-      recommendation to buy or sell any security, or a guarantee of performance.
-      Do your own research.
+      recommendation to buy or sell any security, and does not take into account
+      your objectives, financial situation, or needs.{" "}
+      <strong className="font-medium">
+        Past performance does not guarantee future results.
+      </strong>{" "}
+      Data may be delayed or inaccurate. Do your own research.
     </p>
   );
 }
