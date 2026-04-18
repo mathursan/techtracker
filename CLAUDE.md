@@ -37,13 +37,22 @@ Always use the project venv at `.venv/`. Never `python3` / `pip3` from system. A
 
 ### How to invoke the four-agent gate
 ```
-Agent({ subagent_type: "senior-architect",        description: "Architect review — PR #N", prompt: "<diff or PR URL + changed files>" })
+Agent({ subagent_type: "senior-architect",        description: "Architect review — PR #N", prompt: "<diff or PR URL + changed files + 'post your review to PR #N via gh pr comment'>" })
 Agent({ subagent_type: "senior-dev-lead",         description: "Dev-lead review — PR #N",  prompt: "..." })
 Agent({ subagent_type: "qa-engineer",             description: "QA review — PR #N",        prompt: "..." })
 Agent({ subagent_type: "trader-domain-expert",    description: "Trader review — PR #N",    prompt: "..." })
 ```
 
 Send all four in a single message so they run in parallel.
+
+### Agent reviews MUST land on the PR
+Every review round — R1 initial, R2 after fixes, R3 if needed — must be posted as a GitHub PR comment, not left in the session transcript. Each agent's prompt must include an instruction to:
+
+```bash
+gh pr comment <N> --repo mathursan/techtracker --body-file <tmpfile>
+```
+
+…after drafting the review. Between rounds, also post a short summary comment linking to the fix commit(s) so reviewers know what changed. The operator reads the PR comment log before approving.
 
 ## Rules
 - Never bypass the four-agent gate. If a reviewer returns BLOCK or REQUEST_CHANGES, fix it before moving on.
