@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 
 import type { Instrument, IndicatorId } from "@/domain/types";
 import { INDICATOR_IDS } from "@/domain/types";
+import { SIGNAL_SEVERITY } from "@/domain/bands";
 import { performanceTextClass, scoreTextClass } from "@/domain/colors";
 import { cn } from "@/lib/utils";
 
@@ -35,16 +36,8 @@ type SortKey =
 
 type SortState = { key: SortKey; direction: "asc" | "desc" };
 
-const SIGNAL_RANK: Record<Instrument["signal"], number> = {
-  "Strong Buy": 5,
-  Buy: 4,
-  Neutral: 3,
-  Sell: 2,
-  "Strong Sell": 1,
-};
-
-function indicatorValue(inst: Instrument, id: IndicatorId): number {
-  return inst.indicators.find((i) => i.id === id)?.value ?? 0;
+function indicatorValue(inst: Instrument, id: IndicatorId): number | null {
+  return inst.indicators.find((i) => i.id === id)?.value ?? null;
 }
 
 function sortKeyValue(inst: Instrument, key: SortKey): number | string {
@@ -54,7 +47,7 @@ function sortKeyValue(inst: Instrument, key: SortKey): number | string {
     case "compositeScore":
       return inst.compositeScore;
     case "signal":
-      return SIGNAL_RANK[inst.signal];
+      return SIGNAL_SEVERITY[inst.signal];
     case "price":
       return inst.price;
     case "perfOneMonth":
@@ -63,7 +56,9 @@ function sortKeyValue(inst: Instrument, key: SortKey): number | string {
       return inst.perfThreeMonth;
     default: {
       const id = key.split(":")[1] as IndicatorId;
-      return indicatorValue(inst, id);
+      // Missing indicator values sort to the end regardless of direction —
+      // "unknown" is not a neutral 5, and it's not zero.
+      return indicatorValue(inst, id) ?? Number.NEGATIVE_INFINITY;
     }
   }
 }
@@ -79,7 +74,10 @@ function sortInstruments(
     if (typeof av === "string" && typeof bv === "string") {
       return av.localeCompare(bv) * dir;
     }
-    return ((av as number) - (bv as number)) * dir;
+    if (typeof av === "number" && typeof bv === "number") {
+      return (av - bv) * dir;
+    }
+    return 0;
   });
 }
 
@@ -175,7 +173,11 @@ export function ScreenerTable({ instruments }: { instruments: Instrument[] }) {
               </td>
               {INDICATOR_IDS.map((id) => (
                 <td key={id} className="px-2 py-2 text-right">
-                  <IndicatorScoreCell value={indicatorValue(inst, id)} />
+                  {indicatorValue(inst, id) !== null ? (
+                    <IndicatorScoreCell value={indicatorValue(inst, id)!} />
+                  ) : (
+                    <span className="font-mono text-xs text-muted-foreground">—</span>
+                  )}
                 </td>
               ))}
             </tr>
