@@ -46,10 +46,10 @@ export function AnalyticsView({ snapshot }: { snapshot: ScoreSnapshot }) {
         <AnalyticsCard title="Signal Distribution">
           <SignalDistributionChart data={vm.signalDistribution} />
         </AnalyticsCard>
-        <AnalyticsCard title="Sector Average Score">
+        <AnalyticsCard title="Sector Average Scores">
           <SectorAverageChart data={vm.sectorAverages} />
         </AnalyticsCard>
-        <AnalyticsCard title="Score Histogram" className="lg:col-span-2">
+        <AnalyticsCard title="Score Distribution Histogram" className="lg:col-span-2">
           <ScoreHistogramChart data={vm.scoreHistogram} />
         </AnalyticsCard>
       </div>

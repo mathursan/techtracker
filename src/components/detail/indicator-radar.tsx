@@ -12,20 +12,9 @@ import {
 
 import type { IndicatorScore } from "@/domain/types";
 import { INDICATOR_IDS } from "@/domain/types";
-import { toneForScore } from "@/domain/colors";
+import { TONE_HEX, toneForScore } from "@/domain/colors";
 import { INDICATOR_LABELS } from "@/lib/indicator-labels";
 import { cn } from "@/lib/utils";
-
-/**
- * Explicit hex colors so the radar reads as bullish/bearish at a glance.
- * Tailwind's emerald-500 / amber-500 / rose-500 don't map 1:1 through
- * CSS vars under the svg's `fill`, so hard-code the brand-equivalent.
- */
-const TONE_STROKE: Record<"green" | "amber" | "red", string> = {
-  green: "#10b981", // emerald-500
-  amber: "#f59e0b", // amber-500
-  red: "#f43f5e",   // rose-500
-};
 
 export function IndicatorRadar({
   scores,
@@ -42,7 +31,7 @@ export function IndicatorRadar({
     indicator: INDICATOR_LABELS[id],
     score: byId.get(id) ?? 0,
   }));
-  const color = TONE_STROKE[toneForScore(composite)];
+  const color = TONE_HEX[toneForScore(composite)];
 
   return (
     <div className={cn("h-64 w-full", className)}>

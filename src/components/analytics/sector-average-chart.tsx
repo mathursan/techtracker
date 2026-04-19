@@ -12,13 +12,7 @@ import {
 } from "recharts";
 
 import type { SectorAverage } from "@/domain/analytics";
-import { toneForScore } from "@/domain/colors";
-
-const TONE_FILL: Record<"green" | "amber" | "red", string> = {
-  green: "#10b981",  // emerald-500
-  amber: "#f59e0b",  // amber-500
-  red: "#f43f5e",    // rose-500
-};
+import { TONE_HEX, toneForScore } from "@/domain/colors";
 
 export function SectorAverageChart({ data }: { data: SectorAverage[] }) {
   if (data.length === 0) {
@@ -51,7 +45,7 @@ export function SectorAverageChart({ data }: { data: SectorAverage[] }) {
           />
           <Bar dataKey="avgScore">
             {data.map((d) => (
-              <Cell key={d.key} fill={TONE_FILL[toneForScore(d.avgScore)]} />
+              <Cell key={d.key} fill={TONE_HEX[toneForScore(d.avgScore)]} />
             ))}
           </Bar>
         </BarChart>

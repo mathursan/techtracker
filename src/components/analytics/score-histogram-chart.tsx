@@ -12,13 +12,7 @@ import {
 } from "recharts";
 
 import type { ScoreBucket } from "@/domain/analytics";
-import { toneForScore } from "@/domain/colors";
-
-const TONE_FILL: Record<"green" | "amber" | "red", string> = {
-  green: "#10b981",
-  amber: "#f59e0b",
-  red: "#f43f5e",
-};
+import { TONE_HEX, toneForScore } from "@/domain/colors";
 
 export function ScoreHistogramChart({ data }: { data: ScoreBucket[] }) {
   return (
@@ -37,7 +31,7 @@ export function ScoreHistogramChart({ data }: { data: ScoreBucket[] }) {
               // Color each bucket by the tone the bucket's mid-point falls
               // into — bucket 0-1 is deeply red, 9-10 is deeply green.
               const midpoint = d.index + 0.5;
-              return <Cell key={d.index} fill={TONE_FILL[toneForScore(midpoint)]} />;
+              return <Cell key={d.index} fill={TONE_HEX[toneForScore(midpoint)]} />;
             })}
           </Bar>
         </BarChart>

@@ -1,4 +1,3 @@
-import { SIGNAL_SEVERITY } from "./bands";
 import type { Instrument, Signal } from "./types";
 
 /** Canonical order for signal-distribution x-axis (worst → best). */
@@ -44,6 +43,10 @@ export interface AnalyticsVM {
 export function histogramBucketIndex(score: number): number {
   // Clamp to [0, 10] then floor. The last bucket (9-10) is closed on the
   // right, so a score of exactly 10 lands in bucket 9, not bucket 10.
+  // NaN throws (matches `signalForScore` contract — we never score a NaN).
+  if (Number.isNaN(score)) {
+    throw new Error("histogramBucketIndex: score is NaN");
+  }
   if (score >= 10) return 9;
   if (score <= 0) return 0;
   return Math.min(9, Math.max(0, Math.floor(score)));
@@ -128,7 +131,3 @@ export function aggregateAnalytics(input: {
   };
 }
 
-/** Utility used by signal-distribution x-axis ordering helpers. */
-export function signalSeverityOrder(a: Signal, b: Signal): number {
-  return SIGNAL_SEVERITY[a] - SIGNAL_SEVERITY[b];
-}

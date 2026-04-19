@@ -5,8 +5,8 @@ test.describe("analytics (UC-10)", () => {
     await page.goto("/analytics");
     await expect(page.getByRole("heading", { name: "Analytics", exact: true })).toBeVisible();
     await expect(page.getByRole("region", { name: "Signal Distribution" })).toBeVisible();
-    await expect(page.getByRole("region", { name: "Sector Average Score" })).toBeVisible();
-    await expect(page.getByRole("region", { name: "Score Histogram" })).toBeVisible();
+    await expect(page.getByRole("region", { name: "Sector Average Scores" })).toBeVisible();
+    await expect(page.getByRole("region", { name: "Score Distribution Histogram" })).toBeVisible();
   });
 
   test("signal distribution + histogram buckets render SVG bars", async ({ page }) => {
@@ -15,12 +15,12 @@ test.describe("analytics (UC-10)", () => {
     // assert specific values (depends on seed), but the chart must paint
     // something.
     await expect(page.getByRole("region", { name: "Signal Distribution" }).locator("svg")).toBeVisible();
-    await expect(page.getByRole("region", { name: "Score Histogram" }).locator("svg")).toBeVisible();
+    await expect(page.getByRole("region", { name: "Score Distribution Histogram" }).locator("svg")).toBeVisible();
   });
 
   test("sector average chart lists expected sector labels from the seed", async ({ page }) => {
     await page.goto("/analytics");
-    const sector = page.getByRole("region", { name: "Sector Average Score" });
+    const sector = page.getByRole("region", { name: "Sector Average Scores" });
     // Seed has tickers tagged tech / energy / cons-staples / comm-services /
     // financials. At least one must appear as a y-axis label.
     const yAxisText = sector.locator("svg .recharts-yAxis");
