@@ -5,8 +5,8 @@ Usage:
     python -m scoring.runner --universe stocks  # one universe
     python -m scoring.runner --dry-run          # skip writing snapshots
 
-Network: invokes yfinance via `scoring.market_data`. Use `--skip-fetch` to
-compute against cache-only and fail a ticker if nothing is cached.
+Network: invokes yfinance via `scoring.market_data`, which serves from the
+per-day parquet cache first and falls back to the network on miss.
 """
 from __future__ import annotations
 
@@ -69,7 +69,7 @@ def _run_universe(slug: str, *, as_of: datetime, project_root: Path,
 
     if dry_run:
         print(f"[{slug}] dry-run — {len(instruments)} instruments scored, no write")
-        return 0 if not failures else 0  # dry-run never non-zeroes on skips
+        return 0  # dry-run is never non-zero: we're only validating shape.
 
     current, history = write_snapshot(
         project_root=project_root,

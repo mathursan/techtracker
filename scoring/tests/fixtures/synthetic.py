@@ -32,21 +32,26 @@ def _ohlcv_from_close(close: np.ndarray, volume: np.ndarray | None = None) -> pd
     )
 
 
-def bull_series(n: int = 260, start: float = 100.0, drift: float = 0.0025,
-                noise: float = 0.003) -> pd.DataFrame:
-    """Uptrend where daily drift dominates noise (≈70% positive days)."""
+def bull_series(n: int = 260, start: float = 100.0, drift: float = 0.0018,
+                noise: float = 0.005) -> pd.DataFrame:
+    """Uptrend with periodic pullbacks — so RSI cools between legs rather
+    than sitting at 90+. Daily drift + cyclical 20-day pullback + noise."""
     rng = np.random.default_rng(42)
-    returns = drift + rng.normal(0, noise, n)
+    t = np.arange(n)
+    pullback = -0.004 * np.sin(t * 2 * np.pi / 20)
+    returns = drift + pullback + rng.normal(0, noise, n)
     close = start * np.exp(np.cumsum(returns))
     volume = np.linspace(1_000_000, 1_500_000, n)
     return _ohlcv_from_close(close, volume)
 
 
-def bear_series(n: int = 260, start: float = 100.0, drift: float = -0.0025,
-                noise: float = 0.003) -> pd.DataFrame:
-    """Downtrend symmetrical to bull — seeded, cleanly bearish."""
+def bear_series(n: int = 260, start: float = 100.0, drift: float = -0.0018,
+                noise: float = 0.005) -> pd.DataFrame:
+    """Downtrend symmetrical to bull — periodic bounces keep RSI realistic."""
     rng = np.random.default_rng(43)
-    returns = drift + rng.normal(0, noise, n)
+    t = np.arange(n)
+    bounce = 0.004 * np.sin(t * 2 * np.pi / 20)
+    returns = drift + bounce + rng.normal(0, noise, n)
     close = start * np.exp(np.cumsum(returns))
     volume = np.linspace(1_500_000, 1_000_000, n)
     return _ohlcv_from_close(close, volume)

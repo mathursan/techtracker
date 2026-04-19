@@ -111,15 +111,3 @@ def _empty_snapshot(universe: str, display_name: str,
     }
 
 
-# Legacy name retained for #17's placeholder flow — deprecated once all real
-# universes report. Kept as a compatibility shim for any CI wiring that
-# expected the old signature.
-def placeholder_snapshot(universe: str) -> dict[str, Any]:
-    from .universes import UNIVERSES
-
-    defn = UNIVERSES.get(universe)
-    display = defn.display_name if defn else universe
-    filters = (
-        [{"key": k, "label": lbl} for k, lbl in defn.chips] if defn else []
-    )
-    return _empty_snapshot(universe, display, filters, None)

@@ -1,4 +1,4 @@
-"""MACD — zero-line position, signal crossover, histogram slope."""
+"""MACD — zero-line position dominates; signal/histogram ticks only confirm."""
 from __future__ import annotations
 
 import pandas as pd
@@ -12,42 +12,42 @@ def _ema(series: pd.Series, span: int) -> pd.Series:
 
 def score_macd(ohlcv: pd.DataFrame) -> float:
     close = require_close(ohlcv)
-    ema12 = _ema(close, 12)
-    ema26 = _ema(close, 26)
-    macd_line = ema12 - ema26
+    macd_line = _ema(close, 12) - _ema(close, 26)
     signal_line = _ema(macd_line, 9)
     hist = macd_line - signal_line
 
-    score = 5.0
+    if len(macd_line) < 2 or len(hist) < 2:
+        return 5.0
 
     last_macd = float(macd_line.iloc[-1])
     last_signal = float(signal_line.iloc[-1])
     last_hist = float(hist.iloc[-1])
-    prev_hist = float(hist.iloc[-2]) if len(hist) >= 2 else last_hist
+    prev_hist = float(hist.iloc[-2])
 
-    # Above zero line = bullish cycle.
-    if last_macd > 0:
+    # Zero-line dominates: the MACD line's sign is the primary bullish/bearish
+    # read. Confirming rules can amplify, but never flip the sign of the
+    # indicator on their own.
+    score = 5.0 + (2.5 if last_macd > 0 else -2.5)
+
+    # Signal-line crossover confirmation — only counts when it agrees with the
+    # zero-line read. A bull MACD above signal strengthens; bear MACD below
+    # signal deepens. Disagreement (MACD < 0 but above signal → early
+    # reversal) is suppressed to a small wobble so it can't invert the call.
+    if last_macd > 0 and last_macd > last_signal:
         score += 1.5
-    else:
+    elif last_macd < 0 and last_macd < last_signal:
         score -= 1.5
+    elif last_macd > 0 and last_macd < last_signal:
+        score -= 0.5  # bull fading
+    elif last_macd < 0 and last_macd > last_signal:
+        score += 0.5  # bear fading
 
-    # MACD above signal = bullish momentum.
-    if last_macd > last_signal:
-        score += 1.5
-    else:
-        score -= 1.5
-
-    # Histogram expanding (strengthening) adds confidence; contracting softens.
-    if last_hist > prev_hist:
+    # Histogram tick — same sign-gating. A widening positive histogram in a
+    # bull run adds confidence; a widening negative one in a bear run
+    # deepens. Reversal-direction ticks contribute nothing.
+    if last_macd > 0 and last_hist > prev_hist:
         score += 1.0
-    elif last_hist < prev_hist:
+    elif last_macd < 0 and last_hist < prev_hist:
         score -= 1.0
-
-    # Fresh crossover within last 3 bars magnifies effect.
-    if len(hist) >= 4:
-        recent = hist.iloc[-4:].values
-        sign_changes = ((recent[:-1] * recent[1:]) < 0).sum()
-        if sign_changes:
-            score += 0.5 if last_hist > 0 else -0.5
 
     return clamp(score)
