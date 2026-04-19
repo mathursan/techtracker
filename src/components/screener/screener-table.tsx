@@ -100,8 +100,7 @@ export function ScreenerTable({ instruments }: { instruments: Instrument[] }) {
   if (instruments.length === 0) {
     return (
       <div className="border-t p-12 text-center text-sm text-muted-foreground">
-        No instruments to display yet. Scoring snapshots will appear here after
-        the scheduled scoring job runs.
+        No matches. Try clearing the search or filter.
       </div>
     );
   }

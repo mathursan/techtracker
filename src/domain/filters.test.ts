@@ -4,14 +4,21 @@ import type { Instrument, UniverseSummary } from "./types";
 import {
   ALL_CHIP_KEY,
   filterByChip,
+  filterBySearch,
+  normalizeSearch,
   resolveChipKey,
   summarizeFiltered,
 } from "./filters";
 
-function mk(ticker: string, tags: string[] | undefined, score = 7): Instrument {
+function mk(
+  ticker: string,
+  tags: string[] | undefined,
+  score = 7,
+  name?: string,
+): Instrument {
   return {
     ticker,
-    name: ticker,
+    name: name ?? ticker,
     universe: "stocks",
     price: 100,
     perfOneMonth: 0,
@@ -25,10 +32,10 @@ function mk(ticker: string, tags: string[] | undefined, score = 7): Instrument {
   };
 }
 
-const a = mk("A", ["tech"], 8.5);
-const b = mk("B", ["financials"], 7.0);
-const c = mk("C", ["tech", "hardware"], 6.0);
-const d = mk("D", undefined, 5.5);
+const a = mk("A", ["tech"], 8.5, "Apple Inc.");
+const b = mk("B", ["financials"], 7.0, "Bank of America");
+const c = mk("C", ["tech", "hardware"], 6.0, "Cisco Systems");
+const d = mk("D", undefined, 5.5, "Duke Energy");
 
 const FILTERS = [
   { key: "all", label: "All" },
@@ -103,5 +110,40 @@ describe("resolveChipKey", () => {
 
   it("valid key → that key", () => {
     expect(resolveChipKey("tech", FILTERS)).toBe("tech");
+  });
+});
+
+describe("normalizeSearch", () => {
+  it.each([
+    [null, null],
+    [undefined, null],
+    ["", null],
+    ["   ", null],
+    ["AAPL", "aapl"],
+    ["  Bank  ", "bank"],
+  ] as const)("(%s) → %s", (input, expected) => {
+    expect(normalizeSearch(input)).toBe(expected);
+  });
+});
+
+describe("filterBySearch", () => {
+  const rows = [a, b, c, d];
+
+  it("null returns everything", () => {
+    expect(filterBySearch(rows, null)).toHaveLength(4);
+  });
+
+  it("matches on ticker prefix", () => {
+    expect(filterBySearch(rows, "b").map((i) => i.ticker)).toEqual(["B"]);
+  });
+
+  it("matches on name substring (case-insensitive)", () => {
+    expect(filterBySearch(rows, "bank").map((i) => i.ticker)).toEqual(["B"]);
+    expect(filterBySearch(rows, "APPLE").map((i) => i.ticker)).toEqual(["A"]);
+    expect(filterBySearch(rows, "energy").map((i) => i.ticker)).toEqual(["D"]);
+  });
+
+  it("no matches returns empty", () => {
+    expect(filterBySearch(rows, "zzz")).toEqual([]);
   });
 });
