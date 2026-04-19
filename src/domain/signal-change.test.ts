@@ -213,6 +213,81 @@ describe("aggregateSignalChanges", () => {
     );
     expect(vm.rows.map((r) => r.instrument.ticker)).toEqual(["H", "L"]);
   });
+
+  it("tie-breaks equal-magnitude downgrades by composite score asc", () => {
+    // Downgrades sort by composite asc — the deepest-damage name first.
+    const vm = aggregateSignalChanges(
+      [
+        {
+          universe: "stocks",
+          displayName: "Stocks",
+          current: snap("stocks", [
+            inst("Shallow", "Sell", { compositeScore: 4.8 }),
+            inst("Deep", "Sell", { compositeScore: 3.6 }),
+          ]),
+          historical: snap("stocks", [
+            inst("Shallow", "Neutral", { compositeScore: 5.5 }),
+            inst("Deep", "Neutral", { compositeScore: 5.5 }),
+          ]),
+        },
+      ],
+      { lookback: "1m", direction: "down", universeScope: null },
+    );
+    expect(vm.rows.map((r) => r.instrument.ticker)).toEqual(["Deep", "Shallow"]);
+  });
+
+  it("scoped counts isolate to the scoped universe; allMarkets stays global", () => {
+    const vm = aggregateSignalChanges(
+      [
+        {
+          universe: "stocks",
+          displayName: "Stocks",
+          current: snap("stocks", [inst("A", "Strong Buy")]),
+          historical: snap("stocks", [inst("A", "Neutral")]),
+        },
+        {
+          universe: "commodities",
+          displayName: "Commodities",
+          current: snap("commodities", [
+            inst("GC", "Strong Buy", { universe: "commodities" }),
+            inst("CL", "Strong Sell", { universe: "commodities" }),
+          ]),
+          historical: snap("commodities", [
+            inst("GC", "Buy", { universe: "commodities" }),
+            inst("CL", "Buy", { universe: "commodities" }),
+          ]),
+        },
+      ],
+      { lookback: "1m", direction: "all", universeScope: "stocks" },
+    );
+    expect(vm.scopedCounts).toEqual({ upgrades: 1, downgrades: 0 });
+    expect(vm.allMarkets.upgrades).toBe(2);
+    expect(vm.allMarkets.downgrades).toBe(1);
+    expect(vm.scopedNoHistory).toBe(false);
+  });
+
+  it("scopedNoHistory flags a scoped universe with no historical snapshot", () => {
+    const vm = aggregateSignalChanges(
+      [
+        {
+          universe: "stocks",
+          displayName: "Stocks",
+          current: snap("stocks", [inst("A", "Strong Buy")]),
+          historical: snap("stocks", [inst("A", "Neutral")]),
+        },
+        {
+          universe: "commodities",
+          displayName: "Commodities",
+          current: snap("commodities", [inst("GC", "Buy", { universe: "commodities" })]),
+          historical: null,
+        },
+      ],
+      { lookback: "1m", direction: "all", universeScope: "commodities" },
+    );
+    expect(vm.scopedNoHistory).toBe(true);
+    expect(vm.noHistory).toBe(false);
+    expect(vm.scopedCounts).toEqual({ upgrades: 0, downgrades: 0 });
+  });
 });
 
 describe("parsers", () => {

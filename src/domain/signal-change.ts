@@ -20,8 +20,7 @@ export interface SignalChangeRow {
   universe: Universe;
   universeDisplayName: string;
   previous: Signal;
-  current: Signal;
-  /** severity(current) - severity(previous). Always non-zero by construction. */
+  /** severity(instrument.signal) - severity(previous). Always non-zero. */
   severityJump: number;
 }
 
@@ -36,7 +35,7 @@ export interface UniverseChangeSummary {
 export interface AllMarketsSummary {
   upgrades: number;
   downgrades: number;
-  /** Universes that contributed at least one change (either direction). */
+  /** Universes that have a historical snapshot — not just those that changed. */
   universesWithData: number;
 }
 
@@ -47,8 +46,17 @@ export interface SignalChangeVM {
   allMarkets: AllMarketsSummary;
   perUniverse: UniverseChangeSummary[];
   rows: SignalChangeRow[];
-  /** True when no universe in the input had a historical snapshot at all. */
+  /** True when zero universes in the input had a historical snapshot at all. */
   noHistory: boolean;
+  /** True when a universe scope is set AND that universe specifically has no
+   * historical snapshot — distinct from `noHistory` which is global. */
+  scopedNoHistory: boolean;
+  /** Counts for the currently scoped view — global when scope is null,
+   * universe-specific when scope is set. Header renders from these. */
+  scopedCounts: {
+    upgrades: number;
+    downgrades: number;
+  };
 }
 
 export interface UniverseChangeInput {
@@ -142,7 +150,6 @@ export function aggregateSignalChanges(
         universe: input.universe,
         universeDisplayName: input.displayName,
         previous: diff.previous,
-        current: inst.signal,
         severityJump: diff.severityJump,
       });
     }
@@ -177,11 +184,25 @@ export function aggregateSignalChanges(
     return a.instrument.compositeScore - b.instrument.compositeScore;
   });
 
+  // Sum from perUniverse so the invariant (sum-of-parts === total) is
+  // structural rather than coincidental — catches aggregation drift early.
+  const totalUpgrades = perUniverse.reduce((s, u) => s + u.upgrades, 0);
+  const totalDowngrades = perUniverse.reduce((s, u) => s + u.downgrades, 0);
+  const universesWithData = perUniverse.filter((u) => u.hasData).length;
+
   const allMarkets: AllMarketsSummary = {
-    upgrades: allRows.filter((r) => r.severityJump > 0).length,
-    downgrades: allRows.filter((r) => r.severityJump < 0).length,
-    universesWithData: perUniverse.filter((u) => u.hasData).length,
+    upgrades: totalUpgrades,
+    downgrades: totalDowngrades,
+    universesWithData,
   };
+
+  const scopedSummary = options.universeScope
+    ? perUniverse.find((u) => u.universe === options.universeScope) ?? null
+    : null;
+
+  const scopedCounts = scopedSummary
+    ? { upgrades: scopedSummary.upgrades, downgrades: scopedSummary.downgrades }
+    : { upgrades: totalUpgrades, downgrades: totalDowngrades };
 
   return {
     lookback: options.lookback,
@@ -190,6 +211,8 @@ export function aggregateSignalChanges(
     allMarkets,
     perUniverse,
     rows: directionFiltered,
-    noHistory: allMarkets.universesWithData === 0,
+    noHistory: universesWithData === 0,
+    scopedNoHistory: scopedSummary !== null && !scopedSummary.hasData,
+    scopedCounts,
   };
 }

@@ -66,8 +66,16 @@ export async function loadAllSnapshots(
 
 /**
  * Load a historical snapshot from `public/data/history/<universe>-<1w|1m>.json`.
- * Production pipeline (UC-15) will emit these as rolling archives. For E2E we
- * fixture-generate them from `scripts/seed-e2e-data.mjs`.
+ *
+ * Current shape is the MVP fixture convention emitted by
+ * `scripts/seed-e2e-data.mjs`. The production scoring pipeline (UC-15)
+ * emits date-stamped archives at `public/data/history/<universe>/<YYYY-MM-DD>.json`
+ * instead. Before the scheduled scoring workflow resumes, this loader must
+ * be taught to (a) compute the target date from today, (b) look up the
+ * dated path first, (c) fall back to the nearest-prior snapshot on or
+ * before that date, and (d) keep this flat path as a dev-only fallback.
+ * See architecture.md §8 "Historical-snapshot archive convention
+ * reconciliation" for the design. Tracked outside this file.
  */
 export const loadHistoricalSnapshot = cache(async function loadHistoricalSnapshot(
   universe: Universe,

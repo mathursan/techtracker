@@ -56,7 +56,7 @@ export function ChangeTable({ rows }: { rows: SignalChangeRow[] }) {
                       onOpen(row.instrument);
                     }
                   }}
-                  aria-label={`${row.instrument.ticker} ${row.previous} to ${row.current} — open detail`}
+                  aria-label={`${row.instrument.ticker} ${row.previous} to ${row.instrument.signal} — open detail`}
                   className="cursor-pointer border-b transition-colors hover:bg-muted/40 focus-within:bg-muted/40"
                 >
                   <td className="px-2 py-2 font-semibold">{row.instrument.ticker}</td>
@@ -80,7 +80,7 @@ export function ChangeTable({ rows }: { rows: SignalChangeRow[] }) {
                       >
                         {direction === "up" ? "→ ⬆" : "→ ⬇"}
                       </span>
-                      <SignalBadge signal={row.current} />
+                      <SignalBadge signal={row.instrument.signal} />
                     </span>
                   </td>
                   <td

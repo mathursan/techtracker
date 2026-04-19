@@ -232,29 +232,44 @@ await mkdir(dataDir, { recursive: true });
 const historyDir = resolve(dataDir, "history");
 await mkdir(historyDir, { recursive: true });
 
-// Per-universe deltas applied to produce historical snapshots. Positive
-// deltas on `comp` in the HISTORICAL snapshot mean the instrument was
-// scored HIGHER previously — so a negative delta in "now" minus "past"
-// surfaces as a downgrade. We keep the delta list short: first entry in
-// each universe downgrades (score dropped), second upgrades (score rose).
+// Per-universe deltas applied to produce historical snapshots.
+//
+// Because `seededIndicatorsAround` uses the SAME seed in both current and
+// historical for a given ticker, the indicator cluster offsets cancel when
+// the weighted composite is computed — so `historical_composite ≈ current
+// + delta` (modulo clamp and 1-dp rounding). Picking each ticker's current
+// band and the desired delta direction therefore lets us pin exactly
+// which rows are upgrades and which are downgrades.
+//
+// Target for each lookback: one CLEAN upgrade (positive severity jump)
+// and one CLEAN downgrade (negative) per universe, so the page reads
+// balanced and QA can hand-verify counts.
 const HISTORICAL_DELTAS_1M = {
-  stocks: { AAPL: +1.2, INTC: -1.4 },
-  "sector-etfs": { XLE: +1.5, XLK: -0.9 },
-  commodities: { "NG=F": +2.3, "GC=F": -1.2 },
-  india: { "SBIN.NS": +1.3, "ICICIBANK.NS": -0.9 },
-  europe: { "MC.PA": +1.8, "ASML.AS": -0.7 },
+  stocks: { AAPL: +1.2, KO: -1.5 },              // AAPL SB←→B down, KO S→N up
+  "sector-etfs": { XLE: +1.5, XLY: -2.0 },        // XLE N→S down, XLY S→B up
+  commodities: { "ZC=F": +1.0, "HG=F": -2.0 },    // ZC N→S down, HG S→B up
+  india: { "ICICIBANK.NS": +1.0, "SBIN.NS": -1.5 }, // ICICI SB→B down, SBIN S→N up
+  europe: { "MC.PA": +1.0, "NOVN.SW": -1.5 },     // MC N→S down, NOVN S→N up
 };
 
-// 1-week deltas are narrower than 1-month; flip one of the two directions.
 const HISTORICAL_DELTAS_1W = {
-  stocks: { NVDA: -0.6, KO: +0.8 },
-  "sector-etfs": { XLF: -0.6 },
-  commodities: { "CL=F": +1.2 },
-  india: { "RELIANCE.NS": -0.6 },
-  europe: { "SHEL.L": +1.0 },
+  stocks: { AAPL: +1.0, KO: -0.6 },               // AAPL SB→B down, KO S→N up
+  "sector-etfs": { XLY: +2.0, XLU: -1.5 },        // XLY SB→B down, XLU SS→S up
+  commodities: { "ZC=F": +1.0, "HG=F": -1.5 },    // ZC N→S down, HG N→B up
+  india: { "RELIANCE.NS": +1.5, "SBIN.NS": -0.9 }, // REL SB→B down, SBIN S→N up
+  europe: { "NESN.SW": +1.2, "NOVN.SW": -0.8 },   // NESN N→S down, NOVN S→N up
 };
 
 function deriveHistorical(spec, deltas) {
+  const tickerSet = new Set(spec.tickers.map((row) => row.t));
+  for (const t of Object.keys(deltas)) {
+    if (!tickerSet.has(t)) {
+      throw new Error(
+        `Historical delta references unknown ticker '${t}' in universe '${spec.universe}' — ` +
+          `update HISTORICAL_DELTAS_* when you edit that universe's tickers.`,
+      );
+    }
+  }
   const overridden = spec.tickers.map((row) => {
     const delta = deltas[row.t];
     if (delta === undefined) return row;

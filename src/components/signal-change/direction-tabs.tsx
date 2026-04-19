@@ -6,7 +6,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import type { Direction } from "@/domain/signal-change";
 import { cn } from "@/lib/utils";
 
-const TABS: { value: Direction; label: string; icon: string }[] = [
+const DIRECTION_TABS: { value: Direction; label: string; icon: string }[] = [
   { value: "all", label: "All Changes", icon: "🔄" },
   { value: "up", label: "Upgrades", icon: "⬆" },
   { value: "down", label: "Downgrades", icon: "⬇" },
@@ -30,7 +30,7 @@ export function DirectionTabs({ active }: { active: Direction }) {
       aria-label="Direction filter"
       className="flex flex-wrap items-center gap-1 border-b px-6 py-3"
     >
-      {TABS.map((tab) => {
+      {DIRECTION_TABS.map((tab) => {
         const isActive = tab.value === active;
         return (
           <Link
