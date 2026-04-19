@@ -6,7 +6,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import type { SignalsHubView } from "@/domain/signals-hub";
 import { cn } from "@/lib/utils";
 
-const TABS: { view: SignalsHubView; label: string; emoji: string }[] = [
+const VIEW_TABS: { view: SignalsHubView; label: string; emoji: string }[] = [
   { view: "top-buys", label: "Top Buys", emoji: "🟢" },
   { view: "top-sells", label: "Top Sells", emoji: "🔴" },
   { view: "momentum", label: "Momentum", emoji: "⚡" },
@@ -31,7 +31,7 @@ export function ViewModeTabs({ active }: { active: SignalsHubView }) {
       aria-label="Signals Hub view mode"
       className="flex flex-wrap items-center gap-1 border-b px-6 py-3"
     >
-      {TABS.map((tab) => {
+      {VIEW_TABS.map((tab) => {
         const isActive = tab.view === active;
         return (
           <Link

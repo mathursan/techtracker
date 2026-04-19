@@ -229,10 +229,68 @@ const UNIVERSES = [
 ];
 
 await mkdir(dataDir, { recursive: true });
+const historyDir = resolve(dataDir, "history");
+await mkdir(historyDir, { recursive: true });
+
+// Per-universe deltas applied to produce historical snapshots.
+//
+// Because `seededIndicatorsAround` uses the SAME seed in both current and
+// historical for a given ticker, the indicator cluster offsets cancel when
+// the weighted composite is computed — so `historical_composite ≈ current
+// + delta` (modulo clamp and 1-dp rounding). Picking each ticker's current
+// band and the desired delta direction therefore lets us pin exactly
+// which rows are upgrades and which are downgrades.
+//
+// Target for each lookback: one CLEAN upgrade (positive severity jump)
+// and one CLEAN downgrade (negative) per universe, so the page reads
+// balanced and QA can hand-verify counts.
+const HISTORICAL_DELTAS_1M = {
+  stocks: { AAPL: +1.2, KO: -1.5 },              // AAPL SB←→B down, KO S→N up
+  "sector-etfs": { XLE: +1.5, XLY: -2.0 },        // XLE N→S down, XLY S→B up
+  commodities: { "ZC=F": +1.0, "HG=F": -2.0 },    // ZC N→S down, HG S→B up
+  india: { "ICICIBANK.NS": +1.0, "SBIN.NS": -1.5 }, // ICICI SB→B down, SBIN S→N up
+  europe: { "MC.PA": +1.0, "NOVN.SW": -1.5 },     // MC N→S down, NOVN S→N up
+};
+
+const HISTORICAL_DELTAS_1W = {
+  stocks: { AAPL: +1.0, KO: -0.6 },               // AAPL SB→B down, KO S→N up
+  "sector-etfs": { XLY: +2.0, XLU: -1.5 },        // XLY SB→B down, XLU SS→S up
+  commodities: { "ZC=F": +1.0, "HG=F": -1.5 },    // ZC N→S down, HG N→B up
+  india: { "RELIANCE.NS": +1.5, "SBIN.NS": -0.9 }, // REL SB→B down, SBIN S→N up
+  europe: { "NESN.SW": +1.2, "NOVN.SW": -0.8 },   // NESN N→S down, NOVN S→N up
+};
+
+function deriveHistorical(spec, deltas) {
+  const tickerSet = new Set(spec.tickers.map((row) => row.t));
+  for (const t of Object.keys(deltas)) {
+    if (!tickerSet.has(t)) {
+      throw new Error(
+        `Historical delta references unknown ticker '${t}' in universe '${spec.universe}' — ` +
+          `update HISTORICAL_DELTAS_* when you edit that universe's tickers.`,
+      );
+    }
+  }
+  const overridden = spec.tickers.map((row) => {
+    const delta = deltas[row.t];
+    if (delta === undefined) return row;
+    const shifted = Math.max(0, Math.min(10, row.comp + delta));
+    return { ...row, comp: shifted };
+  });
+  return buildSnapshot({ ...spec, tickers: overridden });
+}
 
 for (const spec of UNIVERSES) {
-  const snap = buildSnapshot(spec);
+  const now = buildSnapshot(spec);
   const outFile = resolve(dataDir, `${spec.universe}.json`);
-  await writeFile(outFile, JSON.stringify(snap, null, 2) + "\n", "utf-8");
-  console.log(`Wrote ${outFile} (${snap.instruments.length} instruments)`);
+  await writeFile(outFile, JSON.stringify(now, null, 2) + "\n", "utf-8");
+  console.log(`Wrote ${outFile} (${now.instruments.length} instruments)`);
+
+  const m = deriveHistorical(spec, HISTORICAL_DELTAS_1M[spec.universe] ?? {});
+  const mFile = resolve(historyDir, `${spec.universe}-1m.json`);
+  await writeFile(mFile, JSON.stringify(m, null, 2) + "\n", "utf-8");
+
+  const w = deriveHistorical(spec, HISTORICAL_DELTAS_1W[spec.universe] ?? {});
+  const wFile = resolve(historyDir, `${spec.universe}-1w.json`);
+  await writeFile(wFile, JSON.stringify(w, null, 2) + "\n", "utf-8");
 }
+console.log(`Wrote historical snapshots under ${historyDir}`);

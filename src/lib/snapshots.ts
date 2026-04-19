@@ -64,6 +64,50 @@ export async function loadAllSnapshots(
   return Promise.all(universes.map((u) => loadSnapshot(u)));
 }
 
+/**
+ * Load a historical snapshot from `public/data/history/<universe>-<1w|1m>.json`.
+ *
+ * Current shape is the MVP fixture convention emitted by
+ * `scripts/seed-e2e-data.mjs`. The production scoring pipeline (UC-15)
+ * emits date-stamped archives at `public/data/history/<universe>/<YYYY-MM-DD>.json`
+ * instead. Before the scheduled scoring workflow resumes, this loader must
+ * be taught to (a) compute the target date from today, (b) look up the
+ * dated path first, (c) fall back to the nearest-prior snapshot on or
+ * before that date, and (d) keep this flat path as a dev-only fallback.
+ * See architecture.md §8 "Historical-snapshot archive convention
+ * reconciliation" for the design. Tracked outside this file.
+ */
+export const loadHistoricalSnapshot = cache(async function loadHistoricalSnapshot(
+  universe: Universe,
+  lookback: "1w" | "1m",
+): Promise<ScoreSnapshot | null> {
+  const filePath = path.join(DATA_DIR, "history", `${universe}-${lookback}.json`);
+  let raw: string;
+  try {
+    raw = await readFile(filePath, "utf-8");
+  } catch (err) {
+    const e = err as NodeJS.ErrnoException;
+    if (e.code === "ENOENT") return null;
+    throw err;
+  }
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(raw);
+  } catch {
+    return null;
+  }
+  if (!isSnapshot(parsed)) return null;
+  return parsed;
+});
+
+/** Parallel-load historical snapshots for every universe at a single lookback. */
+export async function loadAllHistoricalSnapshots(
+  universes: readonly Universe[],
+  lookback: "1w" | "1m",
+): Promise<Array<ScoreSnapshot | null>> {
+  return Promise.all(universes.map((u) => loadHistoricalSnapshot(u, lookback)));
+}
+
 function isSnapshot(x: unknown): x is ScoreSnapshot {
   if (typeof x !== "object" || x === null) return false;
   const o = x as Record<string, unknown>;
