@@ -2,10 +2,17 @@ import { notFound } from "next/navigation";
 
 import { NoDataView } from "@/components/shell/no-data-view";
 import { PlaceholderView } from "@/components/shell/placeholder-view";
+import { PortfolioBuilderView } from "@/components/portfolio/portfolio-builder-view";
 import { ScreenerView } from "@/components/screener/screener-view";
 import { SignalChangeView } from "@/components/signal-change/signal-change-view";
 import { SignalsHubView } from "@/components/signals-hub/signals-hub-view";
 import type { Universe } from "@/domain/types";
+import { buildPortfolioVM } from "@/domain/portfolio";
+import {
+  PORTFOLIO_PRESETS,
+  parsePresetSlug,
+  presetBySlug,
+} from "@/domain/portfolio-presets";
 import {
   aggregateSignalChanges,
   parseDirection,
@@ -75,6 +82,33 @@ export default async function TabPage({
     const viewParam = Array.isArray(rawView) ? rawView[0] : rawView;
     const view = parseSignalsHubView(viewParam);
     return <SignalsHubView vm={vm} view={view} />;
+  }
+
+  if (slug === "portfolio") {
+    const rawPreset = query.preset;
+    const activeSlug = parsePresetSlug(
+      Array.isArray(rawPreset) ? rawPreset[0] : rawPreset,
+    );
+    if (!activeSlug) {
+      return (
+        <PortfolioBuilderView
+          presets={PORTFOLIO_PRESETS}
+          activeSlug={null}
+          vm={null}
+        />
+      );
+    }
+    const universeTabs = TABS.filter((t) => t.universe);
+    const universes = universeTabs.map((t) => t.universe as Universe);
+    const snapshots = await loadAllSnapshots(universes);
+    const vm = buildPortfolioVM(presetBySlug(activeSlug), snapshots);
+    return (
+      <PortfolioBuilderView
+        presets={PORTFOLIO_PRESETS}
+        activeSlug={activeSlug}
+        vm={vm}
+      />
+    );
   }
 
   if (slug === "signal-change") {

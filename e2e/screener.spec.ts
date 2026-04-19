@@ -36,8 +36,8 @@ test.describe("screener view (UC-01)", () => {
     expect(first).toMatch(/INTC/);
   });
 
-  test("tool tab /portfolio keeps the roadmap placeholder", async ({ page }) => {
-    await page.goto("/portfolio");
-    await expect(page.getByText(/Ships in issue #12/)).toBeVisible();
+  test("tool tab /signal-change has its real view (UC-07 shipped) and /analytics still placeholds", async ({ page }) => {
+    await page.goto("/analytics");
+    await expect(page.getByText(/Ships in issue/)).toBeVisible();
   });
 });
