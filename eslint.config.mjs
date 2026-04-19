@@ -16,8 +16,9 @@ const eslintConfig = defineConfig([
     "test-results/**",
     // Generated fixtures.
     "src/domain/__fixtures__/band-grid.json",
-    // Python package lives outside TS lint scope.
+    // Python package + venv live outside TS lint scope.
     "scoring/**",
+    ".venv/**",
   ]),
 ]);
 
