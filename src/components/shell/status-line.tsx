@@ -1,48 +1,37 @@
 import { Clock } from "lucide-react";
 
-import { loadSnapshot } from "@/lib/snapshots";
+import { latestAsOf } from "@/lib/snapshots";
 import type { Universe } from "@/domain/types";
 import { TABS } from "@/lib/nav";
 
-function formatAsOf(iso: string): string {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return "—";
-  return d.toLocaleString("en-US", {
-    month: "short",
-    day: "numeric",
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-    timeZone: "UTC",
-    timeZoneName: "short",
-  });
+/**
+ * Format as US Eastern time — the reference timezone for the scoring
+ * pipeline (post-US-close snapshots). Literal "ET" suffix keeps output
+ * stable across ICU versions where `timeZoneName: "short"` can emit
+ * "EDT" / "EST" / "GMT-5".
+ */
+const ET_FORMATTER = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  hour: "numeric",
+  minute: "2-digit",
+  hour12: true,
+  timeZone: "America/New_York",
+});
+
+function formatAsOf(d: Date): string {
+  return `${ET_FORMATTER.format(d)} ET`;
 }
 
-/**
- * Finds the newest snapshot `asOf` across every screener universe and
- * renders it. Tool tabs have no universe of their own so we show the same
- * "latest across all universes" timestamp — that's what a trader wants.
- *
- * Rendered from a server component; the `loadSnapshot` call reads the
- * committed public/data tree at request time. No client data fetching.
- */
 export async function StatusLine() {
   const universes: Universe[] = TABS
     .map((t) => t.universe)
     .filter((u): u is Universe => Boolean(u));
 
-  const snapshots = await Promise.all(universes.map((u) => loadSnapshot(u)));
-  const asOfs = snapshots
-    .map((s) => s?.asOf)
-    .filter((v): v is string => typeof v === "string");
-
-  const latest = asOfs
-    .map((iso) => new Date(iso))
-    .filter((d) => !Number.isNaN(d.getTime()))
-    .sort((a, b) => b.getTime() - a.getTime())[0];
+  const latest = await latestAsOf(universes);
 
   const label = latest
-    ? `Last refreshed: ${formatAsOf(latest.toISOString())}`
+    ? `Last refreshed: ${formatAsOf(latest)}`
     : "No snapshot available yet — data refreshes weekday after close.";
 
   return (

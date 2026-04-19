@@ -1,5 +1,6 @@
 import "server-only";
 
+import { cache } from "react";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -12,11 +13,12 @@ const DATA_DIR = path.join(process.cwd(), "public", "data");
  *   - file missing (ENOENT)
  *   - invalid JSON (parse error)
  *   - payload missing required fields
- * The page then renders NoDataView instead of crashing. Upstream snapshots
- * come from the scoring pipeline, which enforces the shape — this is a
- * defence-in-depth check for local dev + CI seed files.
+ *
+ * Wrapped in React.cache so repeated calls within a single request (e.g.
+ * StatusLine fan-out + page.tsx reading its one universe) de-duplicate the
+ * file read.
  */
-export async function loadSnapshot(
+export const loadSnapshot = cache(async function loadSnapshot(
   universe: Universe,
 ): Promise<ScoreSnapshot | null> {
   const filePath = path.join(DATA_DIR, `${universe}.json`);
@@ -33,13 +35,25 @@ export async function loadSnapshot(
   try {
     parsed = JSON.parse(raw);
   } catch {
-    // Corrupted or partial write — render NoDataView rather than 500.
     return null;
   }
 
   if (!isSnapshot(parsed)) return null;
   return parsed;
-}
+});
+
+/** Return the newest `asOf` across every screener-universe snapshot, or
+ * null when zero universes have data. Cached per request. */
+export const latestAsOf = cache(async function latestAsOf(
+  universes: readonly Universe[],
+): Promise<Date | null> {
+  const snapshots = await Promise.all(universes.map((u) => loadSnapshot(u)));
+  const dates = snapshots
+    .map((s) => (s ? new Date(s.asOf) : null))
+    .filter((d): d is Date => d !== null && !Number.isNaN(d.getTime()));
+  if (dates.length === 0) return null;
+  return dates.reduce((a, b) => (b.getTime() > a.getTime() ? b : a));
+});
 
 function isSnapshot(x: unknown): x is ScoreSnapshot {
   if (typeof x !== "object" || x === null) return false;
