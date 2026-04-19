@@ -13,10 +13,15 @@ A trader wants to see "what would a Stagflation Hedge portfolio look like right 
 - Route: `/portfolio` (existing tool tab, `plannedIssue: 12` in `src/lib/nav.ts`).
 - Page header: `h1 "Portfolio Builder"` + one-sentence lede.
 - **Preset cards row** — 4 clickable cards, one per macro regime:
-  1. 🔄 **Late Cycle Expansion** — Quality equity, short duration, gold.
+  1. 🔄 **Late Cycle Expansion** — Quality equity, defensive sectors, gold.
   2. 🔥 **Stagflation Hedge** — Hard assets, commodities, inflation protection.
-  3. 🛡️ **Risk-Off / Recession** — Max quality bonds, gold, min-vol equity.
+  3. 🛡️ **Risk-Off / Recession** — Gold, staples, utilities, min-vol equity.
   4. 🚀 **Reflation / Commodity Bull** — Recovery + inflation broad equity + EM + commodities.
+
+  Bond-sleeve wording ("short duration", "quality bonds") is out of the
+  thesis copy until the `fixed-income` universe seeds. Once it ships the
+  baskets can re-add a bond proxy and the copy can promise what's on the
+  plate.
   Each card shows emoji, name, one-line thesis, and `N assets`. Active preset visually highlighted.
 - **Portfolio panel** — active-preset holdings. Summary strip with `SCORE · WEIGHT · HOLDINGS (N)`. Table columns: `Ticker · Name · Universe · Signal · Score · Weight %`.
 - **Empty state** — before any preset is chosen, "Pick a preset to load a model portfolio" with a pointer to UC-09 for custom.

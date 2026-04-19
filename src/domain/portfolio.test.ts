@@ -70,6 +70,13 @@ describe("portfolio-presets config", () => {
     }
   });
 
+  it("tickers within a preset are unique (holdings-table uses ticker as React key)", () => {
+    for (const p of PORTFOLIO_PRESETS) {
+      const tickers = p.holdings.map((h) => h.ticker);
+      expect(new Set(tickers).size).toBe(tickers.length);
+    }
+  });
+
   it("parsePresetSlug accepts the 4 valid slugs, rejects others", () => {
     expect(parsePresetSlug("late-cycle")).toBe("late-cycle");
     expect(parsePresetSlug("risk-off")).toBe("risk-off");
@@ -164,5 +171,42 @@ describe("buildPortfolioVM", () => {
     const s = snap("stocks", [inst("A"), inst("C")]);
     const vm = buildPortfolioVM(p, [s]);
     expect(vm.holdings.map((h) => h.ticker)).toEqual(["A", "GHOST", "C"]);
+  });
+
+  it("all-explicit weights pass through unchanged", () => {
+    const p = preset([
+      { ticker: "A", weight: 50 },
+      { ticker: "B", weight: 30 },
+      { ticker: "C", weight: 20 },
+    ]);
+    const s = snap("stocks", [
+      inst("A", { compositeScore: 10 }),
+      inst("B", { compositeScore: 5 }),
+      inst("C", { compositeScore: 2 }),
+    ]);
+    const vm = buildPortfolioVM(p, [s]);
+    expect(vm.holdings.map((h) => h.weight)).toEqual([50, 30, 20]);
+    // (50*10 + 30*5 + 20*2) / 100 = (500+150+40)/100 = 6.9
+    expect(vm.score).toBe(6.9);
+  });
+
+  it("handles explicit weights summing > 100 by zeroing the unweighted residual", () => {
+    // Author mistake: two explicit weights sum to 110. Un-weighted C should
+    // receive zero rather than a negative share, and the score should
+    // re-normalise over the resolved weight mass (here, 110).
+    const p = preset([
+      { ticker: "A", weight: 60 },
+      { ticker: "B", weight: 50 },
+      { ticker: "C" },
+    ]);
+    const s = snap("stocks", [
+      inst("A", { compositeScore: 8 }),
+      inst("B", { compositeScore: 4 }),
+      inst("C", { compositeScore: 6 }),
+    ]);
+    const vm = buildPortfolioVM(p, [s]);
+    expect(vm.holdings.map((h) => h.weight)).toEqual([60, 50, 0]);
+    // (60*8 + 50*4) / 110 = 680 / 110 ≈ 6.18 → rounded 1dp = 6.2
+    expect(vm.score).toBe(6.2);
   });
 });

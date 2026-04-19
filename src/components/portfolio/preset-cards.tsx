@@ -23,7 +23,7 @@ export function PresetCards({
               key={p.slug}
               href={isActive ? "/portfolio" : `/portfolio?preset=${p.slug}`}
               scroll={false}
-              aria-pressed={isActive}
+              aria-current={isActive ? "true" : undefined}
               className={cn(
                 "flex flex-col gap-1 rounded-lg border bg-background p-3 shadow-sm transition-colors hover:bg-muted",
                 isActive && "border-primary bg-primary/10",

@@ -32,7 +32,7 @@ test.describe("portfolio builder — presets (UC-08)", () => {
   test("deep link /portfolio?preset=late-cycle loads Late Cycle Expansion on first paint", async ({ page }) => {
     await page.goto("/portfolio?preset=late-cycle");
     // Active card marker + one expected ticker.
-    const activeCard = page.locator('[aria-pressed="true"]');
+    const activeCard = page.locator('[aria-current="true"]');
     await expect(activeCard).toContainText(/Late Cycle Expansion/i);
     await expect(page.getByRole("cell", { name: "AAPL", exact: true })).toBeVisible();
   });
@@ -55,7 +55,7 @@ test.describe("portfolio builder — presets (UC-08)", () => {
     await page.goto("/portfolio?preset=stagflation");
     await expect(page.getByRole("cell", { name: "GC=F", exact: true })).toBeVisible();
     // Click the active card — should deselect and return to empty state.
-    await page.locator('[aria-pressed="true"]').click();
+    await page.locator('[aria-current="true"]').click();
     await expect(page).toHaveURL(/\/portfolio$/);
     await expect(page.getByText(/Pick a preset to load a model portfolio/i)).toBeVisible();
   });

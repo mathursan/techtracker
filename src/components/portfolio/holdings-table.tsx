@@ -3,30 +3,19 @@
 import { useState } from "react";
 
 import type { PortfolioHoldingVM } from "@/domain/portfolio";
-import type { Instrument } from "@/domain/types";
+import type { Instrument, Universe } from "@/domain/types";
 import { scoreTextClass } from "@/domain/colors";
+import { TABS } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 import { SignalBadge } from "@/components/screener/signal-badge";
 import { TickerDetailModal } from "@/components/detail/ticker-detail-modal";
 
-const UNIVERSE_LABELS: Record<string, string> = {
-  stocks: "Stocks",
-  "sector-etfs": "Sector ETF",
-  "industry-etfs": "Industry ETF",
-  "country-etfs": "Country ETF",
-  currencies: "FX",
-  commodities: "Commodity",
-  india: "India",
-  "hong-kong": "Hong Kong",
-  singapore: "Singapore",
-  japan: "Japan",
-  europe: "Europe",
-  "fixed-income": "Fixed Income",
-  "broad-market": "Broad Market",
-  "growth-value": "Growth/Value",
-  "portfolio-etfs": "Portfolio ETF",
-};
+// Derived from the nav config so the "Universe" column can't drift from
+// the tab strip's labels. Computed once at module load.
+const UNIVERSE_LABELS: Partial<Record<Universe, string>> = Object.fromEntries(
+  TABS.filter((t) => t.universe).map((t) => [t.universe as Universe, t.label]),
+) as Partial<Record<Universe, string>>;
 
 export function HoldingsTable({ holdings }: { holdings: PortfolioHoldingVM[] }) {
   const [open, setOpen] = useState(false);

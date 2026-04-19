@@ -37,7 +37,10 @@ export const PORTFOLIO_PRESETS: readonly PortfolioPreset[] = [
     slug: "late-cycle",
     emoji: "🔄",
     name: "Late Cycle Expansion",
-    thesis: "Quality equity, short duration, gold",
+    // Short-duration bond sleeve will rejoin the basket once the
+    // `fixed-income` universe is seeded. Copy avoids promising what's
+    // not in the picks today.
+    thesis: "Quality equity, defensive sectors, gold",
     holdings: [
       { ticker: "AAPL" },
       { ticker: "MSFT" },
@@ -66,7 +69,10 @@ export const PORTFOLIO_PRESETS: readonly PortfolioPreset[] = [
     slug: "risk-off",
     emoji: "🛡️",
     name: "Risk-Off / Recession",
-    thesis: "Max quality bonds, gold, min-vol equity",
+    // Quality-bond sleeve will rejoin once `fixed-income` universe is
+    // seeded; until then the basket is gold + low-beta staples/utilities
+    // and the copy reflects only what's actually in it.
+    thesis: "Gold, staples, utilities, min-vol equity",
     holdings: [
       { ticker: "GC=F" },
       { ticker: "XLP" },
