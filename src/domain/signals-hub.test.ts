@@ -172,23 +172,59 @@ describe("aggregateSignalsHub", () => {
     expect(sum).toBe(row.total);
   });
 
-  it("universeCards carry through summary numbers", () => {
+  it("universeCards carry through summary numbers and count Buy/Sell inclusively", () => {
     const vm = aggregateSignalsHub([
       {
         universe: "stocks",
         displayName: "Top 50 Stocks",
         snapshot: snap("stocks", [
           inst("A", "stocks", { compositeScore: 9, signal: "Strong Buy" }),
-          inst("B", "stocks", { compositeScore: 2, signal: "Strong Sell" }),
+          inst("B", "stocks", { compositeScore: 7, signal: "Buy" }),
+          inst("C", "stocks", { compositeScore: 2, signal: "Strong Sell" }),
+          inst("D", "stocks", { compositeScore: 4, signal: "Sell" }),
+          inst("E", "stocks", { compositeScore: 5.5, signal: "Neutral" }),
         ]),
       },
     ]);
     const card = vm.universeCards[0];
     expect(card.hasData).toBe(true);
-    expect(card.totalCount).toBe(2);
-    expect(card.strongBuyCount).toBe(1);
-    expect(card.strongSellCount).toBe(1);
+    expect(card.totalCount).toBe(5);
+    expect(card.buyCount).toBe(2);
+    expect(card.sellCount).toBe(2);
     expect(card.displayName).toBe("Top 50 Stocks");
+  });
+
+  it("tie-breaks equal composites by 1M perf (Buys desc, Sells asc)", () => {
+    const vm = aggregateSignalsHub([
+      {
+        universe: "stocks",
+        displayName: "Stocks",
+        snapshot: snap("stocks", [
+          inst("A", "stocks", { compositeScore: 8.5, perfOneMonth: 4, signal: "Strong Buy" }),
+          inst("B", "stocks", { compositeScore: 8.5, perfOneMonth: 9, signal: "Strong Buy" }),
+          inst("X", "stocks", { compositeScore: 2.5, perfOneMonth: -1, signal: "Strong Sell" }),
+          inst("Y", "stocks", { compositeScore: 2.5, perfOneMonth: -15, signal: "Strong Sell" }),
+        ]),
+      },
+    ]);
+    expect(vm.topBuys.map((s) => s.instrument.ticker)).toEqual(["B", "A"]);
+    expect(vm.topSells.map((s) => s.instrument.ticker)).toEqual(["Y", "X"]);
+  });
+
+  it("heatmap row order matches input order (page relies on index alignment)", () => {
+    const vm = aggregateSignalsHub([
+      { universe: "stocks", displayName: "Stocks", snapshot: null },
+      {
+        universe: "commodities",
+        displayName: "Commodities",
+        snapshot: snap("commodities", [inst("GC", "commodities")]),
+      },
+      { universe: "india", displayName: "India", snapshot: null },
+    ]);
+    expect(vm.heatmap.map((r) => r.universe)).toEqual(["stocks", "commodities", "india"]);
+    expect(vm.heatmap[0].hasData).toBe(false);
+    expect(vm.heatmap[1].hasData).toBe(true);
+    expect(vm.heatmap[2].hasData).toBe(false);
   });
 });
 

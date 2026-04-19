@@ -13,7 +13,7 @@ export function UniverseSummaryCard({ card }: { card: UniverseCard }) {
       >
         <div className="font-medium">{card.displayName}</div>
         <div className="text-[10px] uppercase tracking-wide">
-          No data yet
+          No data yet · will populate after pipeline run
         </div>
       </div>
     );
@@ -35,10 +35,10 @@ export function UniverseSummaryCard({ card }: { card: UniverseCard }) {
       </div>
       <div className="flex flex-wrap items-center gap-2 text-[11px] font-mono">
         <span className="text-emerald-600 dark:text-emerald-400">
-          🟢 {card.strongBuyCount}
+          <span aria-hidden="true">🟢</span> {card.buyCount}
         </span>
         <span className="text-rose-600 dark:text-rose-400">
-          🔴 {card.strongSellCount}
+          <span aria-hidden="true">🔴</span> {card.sellCount}
         </span>
         <span className="text-muted-foreground">{card.totalCount} total</span>
       </div>

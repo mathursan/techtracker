@@ -26,25 +26,33 @@ export function SignalsHubView({
       <ViewModeTabs active={view} />
 
       <div className="flex-1 px-6 py-4">
-        {view === "top-buys" && (
-          <SpotlightGrid
-            items={vm.topBuys}
-            emptyCopy="No Strong Buy or Buy signals across published snapshots."
-          />
+        {vm.snapshotCount === 0 && view !== "heatmap" ? (
+          <div className="grid h-40 place-items-center rounded border border-dashed text-sm text-muted-foreground">
+            No snapshots published yet.
+          </div>
+        ) : (
+          <>
+            {view === "top-buys" && (
+              <SpotlightGrid
+                items={vm.topBuys}
+                emptyCopy="No Strong Buy or Buy signals across published snapshots."
+              />
+            )}
+            {view === "top-sells" && (
+              <SpotlightGrid
+                items={vm.topSells}
+                emptyCopy="No Strong Sell or Sell signals across published snapshots."
+              />
+            )}
+            {view === "momentum" && (
+              <SpotlightGrid
+                items={vm.momentum}
+                emptyCopy="No 1M % performance data in published snapshots."
+              />
+            )}
+            {view === "heatmap" && <HeatmapGrid rows={vm.heatmap} />}
+          </>
         )}
-        {view === "top-sells" && (
-          <SpotlightGrid
-            items={vm.topSells}
-            emptyCopy="No Strong Sell or Sell signals across published snapshots."
-          />
-        )}
-        {view === "momentum" && (
-          <SpotlightGrid
-            items={vm.momentum}
-            emptyCopy="No 1M % performance data in published snapshots."
-          />
-        )}
-        {view === "heatmap" && <HeatmapGrid rows={vm.heatmap} />}
       </div>
     </div>
   );

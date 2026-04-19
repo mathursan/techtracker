@@ -33,8 +33,11 @@ export interface UniverseCard {
   hasData: boolean;
   totalCount: number;
   avgScore: number;
-  strongBuyCount: number;
-  strongSellCount: number;
+  /** Count of instruments flagged Strong Buy OR Buy — matches the Top Buys
+   * list filter one panel below. */
+  buyCount: number;
+  /** Count of instruments flagged Strong Sell OR Sell — matches Top Sells. */
+  sellCount: number;
 }
 
 export interface SpotlightVM {
@@ -104,19 +107,24 @@ export function aggregateSignalsHub(inputs: readonly UniverseInput[]): SignalsHu
         hasData: false,
         totalCount: 0,
         avgScore: 0,
-        strongBuyCount: 0,
-        strongSellCount: 0,
+        buyCount: 0,
+        sellCount: 0,
       };
     }
-    const s = snap.summary;
+    let buyCount = 0;
+    let sellCount = 0;
+    for (const inst of snap.instruments) {
+      if (BUY_SIGNALS.has(inst.signal)) buyCount += 1;
+      else if (SELL_SIGNALS.has(inst.signal)) sellCount += 1;
+    }
     return {
       universe: input.universe,
       displayName: input.displayName,
       hasData: true,
-      totalCount: s.totalCount,
-      avgScore: s.avgScore,
-      strongBuyCount: s.strongBuyCount,
-      strongSellCount: s.strongSellCount,
+      totalCount: snap.summary.totalCount,
+      avgScore: snap.summary.avgScore,
+      buyCount,
+      sellCount,
     };
   });
 
@@ -134,7 +142,7 @@ export function aggregateSignalsHub(inputs: readonly UniverseInput[]): SignalsHu
     .sort((a, b) => {
       const byScore = b.instrument.compositeScore - a.instrument.compositeScore;
       if (byScore !== 0) return byScore;
-      return (b.instrument.perfOneMonth ?? 0) - (a.instrument.perfOneMonth ?? 0);
+      return b.instrument.perfOneMonth - a.instrument.perfOneMonth;
     });
 
   const sells = allInstruments
@@ -142,7 +150,7 @@ export function aggregateSignalsHub(inputs: readonly UniverseInput[]): SignalsHu
     .sort((a, b) => {
       const byScore = a.instrument.compositeScore - b.instrument.compositeScore;
       if (byScore !== 0) return byScore;
-      return (a.instrument.perfOneMonth ?? 0) - (b.instrument.perfOneMonth ?? 0);
+      return a.instrument.perfOneMonth - b.instrument.perfOneMonth;
     });
 
   const momentum = allInstruments

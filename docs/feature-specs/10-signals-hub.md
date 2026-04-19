@@ -12,7 +12,7 @@ Trader opens the app with no specific universe in mind and wants to answer "what
 ### Layout
 - Route: `/signals-hub` (existing tool tab, `plannedIssue: 10` in `src/lib/nav.ts`).
 - Page header: `h1` "Signals Hub" + one-sentence lede.
-- **Universe summary strip** — up to 15 compact cards, one per universe in `TABS` (Row 1 + Row 2 universe-backed slugs). Card shows: label · avg composite · `🟢 N / 🔴 N` (Strong Buy / Strong Sell count) · `N total`. Universes without a snapshot render as a dimmed placeholder card ("No data yet · will populate after pipeline run"). Each populated card is a `<Link>` to the universe's screener (`/{slug}`).
+- **Universe summary strip** — one compact card per universe-backed tab in `TABS` (14 entries today; `portfolio-etfs` is in the `Universe` type but not yet wired as a tab). Card shows: label · avg composite · `🟢 N` (count with signal ∈ {Strong Buy, Buy}) / `🔴 N` (count with signal ∈ {Strong Sell, Sell}) · `N total`. Counts match the Top Buys / Top Sells filters one panel below. Universes without a snapshot render as a dimmed placeholder card ("No data yet · will populate after pipeline run"). Each populated card is a `<Link>` to the universe's screener (`/{slug}`).
 - **View-mode tabs** — four segmented buttons: `Top Buys`, `Top Sells`, `Momentum`, `Heatmap`. URL-backed via `?view=`. Default `top-buys`. Matches the screener's chip-row / search URL-as-state pattern.
 - **Content panel** — driven by the selected view:
   - `Top Buys` · 12 spotlight cards, cross-universe, signal ∈ {Strong Buy, Buy}, sorted by `compositeScore` desc, tie-break by `1M%` desc.
@@ -32,12 +32,12 @@ Trader opens the app with no specific universe in mind and wants to answer "what
 | ID | Requirement |
 |---|---|
 | R1 | `/signals-hub` renders the universe strip, view-mode tabs, and content panel in that vertical order. |
-| R2 | Universe strip shows one card per `TABS` entry with `universe != null` (15 max). Populated cards link to `/{slug}`; empty cards are non-interactive. |
+| R2 | Universe strip shows one card per `TABS` entry with `universe != null` (14 today; max 15 when portfolio-etfs lands). Populated cards link to `/{slug}`; empty cards are non-interactive. |
 | R3 | View-mode tab selection is URL-backed via `?view=top-buys|top-sells|momentum|heatmap`. Default `top-buys`. Deep link `/signals-hub?view=heatmap` renders Heatmap on first paint. |
 | R4 | `Top Buys` shows at most 12 spotlight cards, only signal ∈ {Strong Buy, Buy}, sorted by composite desc. |
 | R5 | `Top Sells` shows at most 12 spotlight cards, only signal ∈ {Strong Sell, Sell}, sorted by composite asc. |
 | R6 | `Momentum` shows at most 12 spotlight cards, any signal, sorted by `|perfOneMonth|` desc. Null/missing `perfOneMonth` excluded. |
-| R7 | `Heatmap` renders a 15 × 5 grid (one row per universe, one column per band). Cell shows count + colored background; zero cells dim. |
+| R7 | `Heatmap` renders an N × 5 grid (one row per universe-backed tab, one column per band). Cell shows count + colored background; zero cells dim. |
 | R8 | Clicking (or Enter on) a spotlight card opens the existing `TickerDetailModal` with that instrument loaded. Esc / backdrop / X closes. |
 | R9 | Aggregation is derived from whatever snapshots exist in `public/data/`. No hardcoded instrument list. If zero snapshots exist, the content panel shows "No snapshots published yet". |
 | R10 | `pnpm lint / typecheck / test / test:e2e / build / pytest` all green. |

@@ -221,7 +221,9 @@ const UNIVERSES = [
       { t: "MC.PA", n: "LVMH Moët Hennessy", p: 712.9, m1: -2.3, m3: -5.1, m12: 3.4, comp: 4.7 },
       { t: "NESN.SW", n: "Nestlé SA", p: 92.4, m1: -1.8, m3: -3.5, m12: -8.2, comp: 4.1 },
       { t: "NOVN.SW", n: "Novartis AG", p: 96.2, m1: 1.4, m3: 3.8, m12: 11.4, comp: 5.7 },
-      { t: "SHEL.L", n: "Shell plc", p: 28.3, m1: -3.8, m3: -7.4, m12: -2.1, comp: 3.7 },
+      // Yahoo quotes `.L` tickers in GBX (pence), so ~2830 is the right order
+      // of magnitude here. Don't "fix" to 28.3 — that's the GBP figure.
+      { t: "SHEL.L", n: "Shell plc", p: 2830, m1: -3.8, m3: -7.4, m12: -2.1, comp: 3.7 },
     ],
   },
 ];
