@@ -31,9 +31,9 @@ export function ActivePresetBanner() {
       className="border-b bg-amber-50 px-6 py-2 text-xs text-amber-800 dark:bg-amber-950/40 dark:text-amber-300"
     >
       Active preset:{" "}
-      <span className="font-semibold">{name}</span>. Score column uses these
-      weights. Cross-tab aggregators (Signals Hub, Signal Change, Portfolio)
-      ship in a phase-2 follow-up.
+      <span className="font-semibold">{name}</span>. Applies to the screener
+      Score column and the Analytics charts. Signals Hub, Signal Change, and
+      Portfolio aggregators ship in a phase-2 follow-up.
     </div>
   );
 }

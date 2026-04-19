@@ -46,3 +46,15 @@ export function performanceTextClass(pct: number): string {
   if (pct < 0) return "text-rose-600 dark:text-rose-400";
   return "text-muted-foreground";
 }
+
+/**
+ * Explicit hex colors per tone for use inside SVG `fill` / `stroke` where
+ * Tailwind utility classes don't pipe through. Keep the brand palette
+ * here so every chart (radar, sector average, histogram, etc.) renders
+ * with identical shades.
+ */
+export const TONE_HEX: Record<ColorTone, string> = {
+  green: "#10b981", // emerald-500
+  amber: "#f59e0b", // amber-500
+  red: "#f43f5e",   // rose-500
+};
