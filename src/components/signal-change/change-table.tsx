@@ -1,23 +1,14 @@
 "use client";
 
-import { useState } from "react";
-
 import type { SignalChangeRow } from "@/domain/signal-change";
-import type { Instrument } from "@/domain/types";
 import { performanceTextClass, scoreTextClass } from "@/domain/colors";
 import { cn } from "@/lib/utils";
 
-import { SignalBadge } from "@/components/screener/signal-badge";
-import { TickerDetailModal } from "@/components/detail/ticker-detail-modal";
+import { SignalBadge } from "@/components/shared/signal-badge";
+import { useTickerDetailModal } from "@/components/detail/use-ticker-detail-modal";
 
 export function ChangeTable({ rows }: { rows: SignalChangeRow[] }) {
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<Instrument | null>(null);
-
-  const onOpen = (inst: Instrument) => {
-    setActive(inst);
-    setOpen(true);
-  };
+  const { openDetail, modal } = useTickerDetailModal();
 
   if (rows.length === 0) {
     return (
@@ -49,11 +40,11 @@ export function ChangeTable({ rows }: { rows: SignalChangeRow[] }) {
                   key={`${row.universe}:${row.instrument.ticker}`}
                   role="button"
                   tabIndex={0}
-                  onClick={() => onOpen(row.instrument)}
+                  onClick={() => openDetail(row.instrument)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault();
-                      onOpen(row.instrument);
+                      openDetail(row.instrument);
                     }
                   }}
                   aria-label={`${row.instrument.ticker} ${row.previous} to ${row.instrument.signal} — open detail`}
@@ -106,11 +97,7 @@ export function ChangeTable({ rows }: { rows: SignalChangeRow[] }) {
           </tbody>
         </table>
       </div>
-      <TickerDetailModal
-        instrument={active}
-        open={open}
-        onOpenChange={setOpen}
-      />
+      {modal}
     </>
   );
 }

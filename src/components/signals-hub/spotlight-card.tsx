@@ -4,7 +4,7 @@ import type { SpotlightVM } from "@/domain/signals-hub";
 import { performanceTextClass, scoreTextClass } from "@/domain/colors";
 import { cn } from "@/lib/utils";
 
-import { SignalBadge } from "@/components/screener/signal-badge";
+import { SignalBadge } from "@/components/shared/signal-badge";
 
 export function SpotlightCard({
   vm,

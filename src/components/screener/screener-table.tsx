@@ -9,10 +9,10 @@ import { SIGNAL_SEVERITY } from "@/domain/bands";
 import { performanceTextClass, scoreTextClass } from "@/domain/colors";
 import { cn } from "@/lib/utils";
 
-import { SignalBadge } from "./signal-badge";
+import { SignalBadge } from "@/components/shared/signal-badge";
 import { IndicatorScoreCell } from "./indicator-score-cell";
 import { TrendSparkline } from "./trend-sparkline";
-import { TickerDetailModal } from "@/components/detail/ticker-detail-modal";
+import { useTickerDetailModal } from "@/components/detail/use-ticker-detail-modal";
 
 const INDICATOR_HEADER_LABELS: Record<IndicatorId, string> = {
   ma_trend: "MA Trend",
@@ -87,15 +87,7 @@ export function ScreenerTable({ instruments }: { instruments: Instrument[] }) {
     key: "compositeScore",
     direction: "desc",
   });
-  const [detailOpen, setDetailOpen] = useState(false);
-  const [detailInstrument, setDetailInstrument] = useState<Instrument | null>(
-    null,
-  );
-
-  const openDetail = (inst: Instrument) => {
-    setDetailInstrument(inst);
-    setDetailOpen(true);
-  };
+  const { openDetail, modal } = useTickerDetailModal();
 
   const rows = useMemo(() => sortInstruments(instruments, sort), [instruments, sort]);
 
@@ -203,11 +195,7 @@ export function ScreenerTable({ instruments }: { instruments: Instrument[] }) {
           ))}
         </tbody>
       </table>
-      <TickerDetailModal
-        instrument={detailInstrument}
-        open={detailOpen}
-        onOpenChange={setDetailOpen}
-      />
+      {modal}
     </div>
   );
 }
