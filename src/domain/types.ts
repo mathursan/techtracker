@@ -57,6 +57,12 @@ export interface Instrument {
   compositeScore: number;
   signal: Signal;
   previousSignal?: Signal;
+  /**
+   * Chip-filter tags. Each entry matches a chip `key` in `UniverseSummary.filters`.
+   * Typically populated by the scoring pipeline (sector for stocks, region for
+   * country ETFs, etc.). Absent / empty means the instrument only matches "All".
+   */
+  tags?: string[];
   asOf: string;
 }
 

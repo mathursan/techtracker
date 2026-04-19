@@ -51,16 +51,16 @@ function signalForScore(score) {
 }
 
 const TICKERS = [
-  { t: "AAPL", n: "Apple Inc.", p: 234.12, m1: 8.45, m3: 15.2, comp: 7.2 },
-  { t: "MSFT", n: "Microsoft Corporation", p: 425.91, m1: 12.3, m3: 22.8, comp: 8.4 },
-  { t: "NVDA", n: "NVIDIA Corporation", p: 138.55, m1: 18.7, m3: 35.4, comp: 8.9 },
-  { t: "AMZN", n: "Amazon.com Inc.", p: 198.04, m1: 4.2, m3: 9.1, comp: 6.8 },
-  { t: "META", n: "Meta Platforms Inc.", p: 583.21, m1: 9.8, m3: 18.3, comp: 7.4 },
-  { t: "INTC", n: "Intel Corporation", p: 21.45, m1: -12.5, m3: -25.8, comp: 2.8 },
-  { t: "XOM", n: "Exxon Mobil Corporation", p: 109.88, m1: -4.1, m3: -8.3, comp: 3.9 },
-  { t: "KO", n: "The Coca-Cola Company", p: 68.45, m1: 1.2, m3: 3.4, comp: 5.5 },
-  { t: "DIS", n: "The Walt Disney Company", p: 102.78, m1: -1.8, m3: 2.1, comp: 5.1 },
-  { t: "GS", n: "Goldman Sachs Group Inc.", p: 585.23, m1: 6.5, m3: 14.7, comp: 7.1 },
+  { t: "AAPL", n: "Apple Inc.", p: 234.12, m1: 8.45, m3: 15.2, comp: 7.2, tags: ["tech"] },
+  { t: "MSFT", n: "Microsoft Corporation", p: 425.91, m1: 12.3, m3: 22.8, comp: 8.4, tags: ["tech"] },
+  { t: "NVDA", n: "NVIDIA Corporation", p: 138.55, m1: 18.7, m3: 35.4, comp: 8.9, tags: ["tech"] },
+  { t: "AMZN", n: "Amazon.com Inc.", p: 198.04, m1: 4.2, m3: 9.1, comp: 6.8, tags: ["tech"] },
+  { t: "META", n: "Meta Platforms Inc.", p: 583.21, m1: 9.8, m3: 18.3, comp: 7.4, tags: ["tech"] },
+  { t: "INTC", n: "Intel Corporation", p: 21.45, m1: -12.5, m3: -25.8, comp: 2.8, tags: ["tech"] },
+  { t: "XOM", n: "Exxon Mobil Corporation", p: 109.88, m1: -4.1, m3: -8.3, comp: 3.9, tags: ["energy"] },
+  { t: "KO", n: "The Coca-Cola Company", p: 68.45, m1: 1.2, m3: 3.4, comp: 5.5, tags: ["cons-staples"] },
+  { t: "DIS", n: "The Walt Disney Company", p: 102.78, m1: -1.8, m3: 2.1, comp: 5.1, tags: ["comm-services"] },
+  { t: "GS", n: "Goldman Sachs Group Inc.", p: 585.23, m1: 6.5, m3: 14.7, comp: 7.1, tags: ["financials"] },
 ];
 
 function seededIndicatorsAround(composite, seed) {
@@ -96,6 +96,7 @@ const instruments = TICKERS.map((spec, idx) => ({
   indicators: seededIndicatorsAround(spec.comp, idx + 17),
   compositeScore: spec.comp,
   signal: signalForScore(spec.comp),
+  tags: spec.tags,
   asOf,
 }));
 
@@ -115,8 +116,11 @@ const snapshot = {
     strongSellCount: instruments.filter((i) => i.signal === "Strong Sell").length,
     filters: [
       { key: "all", label: "All" },
-      { key: "tech", label: "Information Technology" },
+      { key: "comm-services", label: "Communication Services" },
+      { key: "cons-staples", label: "Consumer Staples" },
+      { key: "energy", label: "Energy" },
       { key: "financials", label: "Financials" },
+      { key: "tech", label: "Information Technology" },
     ],
   },
 };
