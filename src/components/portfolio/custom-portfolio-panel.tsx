@@ -4,18 +4,14 @@ import { Trash2, X } from "lucide-react";
 import { useMemo } from "react";
 
 import { buildHoldingsVM } from "@/domain/portfolio";
-import type { Instrument, ScoreSnapshot, Universe } from "@/domain/types";
+import type { Instrument, ScoreSnapshot } from "@/domain/types";
 import { scoreTextClass } from "@/domain/colors";
-import { TABS } from "@/lib/nav";
+import { labelForUniverse } from "@/lib/universe-labels";
 import { cn } from "@/lib/utils";
 
 import { SignalBadge } from "@/components/shared/signal-badge";
 import { useTickerDetailModal } from "@/components/detail/use-ticker-detail-modal";
 import { usePortfolioStore } from "@/stores/portfolio";
-
-const UNIVERSE_LABELS: Partial<Record<Universe, string>> = Object.fromEntries(
-  TABS.filter((t) => t.universe).map((t) => [t.universe as Universe, t.label]),
-) as Partial<Record<Universe, string>>;
 
 export function CustomPortfolioPanel({
   snapshots,
@@ -129,6 +125,11 @@ export function CustomPortfolioPanel({
                         tabIndex: 0,
                         onClick: () => openDetail(inst),
                         onKeyDown: (e: React.KeyboardEvent<HTMLTableRowElement>) => {
+                          // Don't steal Enter/Space from a focused inner
+                          // button (the − remove-action) — WCAG 2.1.1.
+                          // Mouse clicks through the − are already handled
+                          // by stopPropagation on the button.
+                          if (e.currentTarget !== e.target) return;
                           if (e.key === "Enter" || e.key === " ") {
                             e.preventDefault();
                             openDetail(inst);
@@ -147,7 +148,7 @@ export function CustomPortfolioPanel({
                     )}
                   </td>
                   <td className="px-2 py-2 text-xs">
-                    {inst ? UNIVERSE_LABELS[inst.universe] ?? inst.universe : "—"}
+                    {inst ? labelForUniverse(inst.universe) : "—"}
                   </td>
                   <td className="px-2 py-2">
                     {inst ? <SignalBadge signal={inst.signal} /> : <span className="font-mono text-xs">—</span>}

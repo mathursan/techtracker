@@ -3,21 +3,17 @@
 import { Check, Plus } from "lucide-react";
 import { useMemo, useState } from "react";
 
-import { ASSET_CLASSES, ASSET_CLASS_LABELS, assetClassForUniverse } from "@/domain/asset-class";
+import { ASSET_CLASSES, ASSET_CLASS_LABELS } from "@/domain/asset-class";
 import type { AssetClass } from "@/domain/asset-class";
 import { scoreTextClass } from "@/domain/colors";
-import { normalizeSearch } from "@/domain/filters";
+import { filterCandidates } from "@/domain/portfolio";
 import type { Instrument } from "@/domain/types";
-import { TABS } from "@/lib/nav";
+import { labelForUniverse } from "@/lib/universe-labels";
 import { cn } from "@/lib/utils";
 
 import { SignalBadge } from "@/components/shared/signal-badge";
 import { useTickerDetailModal } from "@/components/detail/use-ticker-detail-modal";
 import { usePortfolioStore } from "@/stores/portfolio";
-
-const UNIVERSE_LABELS: Partial<Record<string, string>> = Object.fromEntries(
-  TABS.filter((t) => t.universe).map((t) => [t.universe as string, t.label]),
-);
 
 export function CandidateTable({ candidates }: { candidates: Instrument[] }) {
   const [assetClass, setAssetClass] = useState<AssetClass | "all">("all");
@@ -28,19 +24,10 @@ export function CandidateTable({ candidates }: { candidates: Instrument[] }) {
   const add = usePortfolioStore((s) => s.add);
   const held = useMemo(() => new Set(holdings.map((h) => h.ticker)), [holdings]);
 
-  const filtered = useMemo(() => {
-    const needle = normalizeSearch(query);
-    return candidates.filter((inst) => {
-      if (assetClass !== "all" && assetClassForUniverse(inst.universe) !== assetClass) {
-        return false;
-      }
-      if (!needle) return true;
-      return (
-        inst.ticker.toLowerCase().includes(needle) ||
-        inst.name.toLowerCase().includes(needle)
-      );
-    });
-  }, [candidates, assetClass, query]);
+  const filtered = useMemo(
+    () => filterCandidates(candidates, { assetClass, query }),
+    [candidates, assetClass, query],
+  );
 
   return (
     <>
@@ -107,6 +94,11 @@ export function CandidateTable({ candidates }: { candidates: Instrument[] }) {
                       tabIndex={0}
                       onClick={() => openDetail(inst)}
                       onKeyDown={(e) => {
+                        // Don't steal Enter/Space from a focused inner button
+                        // (the + add-action) — WCAG 2.1.1 requires it to be
+                        // keyboard-operable. Mouse clicks through the + are
+                        // already handled by stopPropagation on the button.
+                        if (e.currentTarget !== e.target) return;
                         if (e.key === "Enter" || e.key === " ") {
                           e.preventDefault();
                           openDetail(inst);
@@ -122,7 +114,7 @@ export function CandidateTable({ candidates }: { candidates: Instrument[] }) {
                         </span>
                       </td>
                       <td className="px-2 py-1.5 text-xs">
-                        {UNIVERSE_LABELS[inst.universe] ?? inst.universe}
+                        {labelForUniverse(inst.universe)}
                       </td>
                       <td className="px-2 py-1.5">
                         <SignalBadge signal={inst.signal} />

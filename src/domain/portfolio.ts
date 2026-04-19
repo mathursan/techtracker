@@ -1,3 +1,6 @@
+import type { AssetClass } from "./asset-class";
+import { assetClassForUniverse } from "./asset-class";
+import { normalizeSearch } from "./filters";
 import type { Instrument, ScoreSnapshot } from "./types";
 import type { PortfolioPreset } from "./portfolio-presets";
 
@@ -24,6 +27,31 @@ export interface HoldingsVM {
 
 export interface PortfolioVM extends HoldingsVM {
   preset: PortfolioPreset;
+}
+
+/**
+ * Filter a candidate-table list by asset-class chip + free-text search.
+ * Pure; unit-tested. Search matches ticker OR name, case-insensitive.
+ * Asset class `"all"` is a pass-through.
+ */
+export function filterCandidates(
+  candidates: ReadonlyArray<Instrument>,
+  options: { assetClass: AssetClass | "all"; query: string },
+): Instrument[] {
+  const needle = normalizeSearch(options.query);
+  return candidates.filter((inst) => {
+    if (
+      options.assetClass !== "all" &&
+      assetClassForUniverse(inst.universe) !== options.assetClass
+    ) {
+      return false;
+    }
+    if (!needle) return true;
+    return (
+      inst.ticker.toLowerCase().includes(needle) ||
+      inst.name.toLowerCase().includes(needle)
+    );
+  });
 }
 
 /** First-match search across published snapshots. Deterministic on input order. */
