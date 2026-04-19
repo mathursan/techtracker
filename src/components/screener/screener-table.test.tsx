@@ -66,7 +66,7 @@ describe("<ScreenerTable />", () => {
 
   it("empty state when no instruments", () => {
     render(<ScreenerTable instruments={[]} />);
-    expect(screen.getByText(/no instruments to display/i)).toBeInTheDocument();
+    expect(screen.getByText(/No matches/i)).toBeInTheDocument();
   });
 });
 

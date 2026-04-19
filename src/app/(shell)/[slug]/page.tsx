@@ -28,8 +28,16 @@ export default async function TabPage({
     const snapshot = await loadSnapshot(tab.universe);
     if (snapshot && snapshot.instruments.length > 0) {
       const rawChip = query.chip;
+      const rawQuery = query.q;
       const chipKey = Array.isArray(rawChip) ? rawChip[0] : rawChip;
-      return <ScreenerView snapshot={snapshot} chipKey={chipKey} />;
+      const search = Array.isArray(rawQuery) ? rawQuery[0] : rawQuery;
+      return (
+        <ScreenerView
+          snapshot={snapshot}
+          chipKey={chipKey}
+          search={search}
+        />
+      );
     }
     return <NoDataView tab={tab} />;
   }
