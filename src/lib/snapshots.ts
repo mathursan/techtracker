@@ -55,6 +55,15 @@ export const latestAsOf = cache(async function latestAsOf(
   return dates.reduce((a, b) => (b.getTime() > a.getTime() ? b : a));
 });
 
+/** Load every universe's snapshot in parallel. Missing files resolve to null
+ * at the same index so callers can still render a "no data" placeholder
+ * for that universe. Cached per request via `loadSnapshot`. */
+export async function loadAllSnapshots(
+  universes: readonly Universe[],
+): Promise<Array<ScoreSnapshot | null>> {
+  return Promise.all(universes.map((u) => loadSnapshot(u)));
+}
+
 function isSnapshot(x: unknown): x is ScoreSnapshot {
   if (typeof x !== "object" || x === null) return false;
   const o = x as Record<string, unknown>;
