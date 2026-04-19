@@ -13,6 +13,7 @@ import { SignalBadge } from "@/components/shared/signal-badge";
 import { IndicatorScoreCell } from "./indicator-score-cell";
 import { TrendSparkline } from "./trend-sparkline";
 import { useTickerDetailModal } from "@/components/detail/use-ticker-detail-modal";
+import { useEffectiveInstruments } from "@/components/methodology/use-effective-instruments";
 
 const INDICATOR_HEADER_LABELS: Record<IndicatorId, string> = {
   ma_trend: "MA Trend",
@@ -89,7 +90,10 @@ export function ScreenerTable({ instruments }: { instruments: Instrument[] }) {
   });
   const { openDetail, modal } = useTickerDetailModal();
 
-  const rows = useMemo(() => sortInstruments(instruments, sort), [instruments, sort]);
+  // Recompute compositeScore + signal from the active Methodology preset.
+  // Default preset short-circuits to the server-computed values.
+  const effective = useEffectiveInstruments(instruments);
+  const rows = useMemo(() => sortInstruments(effective, sort), [effective, sort]);
 
   const onHeaderClick = (key: SortKey) => () => {
     setSort((prev) =>
