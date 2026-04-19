@@ -1,15 +1,19 @@
 name: Scoring snapshot
 
-# Schedule intentionally DISABLED until issue #3 replaces the placeholder
-# scorer with real indicator logic. Leaving only `workflow_dispatch` prevents
-# `placeholder: true` data from being auto-committed to main on weekdays.
-# Re-enable (and finalize the UTC/ET window) as part of #3.
+# Run weekdays (Mon-Fri, UTC-declared) at two windows to guarantee a fresh
+# post-US-close snapshot all year:
+#   - 21:30 UTC → 17:30 ET during EDT / 16:30 ET during EST
+#   - 22:30 UTC → 18:30 ET during EDT / 17:30 ET during EST
+# Either run writes to public/data/; the later run is idempotent-ish — if
+# nothing changed, the "Commit snapshots" step no-ops.
 #
-# on:
-#   schedule:
-#     - cron: "0 21 * * 1-5"   # 17:00 ET during standard time / 16:00 during DST
+# Traders expect data within 1-2 hours of the 16:00 ET cash close; the two
+# windows cover both DST states. Manual dispatch remains available.
 
 on:
+  schedule:
+    - cron: "30 21 * * 1-5"
+    - cron: "30 22 * * 1-5"
   workflow_dispatch:
     inputs:
       universe:
@@ -18,6 +22,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: scoring-snapshot
+  cancel-in-progress: false
 
 jobs:
   snapshot:
@@ -28,9 +36,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
           cache: pip
-      - run: python -m pip install -e .
+      - run: python -m pip install -e '.[market]'
       - name: Run scorer
         run: |
           if [ -n "${{ inputs.universe }}" ]; then

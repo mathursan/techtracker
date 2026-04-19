@@ -32,8 +32,13 @@ Always use the project venv at `.venv/`. Never `python3` / `pip3` from system. A
    - `trader-domain-expert` — methodology + domain + data + trader workflow fit.
 5. **Iterate** — address every `Must-fix`. Re-invoke the relevant agent(s) with a diff of what changed. Loop until all four reviewers return `APPROVE`.
 6. **Open the PR** on GitHub with the final review transcripts summarized in the PR description.
-7. **Hand to user** for final review/approval. Do NOT self-merge.
-8. After user approves + merges, move to the next issue.
+7. **After all four agents APPROVE, self-merge** via `gh pr merge <N> --squash --delete-branch`. The four-agent gate is the approval gate; human review is retrospective. Operator authorized this in the #2 thread.
+8. Move to the next issue in priority order.
+
+Operator-involvement exceptions (still pause for these, even after agent APPROVE):
+- Force-push, `git reset --hard`, or any destructive action on `main`.
+- Schema or stack decisions not already fixed in `docs/architecture/architecture.md`.
+- Anything that would add a non-goal listed in `docs/architecture/architecture.md` §1 (auth, streaming data, brokerage, etc.).
 
 ### How to invoke the four-agent gate
 ```
@@ -56,7 +61,7 @@ gh pr comment <N> --repo mathursan/techtracker --body-file <tmpfile>
 
 ## Rules
 - Never bypass the four-agent gate. If a reviewer returns BLOCK or REQUEST_CHANGES, fix it before moving on.
-- Never self-merge. User approval is the final gate.
+- Self-merge IS allowed once all four agents return APPROVE (see step 7 above). Operator reviews the merged history, not each PR in isolation.
 - Use the TodoWrite / TaskCreate tools to track FRAIM phases and review cycles per issue.
 - Keep commit messages terse and purpose-driven. End each with `Co-Authored-By: Claude Opus 4.7 (1M context) <noreply@anthropic.com>`.
 - Respect `docs/replicate/analysis/uc-*.md` as the acceptance spec for each feature.
