@@ -6,7 +6,8 @@ import { PortfolioBuilderView } from "@/components/portfolio/portfolio-builder-v
 import { ScreenerView } from "@/components/screener/screener-view";
 import { SignalChangeView } from "@/components/signal-change/signal-change-view";
 import { SignalsHubView } from "@/components/signals-hub/signals-hub-view";
-import type { Universe } from "@/domain/types";
+import type { TabDef } from "@/lib/nav";
+import type { ScoreSnapshot, Universe } from "@/domain/types";
 import { buildPortfolioVM } from "@/domain/portfolio";
 import {
   PORTFOLIO_PRESETS,
@@ -32,11 +33,90 @@ import {
 } from "@/lib/snapshots";
 import { TABS, tabForSlug } from "@/lib/nav";
 
+type Query = Record<string, string | string[] | undefined>;
+type ToolRenderer = (ctx: { tab: TabDef; query: Query }) => Promise<React.ReactNode>;
+
 export function generateStaticParams() {
   return TABS.map((tab) => ({ slug: tab.slug }));
 }
 
 export const dynamicParams = false;
+
+function pickParam(raw: string | string[] | undefined): string | undefined {
+  return Array.isArray(raw) ? raw[0] : raw;
+}
+
+function universeBackedTabs() {
+  const tabs = TABS.filter((t) => t.universe);
+  const universes = tabs.map((t) => t.universe as Universe);
+  return { tabs, universes };
+}
+
+/** Common input shape used by Signals Hub + Portfolio + Signal Change. */
+async function loadUniverseFeed(): Promise<{
+  tabs: ReturnType<typeof universeBackedTabs>["tabs"];
+  universes: Universe[];
+  snapshots: Array<ScoreSnapshot | null>;
+}> {
+  const { tabs, universes } = universeBackedTabs();
+  const snapshots = await loadAllSnapshots(universes);
+  return { tabs, universes, snapshots };
+}
+
+const TOOL_RENDERERS: Record<string, ToolRenderer> = {
+  "signals-hub": async ({ query }) => {
+    const { tabs, snapshots } = await loadUniverseFeed();
+    const inputs: UniverseInput[] = tabs.map((t, idx) => ({
+      universe: t.universe as Universe,
+      displayName: t.label,
+      snapshot: snapshots[idx],
+    }));
+    const vm = aggregateSignalsHub(inputs);
+    const view = parseSignalsHubView(pickParam(query.view));
+    return <SignalsHubView vm={vm} view={view} />;
+  },
+
+  portfolio: async ({ query }) => {
+    const activeSlug = parsePresetSlug(pickParam(query.preset));
+    if (!activeSlug) {
+      return (
+        <PortfolioBuilderView
+          presets={PORTFOLIO_PRESETS}
+          activeSlug={null}
+          vm={null}
+        />
+      );
+    }
+    const { snapshots } = await loadUniverseFeed();
+    const vm = buildPortfolioVM(presetBySlug(activeSlug), snapshots);
+    return (
+      <PortfolioBuilderView
+        presets={PORTFOLIO_PRESETS}
+        activeSlug={activeSlug}
+        vm={vm}
+      />
+    );
+  },
+
+  "signal-change": async ({ query }) => {
+    const { tabs, universes } = universeBackedTabs();
+    const lookback = parseLookback(pickParam(query.lookback));
+    const direction = parseDirection(pickParam(query.direction));
+    const universeScope = parseUniverseScope(pickParam(query.u), universes);
+    const [currents, historicals] = await Promise.all([
+      loadAllSnapshots(universes),
+      loadAllHistoricalSnapshots(universes, lookback),
+    ]);
+    const inputs: UniverseChangeInput[] = tabs.map((t, idx) => ({
+      universe: t.universe as Universe,
+      displayName: t.label,
+      current: currents[idx],
+      historical: historicals[idx],
+    }));
+    const vm = aggregateSignalChanges(inputs, { lookback, direction, universeScope });
+    return <SignalChangeView vm={vm} />;
+  },
+};
 
 export default async function TabPage({
   params,
@@ -53,93 +133,19 @@ export default async function TabPage({
   if (tab.universe) {
     const snapshot = await loadSnapshot(tab.universe);
     if (snapshot && snapshot.instruments.length > 0) {
-      const rawChip = query.chip;
-      const rawQuery = query.q;
-      const chipKey = Array.isArray(rawChip) ? rawChip[0] : rawChip;
-      const search = Array.isArray(rawQuery) ? rawQuery[0] : rawQuery;
       return (
         <ScreenerView
           snapshot={snapshot}
-          chipKey={chipKey}
-          search={search}
+          chipKey={pickParam(query.chip)}
+          search={pickParam(query.q)}
         />
       );
     }
     return <NoDataView tab={tab} />;
   }
 
-  if (slug === "signals-hub") {
-    const universeTabs = TABS.filter((t) => t.universe);
-    const universes = universeTabs.map((t) => t.universe as Universe);
-    const snapshots = await loadAllSnapshots(universes);
-    const inputs: UniverseInput[] = universeTabs.map((t, idx) => ({
-      universe: t.universe as Universe,
-      displayName: t.label,
-      snapshot: snapshots[idx],
-    }));
-    const vm = aggregateSignalsHub(inputs);
-    const rawView = query.view;
-    const viewParam = Array.isArray(rawView) ? rawView[0] : rawView;
-    const view = parseSignalsHubView(viewParam);
-    return <SignalsHubView vm={vm} view={view} />;
-  }
-
-  if (slug === "portfolio") {
-    const rawPreset = query.preset;
-    const activeSlug = parsePresetSlug(
-      Array.isArray(rawPreset) ? rawPreset[0] : rawPreset,
-    );
-    if (!activeSlug) {
-      return (
-        <PortfolioBuilderView
-          presets={PORTFOLIO_PRESETS}
-          activeSlug={null}
-          vm={null}
-        />
-      );
-    }
-    const universeTabs = TABS.filter((t) => t.universe);
-    const universes = universeTabs.map((t) => t.universe as Universe);
-    const snapshots = await loadAllSnapshots(universes);
-    const vm = buildPortfolioVM(presetBySlug(activeSlug), snapshots);
-    return (
-      <PortfolioBuilderView
-        presets={PORTFOLIO_PRESETS}
-        activeSlug={activeSlug}
-        vm={vm}
-      />
-    );
-  }
-
-  if (slug === "signal-change") {
-    const universeTabs = TABS.filter((t) => t.universe);
-    const universes = universeTabs.map((t) => t.universe as Universe);
-    const rawLookback = query.lookback;
-    const lookback = parseLookback(
-      Array.isArray(rawLookback) ? rawLookback[0] : rawLookback,
-    );
-    const rawDirection = query.direction;
-    const direction = parseDirection(
-      Array.isArray(rawDirection) ? rawDirection[0] : rawDirection,
-    );
-    const rawScope = query.u;
-    const universeScope = parseUniverseScope(
-      Array.isArray(rawScope) ? rawScope[0] : rawScope,
-      universes,
-    );
-    const [currents, historicals] = await Promise.all([
-      loadAllSnapshots(universes),
-      loadAllHistoricalSnapshots(universes, lookback),
-    ]);
-    const inputs: UniverseChangeInput[] = universeTabs.map((t, idx) => ({
-      universe: t.universe as Universe,
-      displayName: t.label,
-      current: currents[idx],
-      historical: historicals[idx],
-    }));
-    const vm = aggregateSignalChanges(inputs, { lookback, direction, universeScope });
-    return <SignalChangeView vm={vm} />;
-  }
+  const render = TOOL_RENDERERS[slug];
+  if (render) return render({ tab, query });
 
   return <PlaceholderView tab={tab} />;
 }

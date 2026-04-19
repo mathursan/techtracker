@@ -8,7 +8,7 @@ import type { Instrument } from "@/domain/types";
 import { performanceTextClass, scoreTextClass } from "@/domain/colors";
 import { cn } from "@/lib/utils";
 
-import { SignalBadge } from "@/components/screener/signal-badge";
+import { SignalBadge } from "@/components/shared/signal-badge";
 import { IndicatorRadar } from "./indicator-radar";
 import { IndicatorScoresPanel } from "./indicator-scores-panel";
 import { PriceMaChart } from "./price-ma-chart";

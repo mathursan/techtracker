@@ -1,15 +1,13 @@
 "use client";
 
-import { useState } from "react";
-
 import type { PortfolioHoldingVM } from "@/domain/portfolio";
-import type { Instrument, Universe } from "@/domain/types";
+import type { Universe } from "@/domain/types";
 import { scoreTextClass } from "@/domain/colors";
 import { TABS } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
-import { SignalBadge } from "@/components/screener/signal-badge";
-import { TickerDetailModal } from "@/components/detail/ticker-detail-modal";
+import { SignalBadge } from "@/components/shared/signal-badge";
+import { useTickerDetailModal } from "@/components/detail/use-ticker-detail-modal";
 
 // Derived from the nav config so the "Universe" column can't drift from
 // the tab strip's labels. Computed once at module load.
@@ -18,13 +16,7 @@ const UNIVERSE_LABELS: Partial<Record<Universe, string>> = Object.fromEntries(
 ) as Partial<Record<Universe, string>>;
 
 export function HoldingsTable({ holdings }: { holdings: PortfolioHoldingVM[] }) {
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<Instrument | null>(null);
-
-  const onOpen = (inst: Instrument) => {
-    setActive(inst);
-    setOpen(true);
-  };
+  const { openDetail, modal } = useTickerDetailModal();
 
   return (
     <>
@@ -54,11 +46,11 @@ export function HoldingsTable({ holdings }: { holdings: PortfolioHoldingVM[] }) 
                     ? {
                         role: "button",
                         tabIndex: 0,
-                        onClick: () => onOpen(inst),
+                        onClick: () => openDetail(inst),
                         onKeyDown: (e) => {
                           if (e.key === "Enter" || e.key === " ") {
                             e.preventDefault();
-                            onOpen(inst);
+                            openDetail(inst);
                           }
                         },
                         "aria-label": `${h.ticker} ${inst.name} — open detail`,
@@ -100,11 +92,7 @@ export function HoldingsTable({ holdings }: { holdings: PortfolioHoldingVM[] }) 
           </tbody>
         </table>
       </div>
-      <TickerDetailModal
-        instrument={active}
-        open={open}
-        onOpenChange={setOpen}
-      />
+      {modal}
     </>
   );
 }

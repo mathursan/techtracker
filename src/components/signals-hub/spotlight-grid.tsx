@@ -1,10 +1,8 @@
 "use client";
 
-import { useState } from "react";
-
 import type { SpotlightVM } from "@/domain/signals-hub";
 
-import { TickerDetailModal } from "@/components/detail/ticker-detail-modal";
+import { useTickerDetailModal } from "@/components/detail/use-ticker-detail-modal";
 import { SpotlightCard } from "./spotlight-card";
 
 export function SpotlightGrid({
@@ -14,13 +12,9 @@ export function SpotlightGrid({
   items: SpotlightVM[];
   emptyCopy: string;
 }) {
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<SpotlightVM | null>(null);
+  const { openDetail, modal } = useTickerDetailModal();
 
-  const onOpen = (vm: SpotlightVM) => {
-    setActive(vm);
-    setOpen(true);
-  };
+  const onOpen = (vm: SpotlightVM) => openDetail(vm.instrument);
 
   if (items.length === 0) {
     return (
@@ -37,11 +31,7 @@ export function SpotlightGrid({
           <SpotlightCard key={`${vm.universe}:${vm.instrument.ticker}`} vm={vm} onOpen={onOpen} />
         ))}
       </div>
-      <TickerDetailModal
-        instrument={active?.instrument ?? null}
-        open={open}
-        onOpenChange={setOpen}
-      />
+      {modal}
     </>
   );
 }
