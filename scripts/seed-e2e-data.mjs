@@ -229,10 +229,53 @@ const UNIVERSES = [
 ];
 
 await mkdir(dataDir, { recursive: true });
+const historyDir = resolve(dataDir, "history");
+await mkdir(historyDir, { recursive: true });
+
+// Per-universe deltas applied to produce historical snapshots. Positive
+// deltas on `comp` in the HISTORICAL snapshot mean the instrument was
+// scored HIGHER previously — so a negative delta in "now" minus "past"
+// surfaces as a downgrade. We keep the delta list short: first entry in
+// each universe downgrades (score dropped), second upgrades (score rose).
+const HISTORICAL_DELTAS_1M = {
+  stocks: { AAPL: +1.2, INTC: -1.4 },
+  "sector-etfs": { XLE: +1.5, XLK: -0.9 },
+  commodities: { "NG=F": +2.3, "GC=F": -1.2 },
+  india: { "SBIN.NS": +1.3, "ICICIBANK.NS": -0.9 },
+  europe: { "MC.PA": +1.8, "ASML.AS": -0.7 },
+};
+
+// 1-week deltas are narrower than 1-month; flip one of the two directions.
+const HISTORICAL_DELTAS_1W = {
+  stocks: { NVDA: -0.6, KO: +0.8 },
+  "sector-etfs": { XLF: -0.6 },
+  commodities: { "CL=F": +1.2 },
+  india: { "RELIANCE.NS": -0.6 },
+  europe: { "SHEL.L": +1.0 },
+};
+
+function deriveHistorical(spec, deltas) {
+  const overridden = spec.tickers.map((row) => {
+    const delta = deltas[row.t];
+    if (delta === undefined) return row;
+    const shifted = Math.max(0, Math.min(10, row.comp + delta));
+    return { ...row, comp: shifted };
+  });
+  return buildSnapshot({ ...spec, tickers: overridden });
+}
 
 for (const spec of UNIVERSES) {
-  const snap = buildSnapshot(spec);
+  const now = buildSnapshot(spec);
   const outFile = resolve(dataDir, `${spec.universe}.json`);
-  await writeFile(outFile, JSON.stringify(snap, null, 2) + "\n", "utf-8");
-  console.log(`Wrote ${outFile} (${snap.instruments.length} instruments)`);
+  await writeFile(outFile, JSON.stringify(now, null, 2) + "\n", "utf-8");
+  console.log(`Wrote ${outFile} (${now.instruments.length} instruments)`);
+
+  const m = deriveHistorical(spec, HISTORICAL_DELTAS_1M[spec.universe] ?? {});
+  const mFile = resolve(historyDir, `${spec.universe}-1m.json`);
+  await writeFile(mFile, JSON.stringify(m, null, 2) + "\n", "utf-8");
+
+  const w = deriveHistorical(spec, HISTORICAL_DELTAS_1W[spec.universe] ?? {});
+  const wFile = resolve(historyDir, `${spec.universe}-1w.json`);
+  await writeFile(wFile, JSON.stringify(w, null, 2) + "\n", "utf-8");
 }
+console.log(`Wrote historical snapshots under ${historyDir}`);
