@@ -1,19 +1,12 @@
 "use client";
 
 import type { PortfolioHoldingVM } from "@/domain/portfolio";
-import type { Universe } from "@/domain/types";
 import { scoreTextClass } from "@/domain/colors";
-import { TABS } from "@/lib/nav";
+import { labelForUniverse } from "@/lib/universe-labels";
 import { cn } from "@/lib/utils";
 
 import { SignalBadge } from "@/components/shared/signal-badge";
 import { useTickerDetailModal } from "@/components/detail/use-ticker-detail-modal";
-
-// Derived from the nav config so the "Universe" column can't drift from
-// the tab strip's labels. Computed once at module load.
-const UNIVERSE_LABELS: Partial<Record<Universe, string>> = Object.fromEntries(
-  TABS.filter((t) => t.universe).map((t) => [t.universe as Universe, t.label]),
-) as Partial<Record<Universe, string>>;
 
 export function HoldingsTable({ holdings }: { holdings: PortfolioHoldingVM[] }) {
   const { openDetail, modal } = useTickerDetailModal();
@@ -66,7 +59,7 @@ export function HoldingsTable({ holdings }: { holdings: PortfolioHoldingVM[] }) 
                     )}
                   </td>
                   <td className="px-2 py-2 text-xs">
-                    {inst ? UNIVERSE_LABELS[inst.universe] ?? inst.universe : "—"}
+                    {inst ? labelForUniverse(inst.universe) : "—"}
                   </td>
                   <td className="px-2 py-2">
                     {inst ? (

@@ -78,22 +78,27 @@ const TOOL_RENDERERS: Record<string, ToolRenderer> = {
 
   portfolio: async ({ query }) => {
     const activeSlug = parsePresetSlug(pickParam(query.preset));
-    if (!activeSlug) {
-      return (
-        <PortfolioBuilderView
-          presets={PORTFOLIO_PRESETS}
-          activeSlug={null}
-          vm={null}
-        />
-      );
-    }
     const { snapshots } = await loadUniverseFeed();
-    const vm = buildPortfolioVM(presetBySlug(activeSlug), snapshots);
+    // De-duplicated candidate list for UC-09. One row per ticker across all
+    // published snapshots.
+    const seen = new Set<string>();
+    const candidates = snapshots
+      .flatMap((s) => (s ? s.instruments : []))
+      .filter((inst) => {
+        if (seen.has(inst.ticker)) return false;
+        seen.add(inst.ticker);
+        return true;
+      });
+    const vm = activeSlug
+      ? buildPortfolioVM(presetBySlug(activeSlug), snapshots)
+      : null;
     return (
       <PortfolioBuilderView
         presets={PORTFOLIO_PRESETS}
         activeSlug={activeSlug}
         vm={vm}
+        snapshots={snapshots}
+        candidates={candidates}
       />
     );
   },
