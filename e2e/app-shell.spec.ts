@@ -9,10 +9,13 @@ test.describe("app shell & tab navigation (UC-14)", () => {
     ).toBeVisible();
   });
 
-  test("all 19 tabs render", async ({ page }) => {
+  test("all 19 nav tabs render", async ({ page }) => {
     await page.goto("/stocks");
-    const tabs = page.getByRole("tab");
-    await expect(tabs).toHaveCount(19);
+    // Scope to the section nav — the chip row also uses role=tab.
+    const navTabs = page
+      .getByRole("tablist", { name: "TechTracker sections" })
+      .getByRole("tab");
+    await expect(navTabs).toHaveCount(19);
   });
 
   test("clicking a tab navigates via client router (no full reload)", async ({

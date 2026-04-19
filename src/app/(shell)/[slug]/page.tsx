@@ -14,18 +14,22 @@ export const dynamicParams = false;
 
 export default async function TabPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { slug } = await params;
+  const query = (await searchParams) ?? {};
   const tab = tabForSlug(slug);
   if (!tab) notFound();
 
-  // Screener universes render the table; tool tabs keep the roadmap placeholder.
   if (tab.universe) {
     const snapshot = await loadSnapshot(tab.universe);
     if (snapshot && snapshot.instruments.length > 0) {
-      return <ScreenerView snapshot={snapshot} />;
+      const rawChip = query.chip;
+      const chipKey = Array.isArray(rawChip) ? rawChip[0] : rawChip;
+      return <ScreenerView snapshot={snapshot} chipKey={chipKey} />;
     }
     return <NoDataView tab={tab} />;
   }
