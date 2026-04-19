@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 
 import { Disclaimer } from "@/components/shell/disclaimer";
+import { ThemeBootstrapScript } from "@/components/shell/theme-provider";
 import { cn } from "@/lib/utils";
 
 import "./globals.css";
@@ -24,6 +25,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
+        {/* Must render FIRST so the `.dark` class lands before any painted
+            content — prevents light-to-dark flash on first paint. */}
+        <ThemeBootstrapScript />
         <div className="flex flex-1 flex-col">{children}</div>
         <Disclaimer />
       </body>
