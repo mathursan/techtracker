@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 import { BUILT_IN_PRESETS, MAX_USER_PRESETS } from "@/domain/weight-presets";
-import type { WeightPresetId } from "@/domain/weight-presets";
 import { useWeightPresetStore } from "@/stores/weight-preset";
 import { cn } from "@/lib/utils";
 
@@ -164,4 +163,3 @@ export function PresetChipRow() {
   );
 }
 
-export type { WeightPresetId };

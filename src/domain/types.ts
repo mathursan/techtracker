@@ -78,21 +78,7 @@ export interface UniverseSummary {
   filters: { key: string; label: string }[];
 }
 
-export type WeightPresetId =
-  | "default"
-  | "momentum"
-  | "trend-following"
-  | "mean-reversion"
-  | `user-${string}`;
-
 export type Weights = Record<IndicatorId, number>;
-
-export interface WeightPreset {
-  id: WeightPresetId;
-  name: string;
-  weights: Weights;
-  isUserSaved?: boolean;
-}
 
 export interface ScoreSnapshot {
   asOf: string;

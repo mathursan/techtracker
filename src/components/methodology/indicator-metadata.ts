@@ -1,16 +1,10 @@
 import type { IndicatorId } from "@/domain/types";
 
-export const INDICATOR_LABELS: Record<IndicatorId, string> = {
-  ma_trend: "MA Trend",
-  macd: "MACD",
-  adx_dmi: "ADX/DMI",
-  rsi: "RSI",
-  sar: "SAR",
-  bollinger: "Bollinger",
-  stochastic: "Stochastic",
-  obv: "OBV",
-  ichimoku: "Ichimoku",
-};
+// Display labels live in `src/lib/indicator-labels.ts` as the single
+// source of truth (shared with the screener, modal radar, and score
+// panel). Re-export here so callers can import label + description
+// from one place.
+export { INDICATOR_LABELS } from "@/lib/indicator-labels";
 
 export const INDICATOR_DESCRIPTIONS: Record<IndicatorId, string> = {
   ma_trend: "SMA 20 / 50 / 200 position, golden cross, MA stack alignment.",

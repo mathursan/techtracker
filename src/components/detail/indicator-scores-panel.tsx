@@ -2,19 +2,8 @@ import type { IndicatorScore, Weights } from "@/domain/types";
 import { INDICATOR_IDS } from "@/domain/types";
 import { DEFAULT_WEIGHTS } from "@/domain/composite";
 import { scoreTextClass, toneForScore } from "@/domain/colors";
+import { INDICATOR_LABELS } from "@/lib/indicator-labels";
 import { cn } from "@/lib/utils";
-
-const LABELS: Record<string, string> = {
-  ma_trend: "MA Trend",
-  macd: "MACD",
-  adx_dmi: "ADX/DMI",
-  rsi: "RSI",
-  sar: "SAR",
-  bollinger: "Bollinger",
-  stochastic: "Stochastic",
-  obv: "OBV",
-  ichimoku: "Ichimoku",
-};
 
 const BAR_BG: Record<"green" | "amber" | "red", string> = {
   green: "bg-emerald-500 dark:bg-emerald-400",
@@ -51,7 +40,7 @@ export function IndicatorScoresPanel({
               className="grid grid-cols-[7rem_1fr_3rem_2.5rem] items-center gap-2"
             >
               <span className="text-xs text-muted-foreground">
-                {LABELS[id] ?? id}
+                {INDICATOR_LABELS[id]}
               </span>
               <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
                 <div

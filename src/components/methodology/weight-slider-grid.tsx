@@ -1,7 +1,7 @@
 "use client";
 
 import { normalizeSliderAdjustment } from "@/domain/weight-presets";
-import type { IndicatorId, Weights } from "@/domain/types";
+import type { IndicatorId } from "@/domain/types";
 import { INDICATOR_IDS } from "@/domain/types";
 import { useActiveWeights, useWeightPresetStore } from "@/stores/weight-preset";
 
@@ -84,4 +84,3 @@ function WeightSliderRow({
   );
 }
 
-export type { Weights };

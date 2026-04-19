@@ -13,19 +13,8 @@ import {
 import type { IndicatorScore } from "@/domain/types";
 import { INDICATOR_IDS } from "@/domain/types";
 import { toneForScore } from "@/domain/colors";
+import { INDICATOR_LABELS } from "@/lib/indicator-labels";
 import { cn } from "@/lib/utils";
-
-const LABELS: Record<string, string> = {
-  ma_trend: "MA Trend",
-  macd: "MACD",
-  adx_dmi: "ADX/DMI",
-  rsi: "RSI",
-  sar: "SAR",
-  bollinger: "Bollinger",
-  stochastic: "Stochastic",
-  obv: "OBV",
-  ichimoku: "Ichimoku",
-};
 
 /**
  * Explicit hex colors so the radar reads as bullish/bearish at a glance.
@@ -50,7 +39,7 @@ export function IndicatorRadar({
 }) {
   const byId = new Map(scores.map((s) => [s.id, s.value] as const));
   const data = INDICATOR_IDS.map((id) => ({
-    indicator: LABELS[id] ?? id,
+    indicator: INDICATOR_LABELS[id],
     score: byId.get(id) ?? 0,
   }));
   const color = TONE_STROKE[toneForScore(composite)];

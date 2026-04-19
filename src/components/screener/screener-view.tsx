@@ -7,7 +7,7 @@ import {
   summarizeFiltered,
 } from "@/domain/filters";
 
-import { ActivePresetBanner } from "@/components/methodology/active-preset-banner";
+import { ActivePresetBanner } from "@/components/shared/active-preset-banner";
 
 import { ChipRow } from "./chip-row";
 import { KpiCardRow } from "./kpi-card-row";

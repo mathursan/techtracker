@@ -4,11 +4,9 @@ import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
 import {
-  BUILT_IN_PRESETS,
   MAX_USER_PRESETS,
   builtInPresetById,
   isBuiltInPresetId,
-  type BuiltInPresetId,
   type UserWeightPreset,
   type UserPresetId,
   type WeightPresetId,
@@ -151,14 +149,3 @@ export function useActiveWeights(): Weights {
   );
 }
 
-/** Simple list of preset options rendered in the chip row. */
-export function getAllPresetOptions(
-  customPresets: readonly UserWeightPreset[],
-): Array<{ id: WeightPresetId; name: string; isUser: boolean }> {
-  return [
-    ...BUILT_IN_PRESETS.map((p) => ({ id: p.id as WeightPresetId, name: p.name, isUser: false })),
-    ...customPresets.map((p) => ({ id: p.id as WeightPresetId, name: p.name, isUser: true })),
-  ];
-}
-
-export type { BuiltInPresetId, UserPresetId, WeightPresetId };
