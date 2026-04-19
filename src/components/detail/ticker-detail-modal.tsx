@@ -17,7 +17,7 @@ const TIMEFRAMES = ["1M", "3M", "6M", "1Y", "2Y", "5Y"] as const;
 type Timeframe = (typeof TIMEFRAMES)[number];
 
 const CHART_KINDS = [
-  "Price + MA",
+  "Price",
   "RSI",
   "MACD",
   "Bollinger",
@@ -47,7 +47,7 @@ export function TickerDetailModal({
   onOpenChange: (open: boolean) => void;
 }) {
   const [timeframe, setTimeframe] = useState<Timeframe>("1Y");
-  const [chartKind, setChartKind] = useState<ChartKind>("Price + MA");
+  const [chartKind, setChartKind] = useState<ChartKind>("Price");
 
   if (!instrument) return null;
 
@@ -149,11 +149,14 @@ export function TickerDetailModal({
 
           <div className="grid gap-6 md:grid-cols-[1fr_auto]">
             <div className="min-w-0">
-              {chartKind === "Price + MA" && (
+              {chartKind === "Price" && (
                 <PriceMaChart points={instrument.sparkline} />
               )}
               {chartKind === "Radar" && (
-                <IndicatorRadar scores={instrument.indicators} />
+                <IndicatorRadar
+                  scores={instrument.indicators}
+                  composite={instrument.compositeScore}
+                />
               )}
               {HISTORY_DEPENDENT.has(chartKind) && (
                 <div className="grid h-64 place-items-center rounded border border-dashed text-center text-sm text-muted-foreground">

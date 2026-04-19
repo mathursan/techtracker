@@ -36,7 +36,7 @@ test.describe("ticker detail modal (UC-05)", () => {
     const dialog = page.getByRole("dialog");
     await expect(dialog).toBeVisible();
 
-    // Price + MA (default) — no placeholder.
+    // Price (default) — no placeholder.
     await expect(dialog.getByText(/Per-timeframe history/i)).not.toBeVisible();
 
     // Click RSI — placeholder shows.

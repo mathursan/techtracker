@@ -11,7 +11,7 @@ Trader scanning a screener sees a row that interests them and wants a drilldown 
 - Click any row on any screener → modal opens centered with the instrument's data.
 - Header: ticker + company name (sector slot reserved for when scoring populates it) + score badge + signal badge + price + 1M / 3M / 1Y perf chips.
 - Timeframe tabs: `1M | 3M | 6M | 1Y | 2Y | 5Y`. The current `sparkline` on the snapshot is ~60 daily closes (≈3 months) — timeframes longer than 3M render the same sparkline with a "showing available data" note. Per-timeframe history lands in a follow-up when the pipeline publishes per-ticker history.
-- Chart-kind tabs: `Price + MA | RSI | MACD | Bollinger | Stochastic | Volume | Radar`. `Price + MA` and `Radar` render in this PR with available data; the other four render an explicit placeholder pointing at a follow-up issue for per-timeframe history.
+- Chart-kind tabs: `Price | RSI | MACD | Bollinger | Stochastic | Volume | Radar`. `Price` and `Radar` render in this PR with available data; the other four render an explicit placeholder pointing at a follow-up issue for per-timeframe history.
 - Indicator Scores panel: 9 horizontal bars (indicator name, value 0-10, weight %). Weights read from `DEFAULT_WEIGHTS`; wire to the active preset once UC-11 ships.
 - Legend: `0 Strong Sell | 5 Neutral | 10 Strong Buy`.
 - Close via `Esc`, backdrop click, or the `×` button. Focus returns to the trigger row.
@@ -21,8 +21,8 @@ Trader scanning a screener sees a row that interests them and wants a drilldown 
 |---|---|
 | R1 | Clicking any screener row opens the modal for that instrument. |
 | R2 | Modal uses Radix Dialog (focus-trapped, Esc closes, backdrop closes). |
-| R3 | Default state: `1Y` timeframe selected, `Price + MA` chart selected. |
-| R4 | `Price + MA` tab renders the snapshot's `sparkline` via Recharts LineChart. |
+| R3 | Default state: `1Y` timeframe selected, `Price` chart selected. |
+| R4 | `Price` tab renders the snapshot's `sparkline` via Recharts LineChart. |
 | R5 | `Radar` tab renders the 9 indicator scores via Recharts RadarChart on a 0-10 axis. |
 | R6 | `RSI | MACD | Bollinger | Stochastic | Volume` tabs render an explicit "per-timeframe history ships in follow-up" placeholder, NOT a broken empty chart. |
 | R7 | Indicator Scores panel lists all 9 indicators in canonical order (`INDICATOR_IDS`) with score, weight %, and a visual bar. |

@@ -12,6 +12,7 @@ import {
 
 import type { IndicatorScore } from "@/domain/types";
 import { INDICATOR_IDS } from "@/domain/types";
+import { toneForScore } from "@/domain/colors";
 import { cn } from "@/lib/utils";
 
 const LABELS: Record<string, string> = {
@@ -26,11 +27,25 @@ const LABELS: Record<string, string> = {
   ichimoku: "Ichimoku",
 };
 
+/**
+ * Explicit hex colors so the radar reads as bullish/bearish at a glance.
+ * Tailwind's emerald-500 / amber-500 / rose-500 don't map 1:1 through
+ * CSS vars under the svg's `fill`, so hard-code the brand-equivalent.
+ */
+const TONE_STROKE: Record<"green" | "amber" | "red", string> = {
+  green: "#10b981", // emerald-500
+  amber: "#f59e0b", // amber-500
+  red: "#f43f5e",   // rose-500
+};
+
 export function IndicatorRadar({
   scores,
+  composite,
   className,
 }: {
   scores: IndicatorScore[];
+  /** Composite score; drives the radar's stroke / fill color. */
+  composite: number;
   className?: string;
 }) {
   const byId = new Map(scores.map((s) => [s.id, s.value] as const));
@@ -38,6 +53,7 @@ export function IndicatorRadar({
     indicator: LABELS[id] ?? id,
     score: byId.get(id) ?? 0,
   }));
+  const color = TONE_STROKE[toneForScore(composite)];
 
   return (
     <div className={cn("h-64 w-full", className)}>
@@ -53,10 +69,10 @@ export function IndicatorRadar({
           <Radar
             name="Score"
             dataKey="score"
-            stroke="currentColor"
-            fill="currentColor"
+            stroke={color}
+            fill={color}
             fillOpacity={0.25}
-            className="text-primary"
+            strokeWidth={2}
           />
         </RadarChart>
       </ResponsiveContainer>
