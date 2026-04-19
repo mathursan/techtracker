@@ -72,7 +72,7 @@ Non-goals (explicitly **not** building):
   - `src/components/signals/` — `UniverseStatCard`, `SignalChangeCard`, `SignalChangeTable`, `SpotlightCardGrid`.
   - `src/components/portfolio/` — `ModelPortfolioCard`, `PortfolioPanel`, `AddAssetButton`.
   - `src/components/analytics/` — `SignalDistributionBarChart`, `SectorAverageScoreBarChart`, `ScoreDistributionHistogram`.
-  - `src/components/methodology/` — `WeightPresetChips`, `WeightSliderGroup`.
+  - `src/components/methodology/` — `PresetChipRow`, `WeightSliderGrid`, `BandsTable`, `CliReference`, `ActivePresetBanner`.
   - `src/components/ui/` — shadcn/ui primitives (Dialog, Tabs, Slider, Button, Card, Input, etc.).
 
 ### 3.2. Client state & data layer
@@ -80,7 +80,7 @@ Non-goals (explicitly **not** building):
 - **Responsibility**: Feeding components the data they need; caching; persisting user choices across sessions.
 - **Key modules**:
   - `src/stores/portfolio.ts` (zustand) — holdings, weighting mode, derived composite.
-  - `src/stores/weights.ts` (zustand + persist middleware) — active preset, user-saved presets (max 5).
+  - `src/stores/weight-preset.ts` (zustand + persist middleware) — active preset, user-saved presets (max 5), draft slider state.
   - `src/stores/theme.ts` (next-themes wrapper).
   - `src/queries/snapshots.ts` (TanStack Query) — `useUniverseSnapshot(universe)`, `useAllUniverses()`, `useTickerHistory(ticker, timeframe)`.
   - `src/lib/fetchers.ts` — thin `fetch` wrappers over `/data/<universe>.json` and `/data/history/<universe>/<date>.json`.
@@ -181,14 +181,14 @@ Opened from any row (every screener; Signals Hub spotlight cards).
 - `TimeframeTabs` × `ChartKindTabs` drives which Recharts chart renders.
 - `IndicatorRadar` reads from the active weight preset (UC-11) so recomputed composites appear without a page reload.
 
-### 4.4 `src/stores/weights.ts`
+### 4.4 `src/stores/weight-preset.ts`
 
 Source of truth for indicator weights.
 
-- Defaults from methodology (MA 18 / MACD 15 / ADX 13 / RSI 12 / SAR 10 / Boll 10 / Stoch 10 / OBV 7 / Ichi 5).
-- Four built-in presets (Default, Momentum Focus, Trend Following, Mean Reversion).
-- Up to 5 user slots persisted via zustand's `persist` middleware to `localStorage`.
-- Exposes `useActiveWeights()`, `useActivePresetId()`, `savePresetAsCurrent(name)`.
+- Defaults from methodology (MA 18 / MACD 15 / ADX 13 / RSI 12 / SAR 10 / Boll 10 / Stoch 10 / OBV 7 / Ichi 5) — exposed from `src/domain/composite.ts::DEFAULT_WEIGHTS`.
+- Four built-in presets live in `src/domain/weight-presets.ts`: Default, Momentum Focus, Trend Following, Mean Reversion.
+- Up to 5 user slots persisted via zustand's `persist` middleware to `localStorage["tt-weight-preset"]`.
+- Exposes `useActiveWeights()` + `useWeightPresetStore` with actions `setActive`, `setDraft`, `saveCurrent`, `deletePreset`, `clearDraft`.
 
 ### 4.5 `src/domain/bands.ts`
 

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { MethodologyView } from "@/components/methodology/methodology-view";
 import { NoDataView } from "@/components/shell/no-data-view";
 import { PlaceholderView } from "@/components/shell/placeholder-view";
 import { PortfolioBuilderView } from "@/components/portfolio/portfolio-builder-view";
@@ -121,6 +122,8 @@ const TOOL_RENDERERS: Record<string, ToolRenderer> = {
     const vm = aggregateSignalChanges(inputs, { lookback, direction, universeScope });
     return <SignalChangeView vm={vm} />;
   },
+
+  methodology: async () => <MethodologyView />,
 };
 
 export default async function TabPage({

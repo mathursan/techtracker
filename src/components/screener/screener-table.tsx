@@ -7,24 +7,14 @@ import type { Instrument, IndicatorId } from "@/domain/types";
 import { INDICATOR_IDS } from "@/domain/types";
 import { SIGNAL_SEVERITY } from "@/domain/bands";
 import { performanceTextClass, scoreTextClass } from "@/domain/colors";
+import { INDICATOR_LABELS } from "@/lib/indicator-labels";
 import { cn } from "@/lib/utils";
 
 import { SignalBadge } from "@/components/shared/signal-badge";
 import { IndicatorScoreCell } from "./indicator-score-cell";
 import { TrendSparkline } from "./trend-sparkline";
 import { useTickerDetailModal } from "@/components/detail/use-ticker-detail-modal";
-
-const INDICATOR_HEADER_LABELS: Record<IndicatorId, string> = {
-  ma_trend: "MA Trend",
-  macd: "MACD",
-  adx_dmi: "ADX/DMI",
-  rsi: "RSI",
-  sar: "SAR",
-  bollinger: "Bollinger",
-  stochastic: "Stochastic",
-  obv: "OBV",
-  ichimoku: "Ichimoku",
-};
+import { useEffectiveInstruments } from "@/hooks/use-effective-instruments";
 
 type SortKey =
   | "ticker"
@@ -89,7 +79,10 @@ export function ScreenerTable({ instruments }: { instruments: Instrument[] }) {
   });
   const { openDetail, modal } = useTickerDetailModal();
 
-  const rows = useMemo(() => sortInstruments(instruments, sort), [instruments, sort]);
+  // Recompute compositeScore + signal from the active Methodology preset.
+  // Default preset short-circuits to the server-computed values.
+  const effective = useEffectiveInstruments(instruments);
+  const rows = useMemo(() => sortInstruments(effective, sort), [effective, sort]);
 
   const onHeaderClick = (key: SortKey) => () => {
     setSort((prev) =>
@@ -139,7 +132,7 @@ export function ScreenerTable({ instruments }: { instruments: Instrument[] }) {
                 colKey={`indicator:${id}` as const}
                 className="w-20 text-right"
               >
-                {INDICATOR_HEADER_LABELS[id]}
+                {INDICATOR_LABELS[id]}
               </Th>
             ))}
           </tr>

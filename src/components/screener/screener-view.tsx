@@ -7,6 +7,8 @@ import {
   summarizeFiltered,
 } from "@/domain/filters";
 
+import { ActivePresetBanner } from "@/components/shared/active-preset-banner";
+
 import { ChipRow } from "./chip-row";
 import { KpiCardRow } from "./kpi-card-row";
 import { ScreenerTable } from "./screener-table";
@@ -30,6 +32,7 @@ export function ScreenerView({
 
   return (
     <main className="flex-1">
+      <ActivePresetBanner />
       <ChipRow filters={snapshot.summary.filters} />
       {/* Keying SearchInput by universe + chip re-mounts it on navigation
           changes from outside (tab switch, back/forward), sidestepping the
