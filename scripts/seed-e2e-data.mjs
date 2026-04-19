@@ -51,17 +51,32 @@ function signalForScore(score) {
 }
 
 const TICKERS = [
-  { t: "AAPL", n: "Apple Inc.", p: 234.12, m1: 8.45, m3: 15.2, comp: 7.2, tags: ["tech"] },
-  { t: "MSFT", n: "Microsoft Corporation", p: 425.91, m1: 12.3, m3: 22.8, comp: 8.4, tags: ["tech"] },
-  { t: "NVDA", n: "NVIDIA Corporation", p: 138.55, m1: 18.7, m3: 35.4, comp: 8.9, tags: ["tech"] },
-  { t: "AMZN", n: "Amazon.com Inc.", p: 198.04, m1: 4.2, m3: 9.1, comp: 6.8, tags: ["tech"] },
-  { t: "META", n: "Meta Platforms Inc.", p: 583.21, m1: 9.8, m3: 18.3, comp: 7.4, tags: ["tech"] },
-  { t: "INTC", n: "Intel Corporation", p: 21.45, m1: -12.5, m3: -25.8, comp: 2.8, tags: ["tech"] },
-  { t: "XOM", n: "Exxon Mobil Corporation", p: 109.88, m1: -4.1, m3: -8.3, comp: 3.9, tags: ["energy"] },
-  { t: "KO", n: "The Coca-Cola Company", p: 68.45, m1: 1.2, m3: 3.4, comp: 5.5, tags: ["cons-staples"] },
-  { t: "DIS", n: "The Walt Disney Company", p: 102.78, m1: -1.8, m3: 2.1, comp: 5.1, tags: ["comm-services"] },
-  { t: "GS", n: "Goldman Sachs Group Inc.", p: 585.23, m1: 6.5, m3: 14.7, comp: 7.1, tags: ["financials"] },
+  { t: "AAPL", n: "Apple Inc.", p: 234.12, m1: 8.45, m3: 15.2, m12: 38.5, comp: 7.2, tags: ["tech"] },
+  { t: "MSFT", n: "Microsoft Corporation", p: 425.91, m1: 12.3, m3: 22.8, m12: 45.1, comp: 8.4, tags: ["tech"] },
+  { t: "NVDA", n: "NVIDIA Corporation", p: 138.55, m1: 18.7, m3: 35.4, m12: 142.2, comp: 8.9, tags: ["tech"] },
+  { t: "AMZN", n: "Amazon.com Inc.", p: 198.04, m1: 4.2, m3: 9.1, m12: 22.3, comp: 6.8, tags: ["tech"] },
+  { t: "META", n: "Meta Platforms Inc.", p: 583.21, m1: 9.8, m3: 18.3, m12: 65.7, comp: 7.4, tags: ["tech"] },
+  { t: "INTC", n: "Intel Corporation", p: 21.45, m1: -12.5, m3: -25.8, m12: -48.9, comp: 2.8, tags: ["tech"] },
+  { t: "XOM", n: "Exxon Mobil Corporation", p: 109.88, m1: -4.1, m3: -8.3, m12: -3.2, comp: 3.9, tags: ["energy"] },
+  { t: "KO", n: "The Coca-Cola Company", p: 68.45, m1: 1.2, m3: 3.4, m12: 7.8, comp: 5.5, tags: ["cons-staples"] },
+  { t: "DIS", n: "The Walt Disney Company", p: 102.78, m1: -1.8, m3: 2.1, m12: 5.2, comp: 5.1, tags: ["comm-services"] },
+  { t: "GS", n: "Goldman Sachs Group Inc.", p: 585.23, m1: 6.5, m3: 14.7, m12: 32.8, comp: 7.1, tags: ["financials"] },
 ];
+
+// Default indicator weights — MUST stay in sync with src/domain/composite.ts
+// DEFAULT_WEIGHTS so the derived composite in this seed matches what the
+// screener + detail modal display.
+const DEFAULT_WEIGHTS = {
+  ma_trend: 18,
+  macd: 15,
+  adx_dmi: 13,
+  rsi: 12,
+  sar: 10,
+  bollinger: 10,
+  stochastic: 10,
+  obv: 7,
+  ichimoku: 5,
+};
 
 function seededIndicatorsAround(composite, seed) {
   // Linear-congruential generator with a stable seed; every indicator
@@ -75,6 +90,16 @@ function seededIndicatorsAround(composite, seed) {
   });
 }
 
+function weightedComposite(indicators) {
+  const byId = Object.fromEntries(indicators.map((i) => [i.id, i.value]));
+  const total = INDICATOR_IDS.reduce((s, id) => s + DEFAULT_WEIGHTS[id], 0);
+  const weighted = INDICATOR_IDS.reduce(
+    (s, id) => s + (DEFAULT_WEIGHTS[id] / total) * (byId[id] ?? 0),
+    0,
+  );
+  return Math.round(weighted * 10) / 10;
+}
+
 function sparkline(seed, trendSign) {
   const pts = [];
   let v = 100;
@@ -85,20 +110,28 @@ function sparkline(seed, trendSign) {
   return pts;
 }
 
-const instruments = TICKERS.map((spec, idx) => ({
-  ticker: spec.t,
-  name: spec.n,
-  universe: "stocks",
-  price: spec.p,
-  perfOneMonth: spec.m1,
-  perfThreeMonth: spec.m3,
-  sparkline: sparkline(idx + 13, spec.m1 / 5),
-  indicators: seededIndicatorsAround(spec.comp, idx + 17),
-  compositeScore: spec.comp,
-  signal: signalForScore(spec.comp),
-  tags: spec.tags,
-  asOf,
-}));
+const instruments = TICKERS.map((spec, idx) => {
+  const indicators = seededIndicatorsAround(spec.comp, idx + 17);
+  // Derive composite from the generated indicators — matches what the
+  // Python scoring pipeline does in production. No drift between the
+  // row-level number and the sum of the displayed parts.
+  const compositeScore = weightedComposite(indicators);
+  return {
+    ticker: spec.t,
+    name: spec.n,
+    universe: "stocks",
+    price: spec.p,
+    perfOneMonth: spec.m1,
+    perfThreeMonth: spec.m3,
+    perfOneYear: spec.m12,
+    sparkline: sparkline(idx + 13, spec.m1 / 5),
+    indicators,
+    compositeScore,
+    signal: signalForScore(compositeScore),
+    tags: spec.tags,
+    asOf,
+  };
+});
 
 const snapshot = {
   asOf,

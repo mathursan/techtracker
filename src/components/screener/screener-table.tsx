@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { SignalBadge } from "./signal-badge";
 import { IndicatorScoreCell } from "./indicator-score-cell";
 import { TrendSparkline } from "./trend-sparkline";
+import { TickerDetailModal } from "@/components/detail/ticker-detail-modal";
 
 const INDICATOR_HEADER_LABELS: Record<IndicatorId, string> = {
   ma_trend: "MA Trend",
@@ -86,6 +87,15 @@ export function ScreenerTable({ instruments }: { instruments: Instrument[] }) {
     key: "compositeScore",
     direction: "desc",
   });
+  const [detailOpen, setDetailOpen] = useState(false);
+  const [detailInstrument, setDetailInstrument] = useState<Instrument | null>(
+    null,
+  );
+
+  const openDetail = (inst: Instrument) => {
+    setDetailInstrument(inst);
+    setDetailOpen(true);
+  };
 
   const rows = useMemo(() => sortInstruments(instruments, sort), [instruments, sort]);
 
@@ -146,7 +156,17 @@ export function ScreenerTable({ instruments }: { instruments: Instrument[] }) {
           {rows.map((inst) => (
             <tr
               key={inst.ticker}
-              className="border-b transition-colors hover:bg-muted/40"
+              className="cursor-pointer border-b transition-colors hover:bg-muted/40 focus-within:bg-muted/40"
+              onClick={() => openDetail(inst)}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openDetail(inst);
+                }
+              }}
+              aria-label={`${inst.ticker} ${inst.name} — open detail`}
+              role="button"
             >
               <td className="px-2 py-2">
                 <div className="font-semibold">{inst.ticker}</div>
@@ -183,6 +203,11 @@ export function ScreenerTable({ instruments }: { instruments: Instrument[] }) {
           ))}
         </tbody>
       </table>
+      <TickerDetailModal
+        instrument={detailInstrument}
+        open={detailOpen}
+        onOpenChange={setDetailOpen}
+      />
     </div>
   );
 }
