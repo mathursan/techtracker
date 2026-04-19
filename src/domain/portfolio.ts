@@ -9,8 +9,7 @@ export interface PortfolioHoldingVM {
   instrument: Instrument | null;
 }
 
-export interface PortfolioVM {
-  preset: PortfolioPreset;
+export interface HoldingsVM {
   holdings: PortfolioHoldingVM[];
   /** Count of holdings successfully resolved against a published snapshot. */
   resolvedCount: number;
@@ -21,6 +20,10 @@ export interface PortfolioVM {
   score: number | null;
   /** Sum of the resolved holdings' rendered weight (≤ 100). */
   resolvedWeightTotal: number;
+}
+
+export interface PortfolioVM extends HoldingsVM {
+  preset: PortfolioPreset;
 }
 
 /** First-match search across published snapshots. Deterministic on input order. */
@@ -37,7 +40,7 @@ export function findInstrumentByTicker(
 }
 
 /**
- * Build the Portfolio Builder view model for a preset.
+ * Build a holdings-only view model from a raw holdings list.
  *
  * Weight rule: holdings with explicit `weight` are honored verbatim.
  * Holdings without `weight` split the REMAINING weight (100 minus the sum of
@@ -45,22 +48,24 @@ export function findInstrumentByTicker(
  * `100 / N`. Weights are rounded to 2 dp on the rendered view model.
  *
  * Score rule: weighted mean across RESOLVED holdings only, re-normalised to
- * their weight mass so the score is comparable across presets that have some
- * unresolved tickers.
+ * their weight mass so the score is comparable across baskets that have
+ * some unresolved tickers.
+ *
+ * Shared by UC-08 (preset portfolios) and UC-09 (custom portfolios).
  */
-export function buildPortfolioVM(
-  preset: PortfolioPreset,
+export function buildHoldingsVM(
+  rawHoldings: ReadonlyArray<{ ticker: string; weight?: number }>,
   snapshots: ReadonlyArray<ScoreSnapshot | null>,
-): PortfolioVM {
-  const explicitWeightSum = preset.holdings.reduce(
+): HoldingsVM {
+  const explicitWeightSum = rawHoldings.reduce(
     (s, h) => s + (h.weight ?? 0),
     0,
   );
-  const unweighted = preset.holdings.filter((h) => h.weight === undefined);
+  const unweighted = rawHoldings.filter((h) => h.weight === undefined);
   const remainingWeight = Math.max(0, 100 - explicitWeightSum);
   const perUnweighted = unweighted.length > 0 ? remainingWeight / unweighted.length : 0;
 
-  const holdings: PortfolioHoldingVM[] = preset.holdings.map((h) => {
+  const holdings: PortfolioHoldingVM[] = rawHoldings.map((h) => {
     const weight = h.weight ?? perUnweighted;
     return {
       ticker: h.ticker,
@@ -86,11 +91,19 @@ export function buildPortfolioVM(
   }
 
   return {
-    preset,
     holdings,
     resolvedCount,
     unresolvedCount,
     score,
     resolvedWeightTotal: Math.round(resolvedWeightTotal * 100) / 100,
   };
+}
+
+/** Build the Portfolio Builder view model for a preset. Preset metadata is
+ * preserved on the VM for the preset-card active-highlight. */
+export function buildPortfolioVM(
+  preset: PortfolioPreset,
+  snapshots: ReadonlyArray<ScoreSnapshot | null>,
+): PortfolioVM {
+  return { preset, ...buildHoldingsVM(preset.holdings, snapshots) };
 }
