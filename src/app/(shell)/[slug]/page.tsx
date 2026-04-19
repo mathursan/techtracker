@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 
+import { AnalyticsView } from "@/components/analytics/analytics-view";
 import { MethodologyView } from "@/components/methodology/methodology-view";
 import { NoDataView } from "@/components/shell/no-data-view";
 import { PlaceholderView } from "@/components/shell/placeholder-view";
@@ -124,6 +125,24 @@ const TOOL_RENDERERS: Record<string, ToolRenderer> = {
   },
 
   methodology: async () => <MethodologyView />,
+
+  analytics: async () => {
+    const snapshot = await loadSnapshot("stocks");
+    if (!snapshot || snapshot.instruments.length === 0) {
+      return (
+        <div className="flex min-h-full flex-col">
+          <header className="border-b px-6 py-4">
+            <h1 className="text-xl font-semibold tracking-tight">Analytics</h1>
+          </header>
+          <div className="m-6 grid place-items-center rounded-lg border border-dashed px-6 py-10 text-center text-sm text-muted-foreground">
+            No data published yet. Analytics renders once the scoring pipeline
+            publishes a stocks snapshot.
+          </div>
+        </div>
+      );
+    }
+    return <AnalyticsView snapshot={snapshot} />;
+  },
 };
 
 export default async function TabPage({

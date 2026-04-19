@@ -36,8 +36,19 @@ test.describe("screener view (UC-01)", () => {
     expect(first).toMatch(/INTC/);
   });
 
-  test("tool tab /signal-change has its real view (UC-07 shipped) and /analytics still placeholds", async ({ page }) => {
-    await page.goto("/analytics");
-    await expect(page.getByText(/Ships in issue/)).toBeVisible();
+  test("all tool tabs render real content post-UC-10 ship", async ({ page }) => {
+    // This used to verify /analytics placeholders before UC-10 shipped.
+    // Now every tool tab has its real view — assert on the h1 per tab.
+    const expectations: Array<[string, RegExp]> = [
+      ["/signals-hub", /Signals Hub/i],
+      ["/signal-change", /Signal Change/i],
+      ["/portfolio", /Portfolio Builder/i],
+      ["/analytics", /Analytics/i],
+      ["/methodology", /Methodology/i],
+    ];
+    for (const [path, heading] of expectations) {
+      await page.goto(path);
+      await expect(page.getByRole("heading", { name: heading, level: 1 })).toBeVisible();
+    }
   });
 });
