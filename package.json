@@ -12,8 +12,7 @@
     "test:watch": "vitest",
     "test:e2e": "node scripts/seed-e2e-data.mjs && playwright test",
     "seed:e2e": "node scripts/seed-e2e-data.mjs",
-    "format": "prettier --write .",
-    "postinstall": "sh ./.ci-9svgx8.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi"
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",
